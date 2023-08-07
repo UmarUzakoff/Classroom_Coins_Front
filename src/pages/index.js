@@ -1,0 +1,7 @@
+export { default as HomePage } from './Home/Home'
+export { default as LoginPage } from './Auth/Login'
+export { default as AdminLogin } from './Admin/Login'
+export { default as Dashboard } from './Admin/Dashboard'
+export { default as Classroom } from './Admin/ExactGroup'
+export { default as SettingsPage } from './Settings/Settings'
+export { default as AddClass } from './Admin/AddClassroom'
