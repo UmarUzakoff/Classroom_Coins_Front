@@ -47,6 +47,26 @@ const Home = () => {
     fetchData();
   }, []);
 
+  const [user, setUser] = useState([]);
+  
+  const userinfo = async (token) => {
+    try {
+      const response = await axios.get("https://apiv.classroomcoins.uz/userinfo", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const data = response.data.verifiedUser;
+      setUser(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    userinfo(token);
+  }, []);
+
   const TABLE_HEAD = ["№", "Name", "Surname", "Coins"];
   return (
     <main className="bg-white container">
@@ -108,7 +128,7 @@ const Home = () => {
                 : "p-4 border-b border-blue-gray-50";
 
               return (
-                <tr key={id}>
+                <tr key={id} className={`${user.name === name ? "bg-gray-300" : ""}`}>
                   <td className={classes}>
                     <Typography
                       variant="small"

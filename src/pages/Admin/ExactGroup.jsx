@@ -155,11 +155,14 @@ const Dashboard = () => {
 
   const fetchUserinfo = async (id) => {
     try {
-      const response = await axios.get(`https://apiv.classroomcoins.uz/student/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get(
+        `https://apiv.classroomcoins.uz/student/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       const data = response.data.findStudent;
       const className = response.data.className;
       setUser(data);
@@ -275,7 +278,7 @@ const Dashboard = () => {
       {showModal2 ? (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-            <div className="relative w-72 sm:w-96 my-6 mx-auto max-w-2xl">
+            <div className="relative w-full my-6 mx-auto max-w-2xl">
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
@@ -307,7 +310,7 @@ const Dashboard = () => {
                 {/*footer*/}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
                   <button
-                    className="text-orange bg-yellow rounded-xl font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    className="text-orange shadow-xl border border-gray-400 active:bg-orange active:text-white rounded-xl font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-300"
                     type="button"
                     onClick={handleModalClose2}>
                     OK

@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Card, Typography } from "@material-tailwind/react";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import {
   getAccessTokenFromLocalStorage,
   getRoleFromStorage,
 } from "../../utils/storage";
 import coin from "../../images/coin.png";
-import { FaTrashAlt } from "react-icons/fa";
 
 const Dashboard = () => {
   const navigate = useNavigate();

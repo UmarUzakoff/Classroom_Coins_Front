@@ -54,7 +54,7 @@ export default function Header() {
       {showModal ? (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-            <div className="relative w-72 sm:w-96 lg:w-auto my-6 mx-auto max-w-2xl">
+            <div className="relative w-full lg:w-auto my-6 mx-auto max-w-2xl">
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
@@ -75,18 +75,18 @@ export default function Header() {
                     <h5 className={`font-bold ${role === "admin" ? "hidden" : ""}`}>ClassName: </h5>
                     <h5 className={`font-bold ${role === "admin" ? "hidden" : ""}`}>Coins: </h5>
                   </div>
-                  <div className="flex flex-col text-start items-start gap-2 sm:gap-5 ">
+                  <div className="flex w-full flex-col text-start items-start gap-2 sm:gap-5 ">
                     <span>{user.name}</span>
                     <span>{user.surname}</span>
-                    <span>{user.email}</span>
-                    <span className={`font-bold ${role === "admin" ? "hidden" : ""}`}>{className}</span>
-                    <span className={`font-bold ${role === "admin" ? "hidden" : ""}`}>{user.coins}</span>
+                    <span className="w-full">{user.email}</span>
+                    <span className={`${role === "admin" ? "hidden" : ""}`}>{className}</span>
+                    <span className={`${role === "admin" ? "hidden" : ""}`}>{user.coins}</span>
                   </div>
                 </div>
                 {/*footer*/}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
                   <button
-                    className="text-orange bg-yellow rounded-xl font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    className="text-orange shadow-xl border border-gray-400 active:bg-orange active:text-white rounded-xl font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-300"
                     type="button"
                     onClick={handleModalClose}>
                     OK
@@ -117,9 +117,11 @@ export default function Header() {
                     src={
                       role === "admin"
                         ? me
-                        : (user.name !== "Sevinch" && user.name !== "Aziza")
-                        ? "https://whatsondisneyplus.com/wp-content/uploads/2021/06/luca-avatar-WODP.png"
-                        : "https://img.freepik.com/premium-photo/cute-girl-3d-character-design-cartoon-girl-avatar_432516-5510.jpg?w=2000"
+                        : user.name === "Sevinch"
+                        ? "https://img.freepik.com/premium-photo/cute-girl-3d-character-design-cartoon-girl-avatar_432516-5510.jpg?w=2000"
+                        : user.name === "Azizaxon"
+                        ? "https://cdn.gencraft.com/prod/user/e1572b3c-1a7b-46e1-8161-eb8bb2a3aca3/3c8b97ad-52a6-4d95-a302-bc72a5963f90/images/image0_0_watermark.jpg?Expires=1691731529&Signature=lgbZzuoW9o52vq~bG-ShZoGllb~I6r97LInFJU1v6WXIfluseVPDniE5kYbow7RvGqxIEPrDj3BtFd-jHZ6zo702qcbXnu9vQfNch3hnYjb0Zd3FmZMlX2piaXmvChAIzH15KWZRR-P-veNHTVc~JjhwTZsZDAfjugdeMHS7L9asjBSLFmyy-iuIfrnCF3r0PgvoCoSKkm6UqDfEsir33Ra1iHoXSZLGPLOdGI~IRUvzuT~nEJvL-L76nfgHeHxZc5h3tI0G~aN-6l8UI9VO6GVnzOEdZDoFiFCOZEsNRRZraertYuIdepARgcuDIs8CC~CEO6evKF77dKNHTWizxQ__&Key-Pair-Id=K3RDDB1TZ8BHT8"
+                        : "https://whatsondisneyplus.com/wp-content/uploads/2021/06/luca-avatar-WODP.png"
                     }
                     alt="avatar"
                   />
