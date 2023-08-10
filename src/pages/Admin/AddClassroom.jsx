@@ -38,7 +38,7 @@ const Settings = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://13.51.198.185/classroom",
+        "https://apiv.classroomcoins.uz/classroom",
         {
           class_name: className,
         },

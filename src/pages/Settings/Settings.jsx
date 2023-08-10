@@ -42,7 +42,7 @@ const Settings = () => {
     e.preventDefault();
     try {
       const response = await axios.put(
-        "http://13.51.198.185/userinfo/edit/email",
+        "https://apiv.classroomcoins.uz/userinfo/edit/email",
         {
           previousEmail,
           newEmail,
@@ -68,7 +68,7 @@ const Settings = () => {
     e.preventDefault();
     try {
       const response = await axios.put(
-        "http://13.51.198.185/userinfo/edit/password",
+        "https://apiv.classroomcoins.uz/userinfo/edit/password",
         {
           previousPassword,
           newPassword,

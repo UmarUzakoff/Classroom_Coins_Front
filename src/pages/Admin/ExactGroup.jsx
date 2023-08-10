@@ -34,7 +34,7 @@ const Dashboard = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `http://13.51.198.185/classroom/${id}`,
+        `https://apiv.classroomcoins.uz/classroom/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -70,7 +70,7 @@ const Dashboard = () => {
   const sendCoinsToBackend = async (id, coins) => {
     try {
       await axios.post(
-        `http://13.51.198.185/coins/plus/student/${id}`,
+        `https://apiv.classroomcoins.uz/coins/plus/student/${id}`,
         {
           coins,
         },
@@ -88,7 +88,7 @@ const Dashboard = () => {
   const sendCoinsToBackendForSubtracting = async (id, coins) => {
     try {
       await axios.post(
-        `http://13.51.198.185/coins/minus/student/${id}`,
+        `https://apiv.classroomcoins.uz/coins/minus/student/${id}`,
         {
           coins,
         },
@@ -130,7 +130,7 @@ const Dashboard = () => {
   const resetCoins = async () => {
     try {
       const response = await axios.put(
-        `http://13.51.198.185/classroom/addcoins/${id}`,
+        `https://apiv.classroomcoins.uz/classroom/addcoins/${id}`,
         null,
         {
           headers: {
@@ -155,7 +155,7 @@ const Dashboard = () => {
 
   const fetchUserinfo = async (id) => {
     try {
-      const response = await axios.get(`http://13.51.198.185/student/${id}`, {
+      const response = await axios.get(`https://apiv.classroomcoins.uz/student/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -195,7 +195,7 @@ const Dashboard = () => {
   const addNewStudent = async () => {
     try {
       const response = await axios.post(
-        `http://13.51.198.185/student`,
+        `https://apiv.classroomcoins.uz/student`,
         {
           classroom_id: id,
           name,
@@ -223,7 +223,7 @@ const Dashboard = () => {
   const deleteStudent = async (id) => {
     try {
       const response = await axios.delete(
-        `http://13.51.198.185/student/${id}`,
+        `https://apiv.classroomcoins.uz/student/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -252,7 +252,7 @@ const Dashboard = () => {
   const deleteClassroom = async () => {
     try {
       const response = await axios.delete(
-        `http://13.51.198.185/classroom/${id}`,
+        `https://apiv.classroomcoins.uz/classroom/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

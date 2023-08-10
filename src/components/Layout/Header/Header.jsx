@@ -32,7 +32,7 @@ export default function Header() {
   const token = getAccessTokenFromLocalStorage();
   const fetchData = async (token) => {
     try {
-      const response = await axios.get("http://13.51.198.185/userinfo", {
+      const response = await axios.get("https://apiv.classroomcoins.uz/userinfo", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

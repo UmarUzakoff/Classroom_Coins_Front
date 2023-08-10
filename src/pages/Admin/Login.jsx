@@ -42,7 +42,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://13.51.198.185/auth/login", {
+      const response = await axios.post("https://apiv.classroomcoins.uz/auth/login", {
         email,
         password,
       });

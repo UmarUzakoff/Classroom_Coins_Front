@@ -25,7 +25,7 @@ const Home = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "http://13.51.198.185/student/class/room",
+        "https://apiv.classroomcoins.uz/student/class/room",
         {
           headers: {
             Authorization: `Bearer ${token}`,
