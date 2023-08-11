@@ -120,7 +120,7 @@ export default function Header() {
                         : user.name === "Sevinch"
                         ? "https://img.freepik.com/premium-photo/cute-girl-3d-character-design-cartoon-girl-avatar_432516-5510.jpg?w=2000"
                         : user.name === "Azizaxon"
-                        ? "https://cdn.gencraft.com/prod/user/e1572b3c-1a7b-46e1-8161-eb8bb2a3aca3/3c8b97ad-52a6-4d95-a302-bc72a5963f90/images/image0_0_watermark.jpg?Expires=1691731529&Signature=lgbZzuoW9o52vq~bG-ShZoGllb~I6r97LInFJU1v6WXIfluseVPDniE5kYbow7RvGqxIEPrDj3BtFd-jHZ6zo702qcbXnu9vQfNch3hnYjb0Zd3FmZMlX2piaXmvChAIzH15KWZRR-P-veNHTVc~JjhwTZsZDAfjugdeMHS7L9asjBSLFmyy-iuIfrnCF3r0PgvoCoSKkm6UqDfEsir33Ra1iHoXSZLGPLOdGI~IRUvzuT~nEJvL-L76nfgHeHxZc5h3tI0G~aN-6l8UI9VO6GVnzOEdZDoFiFCOZEsNRRZraertYuIdepARgcuDIs8CC~CEO6evKF77dKNHTWizxQ__&Key-Pair-Id=K3RDDB1TZ8BHT8"
+                        ? "https://static.vecteezy.com/system/resources/previews/015/573/720/original/hijab-woman-no-face-photo-avatar-free-vector.jpg"
                         : "https://whatsondisneyplus.com/wp-content/uploads/2021/06/luca-avatar-WODP.png"
                     }
                     alt="avatar"
