@@ -13,6 +13,7 @@ import gold_medal from "../../images/gold-medal.png";
 import silver_medal from "../../images/silver-medal.png";
 import bronze_medal from "../../images/bronze-medal.png";
 import { FaHome, FaTrash, FaTrashAlt, FaXing } from "react-icons/fa";
+import DelModal from "./DelModal";
 
 const Dashboard = () => {
   const { id } = useParams();
@@ -172,23 +173,23 @@ const Dashboard = () => {
     }
   };
 
-  const [showModal, setShowModal] = useState(false);
-  const [showModal2, setShowModal2] = useState(false);
+  const [modals, setModals] = useState([
+    { id: 1, isOpen: false },
+    { id: 2, isOpen: false },
+    { id: 3, isOpen: false },
+    { id: 4, isOpen: false },
+  ]);
 
-  const handleButtonClick = () => {
-    setShowModal(true);
-  };
-
-  const handleModalClose = () => {
-    setShowModal(false);
-  };
-
-  const handleButtonClick2 = () => {
-    setShowModal2(true);
-  };
-
-  const handleModalClose2 = () => {
-    setShowModal2(false);
+  // Function to handle modal open/close
+  const handleModalToggle = (modalId) => {
+    setModals((prevModals) => {
+      return prevModals.map((modal) => {
+        if (modal.id === modalId) {
+          return { ...modal, isOpen: !modal.isOpen };
+        }
+        return modal;
+      });
+    });
   };
 
   const [name, setName] = useState("");
@@ -275,54 +276,7 @@ const Dashboard = () => {
   const TABLE_HEAD = ["№", "Name", "Surname", "Coins", "Grading", "Delete"];
   return (
     <main className="bg-white font-rem container px-2">
-      {showModal2 ? (
-        <>
-          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-            <div className="relative w-full my-6 mx-auto max-w-2xl">
-              {/*content*/}
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                {/*header*/}
-                <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                  <h3 className="text-3xl font-semibold">Student Profile</h3>
-                  <button
-                    onClick={handleModalClose2}
-                    className="text-gray-600 transition duration-300 rounded-full hover:bg-gray-500 hover:text-white p-2">
-                    <FaXing />
-                  </button>
-                </div>
-                {/*body*/}
-                <div className="relative p-6 flex flex-row gap-5 sm:gap-20 text-sm sm:text-xl">
-                  <div className="flex flex-col text-start items-start gap-2 sm:gap-5 w-20">
-                    <h5 className="font-bold">Name: </h5>
-                    <h5 className="font-bold">Surname: </h5>
-                    <h5 className="font-bold">Email: </h5>
-                    <h5 className="font-bold">ClassName: </h5>
-                    <h5 className="font-bold">Coins: </h5>
-                  </div>
-                  <div className="flex flex-col text-start items-start gap-2 sm:gap-5 ">
-                    <span>{user.name}</span>
-                    <span>{user.surname}</span>
-                    <span>{user.email}</span>
-                    <span>{className}</span>
-                    <span>{user.coins}</span>
-                  </div>
-                </div>
-                {/*footer*/}
-                <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-                  <button
-                    className="text-orange shadow-xl border border-gray-400 active:bg-orange active:text-white rounded-xl font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-300"
-                    type="button"
-                    onClick={handleModalClose2}>
-                    OK
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-        </>
-      ) : null}
-      {showModal ? (
+      {modals[0].isOpen ? (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-80 sm:w-96 lg:w-auto my-6 mx-auto max-w-2xl">
@@ -334,7 +288,7 @@ const Dashboard = () => {
                     Add a new classroom
                   </h2>
                   <button
-                    onClick={handleModalClose}
+                    onClick={() => handleModalToggle(1)}
                     className="text-gray-600 transition duration-300 rounded-full hover:bg-gray-500 hover:text-white p-2">
                     <FaXing />
                   </button>
@@ -397,6 +351,69 @@ const Dashboard = () => {
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </>
       ) : null}
+      {modals[1].isOpen ? (
+        <>
+          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+            <div className="relative w-full my-6 mx-auto max-w-2xl">
+              {/*content*/}
+              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                {/*header*/}
+                <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+                  <h3 className="text-3xl font-semibold">Student Profile</h3>
+                  <button
+                    onClick={() => handleModalToggle(2)}
+                    className="text-gray-600 transition duration-300 rounded-full hover:bg-gray-500 hover:text-white p-2">
+                    <FaXing />
+                  </button>
+                </div>
+                {/*body*/}
+                <div className="relative p-6 flex flex-row gap-5 sm:gap-20 text-sm sm:text-xl">
+                  <div className="flex flex-col text-start items-start gap-2 sm:gap-5 w-20">
+                    <h5 className="font-bold">Name: </h5>
+                    <h5 className="font-bold">Surname: </h5>
+                    <h5 className="font-bold">Email: </h5>
+                    <h5 className="font-bold">ClassName: </h5>
+                    <h5 className="font-bold">Coins: </h5>
+                  </div>
+                  <div className="flex flex-col text-start items-start gap-2 sm:gap-5 ">
+                    <span>{user.name}</span>
+                    <span>{user.surname}</span>
+                    <span>{user.email}</span>
+                    <span>{className}</span>
+                    <span>{user.coins}</span>
+                  </div>
+                </div>
+                {/*footer*/}
+                <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                  <button
+                    className="text-orange shadow-xl border border-gray-400 active:bg-orange active:text-white rounded-xl font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-300"
+                    type="button"
+                    onClick={() => handleModalToggle(2)}>
+                    OK
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+        </>
+      ) : null}
+      {modals[2].isOpen ? (
+        <DelModal
+          deleteClick={deleteClassroom}
+          closeClick={() => handleModalToggle(3)}
+          name={data.class_name}
+          method={"classroom"}
+        />
+      ) : null}
+      {modals[3].isOpen ? (
+        <DelModal
+          deleteClick={resetCoins}
+          closeClick={() => handleModalToggle(4)}
+          name={data.class_name}
+          method={"reset"}
+        />
+      ) : null}
       <hr />
       <div className="flex flex-row justify-between items-center gap-1">
         <Link
@@ -411,7 +428,7 @@ const Dashboard = () => {
           </span>
         </Link>
         <button
-          onClick={handleButtonClick}
+          onClick={() => handleModalToggle(1)}
           className="ml-5 mt-5 sm:px-3.5 sm:py-2.5 px-2 py-1 relative rounded-full group font-medium text-white inline-block">
           <span className="absolute top-0 left-0 w-full h-full rounded-full opacity-50 filter blur-sm bg-gradient-to-br from-gray-300 to-gray-600"></span>
           <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded-full opacity-50 from-gray-300 to-gray-600"></span>
@@ -434,7 +451,7 @@ const Dashboard = () => {
         </h2>
         <div className="flex flex-row items-center gap-3">
           <button
-            onClick={resetCoins}
+            onClick={() => handleModalToggle(4)}
             className="ml-5 md:px-3.5 md:py-2.5 px-2 py-1 relative rounded-full group font-medium text-white inline-block">
             <span className="absolute top-0 left-0 w-full h-full rounded-full opacity-50 filter blur-sm bg-gradient-to-br from-gray-300 to-gray-600"></span>
             <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded-full opacity-50 from-gray-300 to-gray-600"></span>
@@ -443,7 +460,7 @@ const Dashboard = () => {
             <span className="relative">Reset</span>
           </button>
           <button
-            onClick={deleteClassroom}
+            onClick={() => handleModalToggle(3)}
             className="md:px-3 md:py-2.5 px-2 py-1 relative rounded-full group font-medium text-white inline-block">
             <span className="absolute top-0 left-0 w-full h-full rounded-full opacity-50 filter blur-sm bg-gradient-to-br from-red-300 to-red-600"></span>
             <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded-full opacity-50 from-red-300 to-red-600"></span>
@@ -516,7 +533,7 @@ const Dashboard = () => {
                     <Typography
                       onClick={() => {
                         fetchUserinfo(id);
-                        handleButtonClick2();
+                        handleModalToggle(2);
                       }}
                       variant="small"
                       color="blue-gray"
