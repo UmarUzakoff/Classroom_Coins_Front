@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import {
   getAccessTokenFromLocalStorage,
   getRoleFromStorage,
 } from "../../utils/storage";
+import API from "../../utils/api";
+import toastify from "../../utils/toastify";
 import { FaHome } from "react-icons/fa";
 
 const Settings = () => {
@@ -24,21 +24,11 @@ const Settings = () => {
 
   const [className, setClassName] = useState("");
 
-  let notifySuccess = (note) => toast.success(note);
-  let notifyError = (note) => toast.error(note);
-
-  let message = (note, type) => {
-    if (type === "success") {
-      notifySuccess(note);
-    } else {
-      notifyError(note);
-    }
-  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://apiv.classroomcoins.uz/classroom",
+        `${API}/classroom`,
         {
           class_name: className,
         },
@@ -51,10 +41,10 @@ const Settings = () => {
       if (response.status >= 200 && response.status < 300) {
         setClassName("");
         let messageFromBackend = response.data.message;
-        message(messageFromBackend, "success");
+        toastify(messageFromBackend, "success");
       }
     } catch (error) {
-      message(error.response.data.message, "error");
+      toastify(error.response.data.message, "error");
     }
   };
 

@@ -7,9 +7,19 @@ export const Layout = ({ children }) => {
   const url = useLocation().pathname;
   return (
     <>
-      {url === "/auth/login" || url === "/admin/auth/login" || url === "/settings" ? null : <Header />}
+      {url === "/auth/login" ||
+      url === "/admin/auth/login" ||
+      url === "/settings" ||
+      url === "/404" ? null : (
+        <Header />
+      )}
       {children}
-      {url === "/auth/login" || url === "/admin/auth/login" || url === "/settings" ? null : <Footer />}
+      {url === "/auth/login" ||
+      url === "/admin/auth/login" ||
+      url === "/settings" ||
+      url === "/404" ? null : (
+        <Footer />
+      )}
     </>
   );
 };

@@ -1,6 +1,15 @@
 import { Layout } from "./components";
-import { AddClass, AdminLogin, Classroom, Dashboard, HomePage, LoginPage, SettingsPage } from "./pages";
-import { Routes, Route } from "react-router-dom";
+import {
+  AddClass,
+  AdminLogin,
+  Classroom,
+  Dashboard,
+  HomePage,
+  LoginPage,
+  PageNotFound,
+  SettingsPage,
+} from "./pages";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -16,6 +25,8 @@ const App = () => {
           <Route path="/dashboard/classroom/:id" element={<Classroom />} />
           <Route path="/settings" element={<SettingsPage />} />
           <Route path="/settings/addclassroom" element={<AddClass />} />
+          <Route path="/404" element={<PageNotFound />} />
+          <Route path="*" element={<Navigate to="/404" />} />
         </Routes>
       </Layout>
       <ToastContainer />

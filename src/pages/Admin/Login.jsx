@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import {
   getAccessTokenFromLocalStorage,
@@ -9,6 +7,8 @@ import {
   setAccessTokenToLocalStorage,
   setRoleToStorage,
 } from "../../utils/storage";
+import API from "../../utils/api";
+import toastify from "../../utils/toastify";
 import logo from "../../images/logo.png";
 import kid from "../../images/kid.jpg";
 import coin from "../../images/coin.png";
@@ -28,21 +28,10 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  let notifySuccess = (note) => toast.success(note);
-  let notifyError = (note) => toast.error(note);
-
-  let message = (note, type) => {
-    if (type === "success") {
-      notifySuccess(note);
-    } else {
-      notifyError(note);
-    }
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://apiv.classroomcoins.uz/auth/login", {
+      const response = await axios.post(`${API}/auth/login`, {
         email,
         password,
       });
@@ -50,13 +39,13 @@ const Login = () => {
         setEmail("");
         setPassword("");
         let messageFromBackend = response.data.message;
-        message(messageFromBackend, "success");
+        toastify(messageFromBackend, "success");
         setAccessTokenToLocalStorage(response.data.token);
         setRoleToStorage("admin");
         navigate("/dashboard");
       }
     } catch (error) {
-      message(error.response.data.message, "error");
+      toastify(error.response.data.message, "error");
     }
   };
   return (

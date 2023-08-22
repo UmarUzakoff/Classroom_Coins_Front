@@ -1,14 +1,15 @@
 import { Fragment, useEffect, useState } from "react";
-import { Menu, Transition } from "@headlessui/react";
-import logo from "../../../images/logo.png";
-import me from "../../../images/me.jpg";
+import axios from "axios";
+import { Link } from "react-router-dom";
 import {
   getAccessTokenFromLocalStorage,
   getRoleFromStorage,
 } from "../../../utils/storage";
-import axios from "axios";
+import API from "../../../utils/api";
 import { FaXing } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Menu, Transition } from "@headlessui/react";
+import logo from "../../../images/logo.png";
+import me from "../../../images/me.jpg";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -32,7 +33,7 @@ export default function Header() {
   const token = getAccessTokenFromLocalStorage();
   const fetchData = async (token) => {
     try {
-      const response = await axios.get("https://apiv.classroomcoins.uz/userinfo", {
+      const response = await axios.get(`${API}/userinfo`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -72,15 +73,29 @@ export default function Header() {
                     <h5 className="font-bold">Name: </h5>
                     <h5 className="font-bold">Surname: </h5>
                     <h5 className="font-bold">Email: </h5>
-                    <h5 className={`font-bold ${role === "admin" ? "hidden" : ""}`}>ClassName: </h5>
-                    <h5 className={`font-bold ${role === "admin" ? "hidden" : ""}`}>Coins: </h5>
+                    <h5
+                      className={`font-bold ${
+                        role === "admin" ? "hidden" : ""
+                      }`}>
+                      ClassName:{" "}
+                    </h5>
+                    <h5
+                      className={`font-bold ${
+                        role === "admin" ? "hidden" : ""
+                      }`}>
+                      Coins:{" "}
+                    </h5>
                   </div>
                   <div className="flex w-full flex-col text-start items-start gap-2 sm:gap-5 ">
                     <span>{user.name}</span>
                     <span>{user.surname}</span>
                     <span className="w-full">{user.email}</span>
-                    <span className={`${role === "admin" ? "hidden" : ""}`}>{className}</span>
-                    <span className={`${role === "admin" ? "hidden" : ""}`}>{user.coins}</span>
+                    <span className={`${role === "admin" ? "hidden" : ""}`}>
+                      {className}
+                    </span>
+                    <span className={`${role === "admin" ? "hidden" : ""}`}>
+                      {user.coins}
+                    </span>
                   </div>
                 </div>
                 {/*footer*/}

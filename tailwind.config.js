@@ -16,6 +16,8 @@ module.exports = withMT({
       },
       animation: {
         text: "text 5s ease infinite",
+        floting: "floting 2.5s infinite",
+        shadow: "shadow 2.5s infinite",
       },
       keyframes: {
         text: {
@@ -27,6 +29,14 @@ module.exports = withMT({
             "background-size": "200% 200%",
             "background-position": "right center",
           },
+        },
+        floting: {
+          "0%,100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(15px)" },
+        },
+        shadow: {
+          "0%,100%": { transform: "scale(1,1)" },
+          "50%": { transform: "scale(.85,.85)" },
         },
       },
     },

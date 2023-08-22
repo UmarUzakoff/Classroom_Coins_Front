@@ -2,18 +2,19 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Card, Typography } from "@material-tailwind/react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { useClassroomData } from "../../context/classroom";
+import DelModal from "./DelModal";
 import {
   getAccessTokenFromLocalStorage,
   getRoleFromStorage,
 } from "../../utils/storage";
+import API from "../../utils/api";
+import toastify from "../../utils/toastify";
 import coin from "../../images/coin.png";
 import gold_medal from "../../images/gold-medal.png";
 import silver_medal from "../../images/silver-medal.png";
 import bronze_medal from "../../images/bronze-medal.png";
 import { FaHome, FaTrash, FaTrashAlt, FaXing } from "react-icons/fa";
-import DelModal from "./DelModal";
 
 const Dashboard = () => {
   const { id } = useParams();
@@ -23,55 +24,22 @@ const Dashboard = () => {
   const token = getAccessTokenFromLocalStorage();
   const admin = getRoleFromStorage();
 
+  const classroomData = useClassroomData();
+
+  useEffect(() => {
+    classroomData[2](id, token);
+  }, []);
+
   useEffect(() => {
     if (!token || admin !== "admin") {
       return navigate("/auth/login");
     }
   }, [navigate]);
 
-  const [data, setData] = useState([]);
-  const [students, setStudents] = useState([]);
-
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(
-        `https://apiv.classroomcoins.uz/classroom/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      const data = response.data.findClass;
-      setData(data);
-      const sorterData = response.data.studentsOfThatClass.sort(
-        (a, b) => b.coins - a.coins
-      );
-      setStudents(sorterData);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  let notifySuccess = (note) => toast.success(note);
-  let notifyError = (note) => toast.error(note);
-
-  let message = (note, type) => {
-    if (type === "success") {
-      notifySuccess(note);
-    } else {
-      notifyError(note);
-    }
-  };
-
-  const sendCoinsToBackend = async (id, coins) => {
+  const sendCoinsToBackend = async (student_id, coins, method) => {
     try {
       await axios.post(
-        `https://apiv.classroomcoins.uz/coins/plus/student/${id}`,
+        `${API}/coins/${method}/student/${student_id}`,
         {
           coins,
         },
@@ -81,57 +49,16 @@ const Dashboard = () => {
           },
         }
       );
+      classroomData[2](id, token);
     } catch (error) {
-      message(error.response.data.message, "error");
+      toastify(error.response.data.message, "error");
     }
-  };
-
-  const sendCoinsToBackendForSubtracting = async (id, coins) => {
-    try {
-      await axios.post(
-        `https://apiv.classroomcoins.uz/coins/minus/student/${id}`,
-        {
-          coins,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-    } catch (error) {
-      message(error.response.data.message, "error");
-    }
-  };
-
-  const handlePlusOneClick = (id) => {
-    const coins = 1;
-    sendCoinsToBackend(id, coins);
-    setTimeout(() => {
-      fetchData();
-    }, 500);
-  };
-
-  const handlePlusFiveClick = (id) => {
-    const coins = 5;
-    sendCoinsToBackend(id, coins);
-    setTimeout(() => {
-      fetchData();
-    }, 500);
-  };
-
-  const handleMinusOneClick = (id) => {
-    const coins = 1;
-    sendCoinsToBackendForSubtracting(id, coins);
-    setTimeout(() => {
-      fetchData();
-    }, 500);
   };
 
   const resetCoins = async () => {
     try {
       const response = await axios.put(
-        `https://apiv.classroomcoins.uz/classroom/addcoins/${id}`,
+        `${API}/classroom/addcoins/${id}`,
         null,
         {
           headers: {
@@ -141,13 +68,11 @@ const Dashboard = () => {
       );
       if (response.status >= 200 && response.status < 300) {
         let messageFromBackend = response.data.message;
-        message(messageFromBackend, "success");
-        setTimeout(() => {
-          fetchData();
-        }, 500);
+        toastify(messageFromBackend, "success");
+        classroomData[2](id, token);
       }
     } catch (error) {
-      message(error.response.data.message, "error");
+      toastify(error.response.data.message, "error");
     }
   };
 
@@ -156,14 +81,11 @@ const Dashboard = () => {
 
   const fetchUserinfo = async (id) => {
     try {
-      const response = await axios.get(
-        `https://apiv.classroomcoins.uz/student/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.get(`${API}/student/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       const data = response.data.findStudent;
       const className = response.data.className;
       setUser(data);
@@ -199,7 +121,7 @@ const Dashboard = () => {
   const addNewStudent = async () => {
     try {
       const response = await axios.post(
-        `https://apiv.classroomcoins.uz/student`,
+        `${API}/student`,
         {
           classroom_id: id,
           name,
@@ -214,66 +136,50 @@ const Dashboard = () => {
       );
       if (response.status >= 200 && response.status < 300) {
         let messageFromBackend = response.data.message;
-        message(messageFromBackend, "success");
-        setTimeout(() => {
-          fetchData();
-        }, 2000);
+        toastify(messageFromBackend, "success");
+        classroomData[2](id, token);
       }
     } catch (error) {
-      message(error.response.data.message, "error");
+      toastify(error.response.data.message, "error");
     }
   };
 
-  const deleteStudent = async (id) => {
+  const deleteStudent = async (student_id) => {
     try {
-      const response = await axios.delete(
-        `https://apiv.classroomcoins.uz/student/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.delete(`${API}/student/${student_id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (response.status >= 200 && response.status < 300) {
         let messageFromBackend = response.data.message;
-        message(messageFromBackend, "success");
-        setTimeout(() => {
-          fetchData();
-        }, 500);
+        toastify(messageFromBackend, "success");
+        classroomData[2](id, token);
       }
     } catch (error) {
-      message(error.response.data.message, "error");
+      toastify(error.response.data.message, "error");
     }
-  };
-
-  const handleDeleteClick = (id) => {
-    deleteStudent(id);
-    setTimeout(() => {
-      fetchData();
-    }, 500);
   };
 
   const deleteClassroom = async () => {
     try {
-      const response = await axios.delete(
-        `https://apiv.classroomcoins.uz/classroom/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.delete(`${API}/classroom/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (response.status >= 200 && response.status < 300) {
         let messageFromBackend = response.data.message;
-        message(messageFromBackend, "success");
+        toastify(messageFromBackend, "success");
         navigate("/dashboard");
       }
     } catch (error) {
-      message(error.response.data.message, "error");
+      toastify(error.response.data.message, "error");
     }
   };
 
   const TABLE_HEAD = ["№", "Name", "Surname", "Coins", "Grading", "Delete"];
+
   return (
     <main className="bg-white font-rem container px-2">
       {modals[0].isOpen ? (
@@ -402,7 +308,7 @@ const Dashboard = () => {
         <DelModal
           deleteClick={deleteClassroom}
           closeClick={() => handleModalToggle(3)}
-          name={data.class_name}
+          name={classroomData[0].class_name}
           method={"classroom"}
         />
       ) : null}
@@ -410,7 +316,7 @@ const Dashboard = () => {
         <DelModal
           deleteClick={resetCoins}
           closeClick={() => handleModalToggle(4)}
-          name={data.class_name}
+          name={classroomData[0].class_name}
           method={"reset"}
         />
       ) : null}
@@ -441,12 +347,13 @@ const Dashboard = () => {
       </div>
       <div className="my-7 flex flex-col md:flex-row justify-between items-center px-5">
         <h1 className="animate-text bg-gradient-to-r from-black via-gray-400 to-orange bg-clip-text text-transparent text-xl sm:text-2xl font-black text-center">
-          {data.class_name}
+          {classroomData[0].class_name}
         </h1>
         <h2 className="text-lg font-bold text-black flex flex-row items-center">
           Total coins: &nbsp;{" "}
           <span className="text-yellow-600 flex flex-row gap-1 items-center">
-            {data.coins} <img src={coin} className="w-5 h-5" alt="coin" />
+            {classroomData[0].coins}{" "}
+            <img src={coin} className="w-5 h-5" alt="coin" />
           </span>
         </h2>
         <div className="flex flex-row items-center gap-3">
@@ -497,8 +404,8 @@ const Dashboard = () => {
             </tr>
           </thead>
           <tbody>
-            {students.map(({ id, name, surname, coins }, index) => {
-              const isLast = index === students.length - 1;
+            {classroomData[1].map(({ id, name, surname, coins }, index) => {
+              const isLast = index === classroomData[1].length - 1;
               let order;
               if (index + 1 === 1) {
                 order = (
@@ -566,7 +473,7 @@ const Dashboard = () => {
                       color="blue"
                       className="font-medium font-rem flex flex-row items-center gap-3 justify-center">
                       <button
-                        onClick={() => handlePlusOneClick(id)}
+                        onClick={() => sendCoinsToBackend(id, 1, "plus")}
                         className="px-3 py-2.5 relative rounded-full group font-medium text-white inline-block">
                         <span className="absolute top-0 left-0 w-full h-full rounded-full opacity-50 filter blur-sm bg-gradient-to-br from-gray-300 to-orange"></span>
                         <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded-full opacity-50 from-gray-300 to-orange"></span>
@@ -575,7 +482,7 @@ const Dashboard = () => {
                         <span className="relative">+1</span>
                       </button>
                       <button
-                        onClick={() => handlePlusFiveClick(id)}
+                        onClick={() => sendCoinsToBackend(id, 5, "plus")}
                         className="px-3 py-2.5 relative rounded-full group font-medium text-white inline-block">
                         <span className="absolute top-0 left-0 w-full h-full rounded-full opacity-50 filter blur-sm bg-gradient-to-br from-gray-300 to-orange"></span>
                         <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded-full opacity-50 from-gray-300 to-orange"></span>
@@ -584,7 +491,7 @@ const Dashboard = () => {
                         <span className="relative">+5</span>
                       </button>
                       <button
-                        onClick={() => handleMinusOneClick(id)}
+                        onClick={() => sendCoinsToBackend(id, 1, "minus")}
                         className="ml-5 px-3.5 py-2.5 relative rounded-full group font-medium text-white inline-block">
                         <span className="absolute top-0 left-0 w-full h-full rounded-full opacity-50 filter blur-sm bg-gradient-to-br from-red-300 to-red-600"></span>
                         <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded-full opacity-50 from-red-300 to-red-600"></span>
@@ -599,7 +506,7 @@ const Dashboard = () => {
                       variant="small"
                       color="blue-gray"
                       className="font-normal font-rem flex justify-center"
-                      onClick={() => handleDeleteClick(id)}>
+                      onClick={() => deleteStudent(id)}>
                       <FaTrash className="text-red-600 transition duration-300 hover:pt-[1px] hover:opacity-80 cursor-pointer" />
                     </Typography>
                   </td>

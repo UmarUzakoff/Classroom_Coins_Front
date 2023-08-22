@@ -6,6 +6,7 @@ import {
   getRoleFromStorage,
 } from "../../utils/storage";
 import coin from "../../images/coin.png";
+import API from "../../utils/api";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -21,21 +22,20 @@ const Dashboard = () => {
 
   const [data, setData] = useState([]);
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get("https://apiv.classroomcoins.uz/classrooms", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const data = response.data;
-      setData(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${API}/classrooms`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const data = response.data;
+        setData(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
     fetchData();
   }, []);
 

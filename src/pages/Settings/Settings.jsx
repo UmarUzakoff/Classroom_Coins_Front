@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import {
   getAccessTokenFromLocalStorage,
   getRoleFromStorage,
   setAccessTokenToLocalStorage,
 } from "../../utils/storage";
 import { FaHome } from "react-icons/fa";
+import API from "../../utils/api";
+import toastify from "../../utils/toastify";
 
 const Settings = () => {
   const navigate = useNavigate();
@@ -28,67 +28,43 @@ const Settings = () => {
   const [previousPassword, setPreviousPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
 
-  let notifySuccess = (note) => toast.success(note);
-  let notifyError = (note) => toast.error(note);
-
-  let message = (note, type) => {
-    if (type === "success") {
-      notifySuccess(note);
+  const handleSubmit = async (e, method) => {
+    e.preventDefault();
+    let body;
+    if (method === "email") {
+      body = {
+        previousEmail,
+        newEmail,
+      };
     } else {
-      notifyError(note);
+      body = {
+        previousPassword,
+        newPassword,
+      };
     }
-  };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
     try {
-      const response = await axios.put(
-        "https://apiv.classroomcoins.uz/userinfo/edit/email",
-        {
-          previousEmail,
-          newEmail,
+      const response = await axios.put(`${API}/userinfo/edit/${method}`, body, {
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      });
       if (response.status >= 200 && response.status < 300) {
-        setNewEmail("");
-        setPreviousEmail("");
+        if (method === "email") {
+          setNewEmail("");
+          setPreviousEmail("");
+          setAccessTokenToLocalStorage(response.data.token);
+        } else {
+          setNewPassword("");
+          setPreviousPassword("");
+        }
         let messageFromBackend = response.data.message;
-        message(messageFromBackend, "success");
-        setAccessTokenToLocalStorage(response.data.token);
+        toastify(messageFromBackend, "success");
       }
     } catch (error) {
-      message(error.response.data.message, "error");
+      toastify(error.response.data.message, "error");
     }
   };
-  const handleSubmitPassword = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.put(
-        "https://apiv.classroomcoins.uz/userinfo/edit/password",
-        {
-          previousPassword,
-          newPassword,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      if (response.status >= 200 && response.status < 300) {
-        setNewPassword("");
-        setPreviousPassword("");
-        let messageFromBackend = response.data.message;
-        message(messageFromBackend, "success");
-      }
-    } catch (error) {
-      message(error.response.data.message, "error");
-    }
-  };
+
   return (
     <>
       <Link
@@ -109,7 +85,7 @@ const Settings = () => {
           </h2>
           <form
             className="flex flex-col bg-white rounded shadow-lg p-12 mt-12"
-            onSubmit={handleSubmit}>
+            onSubmit={(e) => handleSubmit(e, "email")}>
             <label className="font-semibold text-xs" htmlFor="usernameField">
               Previous Email
             </label>
@@ -150,7 +126,7 @@ const Settings = () => {
           </h2>
           <form
             className="flex flex-col bg-white rounded shadow-lg p-12 mt-12"
-            onSubmit={handleSubmitPassword}>
+            onSubmit={(e) => handleSubmit(e, "password")}>
             <label className="font-semibold text-xs" htmlFor="usernameField">
               Previous Password
             </label>

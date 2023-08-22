@@ -7,6 +7,7 @@ import coin from "../../images/coin.png";
 import gold_medal from "../../images/gold-medal.png";
 import silver_medal from "../../images/silver-medal.png";
 import bronze_medal from "../../images/bronze-medal.png";
+import API from "../../utils/api";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ const Home = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "https://apiv.classroomcoins.uz/student/class/room",
+        `${API}/student/class/room`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -51,7 +52,7 @@ const Home = () => {
   
   const userinfo = async (token) => {
     try {
-      const response = await axios.get("https://apiv.classroomcoins.uz/userinfo", {
+      const response = await axios.get(`${API}/userinfo`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -78,7 +79,7 @@ const Home = () => {
         <h2 className="text-lg font-bold text-black flex flex-row items-center">
           Total coins: &nbsp;{" "}
           <span className="text-yellow-600 flex flex-row gap-1 items-center">
-            {data.coins} <img src={coin} className="w-5 h-5 animate-spin animate-rotate-y animate-infinite" alt="coin" />
+            {data.coins} <img src={coin} className="w-5 h-5 animate-spin animate-infinite" alt="coin" />
           </span>
         </h2>
       </div>
