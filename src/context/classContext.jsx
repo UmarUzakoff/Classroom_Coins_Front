@@ -6,7 +6,7 @@ const ClassroomDataContext = createContext();
 
 export const useClassroomData = () => useContext(ClassroomDataContext);
 
-export const ClassroomDataProvider = ({ children }) => {
+const ClassroomDataProvider = ({ children }) => {
   const [data, setData] = useState([]);
   const [students, setStudents] = useState([]);
 
@@ -37,3 +37,5 @@ export const ClassroomDataProvider = ({ children }) => {
     </ClassroomDataContext.Provider>
   );
 };
+
+export default ClassroomDataProvider;

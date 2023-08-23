@@ -1,17 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaInstagram, FaTelegram, FaYoutube } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { ThemeApi } from "../../../context/themeContext";
 import logo from "../../../images/logo.png";
+import darklogo from "../../../images/darklogo.png";
 
 const Footer = () => {
+  const { theme } = useContext(ThemeApi);
   return (
-    <footer className="bg-white rounded-lg shadow dark:bg-gray-900 m-4">
+    <footer
+      className={`${
+        theme === "dark"
+          ? "bg-dark text-grey"
+          : "text-dark bg-grey m-4 rounded-lg shadow"
+      }`}>
       <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
-        <div className="sm:flex sm:items-center sm:justify-between">
+        <div className="flex justify-between items-center flex-row">
           <a href="/" className="flex items-center mb-4 sm:mb-0">
-            <img src={logo} className="h-8 mr-3" alt="Logo" />
+            <img
+              className={`${theme === "dark" ? "h-10" : "h-8"} mr-3 rounded-bl-lg rounded-tr-lg`}
+              src={theme === "dark" ? darklogo : logo}
+              alt="Logo"
+            />
           </a>
-          <ul className="flex flex-row gap-1 items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+          <ul className="flex flex-row gap-1 items-center text-sm font-medium text-gray-500">
             <li>
               <a
                 href="https://t.me/coddycamp"
@@ -35,8 +47,8 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-        <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
+        <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8" />
+        <span className="block text-sm text-gray-500 text-center">
           © 2023{" "}
           <Link
             to={"https://dcamp.io/coddycamp"}

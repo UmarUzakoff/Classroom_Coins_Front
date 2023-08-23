@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
@@ -9,8 +9,11 @@ import {
 import { FaHome } from "react-icons/fa";
 import API from "../../utils/api";
 import toastify from "../../utils/toastify";
+import { ThemeApi } from "../../context/themeContext";
 
 const Settings = () => {
+  const { theme } = useContext(ThemeApi);
+
   const navigate = useNavigate();
 
   const token = getAccessTokenFromLocalStorage();
@@ -66,7 +69,7 @@ const Settings = () => {
   };
 
   return (
-    <>
+    <section className={`${theme === "dark" ? "bg-dark" : "bg-grey"}`}>
       <Link
         to={`${role === "admin" ? "/dashboard" : "/"}`}
         className="px-5 py-2.5 mt-8 mx-10 text-center relative rounded group text-white font-medium inline-block">
@@ -84,9 +87,15 @@ const Settings = () => {
             Change your email address
           </h2>
           <form
-            className="flex flex-col bg-white rounded shadow-lg p-12 mt-12"
+            className={`${
+              theme === "dark" ? "bg-gray-900" : "bg-grey"
+            } flex flex-col rounded shadow-lg p-12 mt-12`}
             onSubmit={(e) => handleSubmit(e, "email")}>
-            <label className="font-semibold text-xs" htmlFor="usernameField">
+            <label
+              className={`${
+                theme === "dark" ? "text-grey" : "text-dark"
+              } font-semibold text-xs`}
+              htmlFor="usernameField">
               Previous Email
             </label>
             <input
@@ -97,7 +106,9 @@ const Settings = () => {
               onChange={(e) => setPreviousEmail(e.target.value)}
             />
             <label
-              className="font-semibold text-xs mt-3"
+              className={`${
+                theme === "dark" ? "text-grey" : "text-dark"
+              } font-semibold text-xs mt-3`}
               htmlFor="passwordField">
               New Email
             </label>
@@ -125,9 +136,15 @@ const Settings = () => {
             Change your password
           </h2>
           <form
-            className="flex flex-col bg-white rounded shadow-lg p-12 mt-12"
+            className={`${
+              theme === "dark" ? "bg-gray-900" : "bg-grey"
+            } flex flex-col rounded shadow-lg p-12 mt-12`}
             onSubmit={(e) => handleSubmit(e, "password")}>
-            <label className="font-semibold text-xs" htmlFor="usernameField">
+            <label
+              className={`${
+                theme === "dark" ? "text-grey" : "text-dark"
+              } font-semibold text-xs`}
+              htmlFor="usernameField">
               Previous Password
             </label>
             <input
@@ -138,7 +155,9 @@ const Settings = () => {
               onChange={(e) => setPreviousPassword(e.target.value)}
             />
             <label
-              className="font-semibold text-xs mt-3"
+              className={`${
+                theme === "dark" ? "text-grey" : "text-dark"
+              } font-semibold text-xs mt-3`}
               htmlFor="passwordField">
               New Password
             </label>
@@ -161,7 +180,7 @@ const Settings = () => {
           </form>
         </div>
       </section>
-    </>
+    </section>
   );
 };
 

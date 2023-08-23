@@ -3,13 +3,13 @@ const withMT = require("@material-tailwind/react/utils/withMT");
 module.exports = withMT({
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
-    "path-to-your-node_modules/@material-tailwind/react/components/**/*.{js,ts,jsx,tsx}",
-    "path-to-your-node_modules/@material-tailwind/react/theme/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
       colors: {
         orange: "#ff4f28",
+        dark: "#121212",
+        grey: "#f3f4f6"
       },
       container: {
         center: true,
@@ -46,6 +46,7 @@ module.exports = withMT({
     },
   },
   plugins: [
-    require('tailwindcss-animated')
+    require('tailwindcss-animated'),
+    require("tailwind-scrollbar"),
   ],
 });
