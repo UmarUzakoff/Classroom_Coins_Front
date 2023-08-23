@@ -12,10 +12,14 @@ import {
 import { Routes, Route, Navigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useContext } from "react";
+import { ThemeApi } from "./context/themeContext";
 
 const App = () => {
+  const { theme } = useContext(ThemeApi);
+
   return (
-    <>
+    <div className={`${theme === "dark" ? "bg-dark" : "bg-grey"}`}>
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -30,7 +34,7 @@ const App = () => {
         </Routes>
       </Layout>
       <ToastContainer />
-    </>
+    </div>
   );
 };
 
