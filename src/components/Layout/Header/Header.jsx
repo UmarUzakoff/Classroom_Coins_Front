@@ -137,7 +137,7 @@ export default function Header() {
           </div>
           <div className="flex items-center">
             <div
-              className={`rounded-full absolute inset-y-0 right-10 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0`}
+              className={`rounded-full absolute inset-y-0 right-12 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0`}
               onClick={toggleTheme}>
               <img
                 className="cursor-pointer"
