@@ -81,4 +81,6 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export const MemoizedDashboard = React.memo(Dashboard);
+
+export default MemoizedDashboard;

@@ -17,7 +17,7 @@ import bronze_medal from "../../images/bronze-medal.png";
 import { FaHome, FaTrash, FaTrashAlt, FaXing } from "react-icons/fa";
 import { ThemeApi } from "../../context/themeContext";
 
-const Dashboard = () => {
+const ExactGroup = () => {
   const { theme } = useContext(ThemeApi);
 
   const { id } = useParams();
@@ -551,4 +551,6 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export const MemoizedExactGroup = React.memo(ExactGroup);
+
+export default MemoizedExactGroup;
