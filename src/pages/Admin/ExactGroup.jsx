@@ -14,7 +14,7 @@ import coin from "../../images/coin.png";
 import gold_medal from "../../images/gold-medal.png";
 import silver_medal from "../../images/silver-medal.png";
 import bronze_medal from "../../images/bronze-medal.png";
-import { FaHome, FaTrash, FaTrashAlt, FaXing } from "react-icons/fa";
+import { FaHome, FaTrash, FaTrashAlt } from "react-icons/fa";
 import { ThemeApi } from "../../context/themeContext";
 import AddStudentModal from "../../components/Modals/AddStudent";
 import StudentProfileModal from "../../components/Modals/StudentProfile";
@@ -202,6 +202,7 @@ const ExactGroup = () => {
             handleModal={handleModalToggle}
             name={user.name}
             surname={user.surname}
+            email={user.email}
             classname={className}
             coins={user.coins}
           />
