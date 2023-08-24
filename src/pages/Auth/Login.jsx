@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {
   getAccessTokenFromLocalStorage,
+  getRoleFromStorage,
   setAccessTokenToLocalStorage,
 } from "../../utils/storage";
 import API from "../../utils/api";
@@ -16,9 +17,13 @@ const Login = () => {
 
   useEffect(() => {
     const token = getAccessTokenFromLocalStorage();
+    const admin = getRoleFromStorage();
 
-    if (token) {
-      return navigate("/");
+    if (token && admin === "admin") {
+      return navigate("/dashboard");
+    }
+    if (token && admin !== "admin") {
+      return navigate("/dashboard");
     }
   }, [navigate]);
 

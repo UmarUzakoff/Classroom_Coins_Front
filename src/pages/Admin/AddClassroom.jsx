@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
@@ -8,8 +8,11 @@ import {
 import API from "../../utils/api";
 import toastify from "../../utils/toastify";
 import { FaHome } from "react-icons/fa";
+import { ThemeApi } from "../../context/themeContext";
 
-const Settings = () => {
+const AddClassroom = () => {
+  const { theme } = useContext(ThemeApi);
+
   const navigate = useNavigate();
 
   const token = getAccessTokenFromLocalStorage();
@@ -61,16 +64,20 @@ const Settings = () => {
           <FaHome /> {role === "admin" ? "Dashboard" : "Home"}
         </span>
       </Link>
-      <section className="flex flex-col justify-center gap-10 md:gap-2 md:flex-row md:justify-around items-center font-rem mt-20">
+      <section className="flex flex-col justify-center gap-10 md:gap-2 md:flex-row md:justify-around items-center font-rem my-7">
         <div>
           <h2 className="text-center font-bold text-xl text-gray-600">
             Add a new classroom
           </h2>
           <form
-            className="flex flex-col bg-white rounded shadow-lg p-12 mt-12"
+            className={`${
+              theme === "dark" ? "bg-gray-900" : "bg-grey"
+            } flex flex-col rounded shadow-lg p-12 mt-12`}
             onSubmit={handleSubmit}>
             <label
-              className="font-semibold text-xs mt-3"
+              className={`${
+                theme === "dark" ? "text-grey" : "text-dark"
+              } font-semibold text-xs`}
               htmlFor="passwordField">
               Class Name
             </label>
@@ -97,4 +104,4 @@ const Settings = () => {
   );
 };
 
-export default Settings;
+export default AddClassroom;

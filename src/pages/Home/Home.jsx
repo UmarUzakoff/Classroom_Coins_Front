@@ -2,7 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Card, Typography } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
-import { getAccessTokenFromLocalStorage } from "../../utils/storage";
+import {
+  getAccessTokenFromLocalStorage,
+  getRoleFromStorage,
+} from "../../utils/storage";
 import coin from "../../images/coin.png";
 import gold_medal from "../../images/gold-medal.png";
 import silver_medal from "../../images/silver-medal.png";
@@ -16,10 +19,14 @@ const Home = () => {
   const navigate = useNavigate();
 
   const token = getAccessTokenFromLocalStorage();
+  const admin = getRoleFromStorage();
 
   useEffect(() => {
     if (!token) {
       return navigate("/auth/login");
+    }
+    if (admin === "admin") {
+      return navigate("/dashboard");
     }
   }, [navigate]);
 
@@ -148,10 +155,10 @@ const Home = () => {
                     className={`
                     ${
                       theme === "dark"
-                        ? `bg-gray-900 ${
-                            user.name === name ? "bg-gray-700" : null
+                        ? `${
+                            user.name === name ? "bg-gray-700" : "bg-gray-900"
                           }`
-                        : `bg-grey ${user.name === name ? "bg-gray-400" : null}`
+                        : `${user.name === name ? "bg-gray-400" : "bg-grey"}`
                     } `}>
                     <td className={classes}>
                       <Typography
