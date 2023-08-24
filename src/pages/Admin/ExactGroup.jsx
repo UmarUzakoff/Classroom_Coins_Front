@@ -3,7 +3,7 @@ import axios from "axios";
 import { Card, Typography } from "@material-tailwind/react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useClassroomData } from "../../context/classContext";
-import DelModal from "./DelModal";
+import DelModal from "../../components/Modals/DelModal";
 import {
   getAccessTokenFromLocalStorage,
   getRoleFromStorage,
@@ -16,6 +16,8 @@ import silver_medal from "../../images/silver-medal.png";
 import bronze_medal from "../../images/bronze-medal.png";
 import { FaHome, FaTrash, FaTrashAlt, FaXing } from "react-icons/fa";
 import { ThemeApi } from "../../context/themeContext";
+import AddStudentModal from "../../components/Modals/AddStudent";
+import StudentProfileModal from "../../components/Modals/StudentProfile";
 
 const ExactGroup = () => {
   const { theme } = useContext(ThemeApi);
@@ -113,6 +115,7 @@ const ExactGroup = () => {
     { id: 2, isOpen: false },
     { id: 3, isOpen: false },
     { id: 4, isOpen: false },
+    { id: 5, isOpen: false },
   ]);
 
   // Function to handle modal open/close
@@ -127,36 +130,6 @@ const ExactGroup = () => {
     });
   };
 
-  const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
-  const [email, setEmail] = useState("");
-
-  const addNewStudent = async () => {
-    try {
-      const response = await axios.post(
-        `${API}/student`,
-        {
-          classroom_id: id,
-          name,
-          email,
-          surname,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      if (response.status >= 200 && response.status < 300) {
-        let messageFromBackend = response.data.message;
-        toastify(messageFromBackend, "success");
-        fetchAllClassroomData(id, token);
-      }
-    } catch (error) {
-      toastify(error.response.data.message, "error");
-    }
-  };
-
   const deleteStudent = async (student_id) => {
     try {
       const response = await axios.delete(`${API}/student/${student_id}`, {
@@ -167,11 +140,36 @@ const ExactGroup = () => {
       if (response.status >= 200 && response.status < 300) {
         let messageFromBackend = response.data.message;
         toastify(messageFromBackend, "success");
+        handleModalToggle(5);
         fetchAllClassroomData(id, token);
       }
     } catch (error) {
       toastify(error.response.data.message, "error");
     }
+  };
+
+  const [userToDelete, setUserToDelete] = useState([]);
+
+  const getIdToDeleteStudent = (id) => {
+    const fetchUserinfoToDelete = async () => {
+      try {
+        const response = await axios.get(`${API}/student/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const data = response.data.findStudent;
+        setUserToDelete(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchUserinfoToDelete();
+    const fullName = userToDelete.name + ' ' + userToDelete.surname;
+    return {
+      id: userToDelete.id,
+      username: fullName,
+    };
   };
 
   const deleteClassroom = async () => {
@@ -197,137 +195,16 @@ const ExactGroup = () => {
     <main className={`${theme === "dark" ? "bg-dark" : "bg-grey"} pb-7`}>
       <section className={`font-rem container px-2`}>
         {modals[0].isOpen ? (
-          <>
-            <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-              <div className="relative w-80 sm:w-96 lg:w-auto my-6 mx-auto max-w-2xl">
-                {/*content*/}
-                <div
-                  className={`border-0 rounded-lg shadow-lg relative flex flex-col w-full ${
-                    theme === "dark" ? "bg-gray-900" : "bg-grey"
-                  } outline-none focus:outline-none`}>
-                  {/*header*/}
-                  <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                    <h2 className="text-center font-bold text-xl text-gray-600">
-                      New Student
-                    </h2>
-                    <button
-                      onClick={() => handleModalToggle(1)}
-                      className="text-gray-600 transition duration-300 rounded-full hover:bg-gray-500 hover:text-white p-2">
-                      <FaXing />
-                    </button>
-                  </div>
-                  {/*body*/}
-                  <div className="relative">
-                    <form
-                      className={`flex flex-col justify-center items-center ${
-                        theme === "dark" ? "bg-gray-900" : "bg-grey"
-                      } rounded shadow-lg p-3 sm:p-12`}
-                      onSubmit={addNewStudent}>
-                      <label
-                        className={`${
-                          theme === "dark" ? "text-grey" : "text-dark"
-                        } font-semibold text-xs mt-3`}
-                        htmlFor="passwordField">
-                        Name
-                      </label>
-                      <input
-                        className="flex items-center h-12 px-4 w-64 bg-gray-200 mt-2 rounded focus:outline-none focus:ring-2 focus:ring-orange"
-                        type="text"
-                        autoComplete="true"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                      />
-                      <label
-                        className={`${
-                          theme === "dark" ? "text-grey" : "text-dark"
-                        } font-semibold text-xs mt-3`}
-                        htmlFor="passwordField">
-                        Surname
-                      </label>
-                      <input
-                        className="flex items-center h-12 px-4 w-64 bg-gray-200 mt-2 rounded focus:outline-none focus:ring-2 focus:ring-orange"
-                        type="text"
-                        autoComplete="true"
-                        value={surname}
-                        onChange={(e) => setSurname(e.target.value)}
-                      />
-                      <label
-                        className={`${
-                          theme === "dark" ? "text-grey" : "text-dark"
-                        } font-semibold text-xs mt-3`}
-                        htmlFor="passwordField">
-                        Email
-                      </label>
-                      <input
-                        className="flex items-center h-12 px-4 w-64 bg-gray-200 mt-2 rounded focus:outline-none focus:ring-2 focus:ring-orange"
-                        type="email"
-                        autoComplete="true"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                      />
-                      <button
-                        type={"submit"}
-                        className="px-5 w-full py-2.5 mt-8 text-center relative rounded group text-black font-medium inline-block">
-                        <span className="absolute top-0 left-0 w-full h-full rounded opacity-50 filter blur-sm bg-gradient-to-br from-gray-300 to-orange"></span>
-                        <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded opacity-50 from-gray-300 to-orange"></span>
-                        <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-gray-300 to-orange"></span>
-                        <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded bg-gradient-to-br to-gray-300 from-orange"></span>
-                        <span className="relative">Add</span>
-                      </button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-          </>
+          <AddStudentModal handleModal={handleModalToggle} />
         ) : null}
         {modals[1].isOpen ? (
-          <>
-            <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-              <div className="relative w-full my-6 mx-auto max-w-2xl">
-                {/*content*/}
-                <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                  {/*header*/}
-                  <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                    <h3 className="text-3xl font-semibold">Student Profile</h3>
-                    <button
-                      onClick={() => handleModalToggle(2)}
-                      className="text-gray-600 transition duration-300 rounded-full hover:bg-gray-500 hover:text-white p-2">
-                      <FaXing />
-                    </button>
-                  </div>
-                  {/*body*/}
-                  <div className="relative p-6 flex flex-row gap-5 sm:gap-20 text-sm sm:text-xl">
-                    <div className="flex flex-col text-start items-start gap-2 sm:gap-5 w-20">
-                      <h5 className="font-bold">Name: </h5>
-                      <h5 className="font-bold">Surname: </h5>
-                      <h5 className="font-bold">Email: </h5>
-                      <h5 className="font-bold">ClassName: </h5>
-                      <h5 className="font-bold">Coins: </h5>
-                    </div>
-                    <div className="flex flex-col text-start items-start gap-2 sm:gap-5 ">
-                      <span>{user.name}</span>
-                      <span>{user.surname}</span>
-                      <span>{user.email}</span>
-                      <span>{className}</span>
-                      <span>{user.coins}</span>
-                    </div>
-                  </div>
-                  {/*footer*/}
-                  <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-                    <button
-                      className="text-orange shadow-xl border border-gray-400 active:bg-orange active:text-white rounded-xl font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-300"
-                      type="button"
-                      onClick={() => handleModalToggle(2)}>
-                      OK
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-          </>
+          <StudentProfileModal
+            handleModal={handleModalToggle}
+            name={user.name}
+            surname={user.surname}
+            classname={className}
+            coins={user.coins}
+          />
         ) : null}
         {modals[2].isOpen ? (
           <DelModal
@@ -343,6 +220,15 @@ const ExactGroup = () => {
             closeClick={() => handleModalToggle(4)}
             name={classroomProperties.class_name}
             method={"reset"}
+          />
+        ) : null}
+        {modals[4].isOpen ? (
+          <DelModal
+            deleteClick={deleteStudent}
+            id={getIdToDeleteStudent().id}
+            closeClick={() => handleModalToggle(5)}
+            name={getIdToDeleteStudent().username}
+            method={"deleteStudent"}
           />
         ) : null}
         <hr />
@@ -381,7 +267,11 @@ const ExactGroup = () => {
             Total coins: &nbsp;{" "}
             <span className="text-yellow-600 flex flex-row gap-1 items-center">
               {classroomProperties.coins}{" "}
-              <img src={coin} className="w-5 h-5 animate-rotate-y animate-infinite" alt="coin" />
+              <img
+                src={coin}
+                className="w-5 h-5 animate-rotate-y animate-infinite"
+                alt="coin"
+              />
             </span>
           </h2>
           <div className="flex flex-row items-center gap-3">
@@ -549,7 +439,10 @@ const ExactGroup = () => {
                           variant="small"
                           color="blue-gray"
                           className="font-normal font-rem flex justify-center"
-                          onClick={() => deleteStudent(id)}>
+                          onClick={() => {
+                            getIdToDeleteStudent(id);
+                            handleModalToggle(5);
+                          }}>
                           <FaTrash className="text-red-600 transition duration-300 hover:pt-[1px] hover:opacity-80 cursor-pointer" />
                         </Typography>
                       </td>
