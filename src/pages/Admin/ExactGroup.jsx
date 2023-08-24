@@ -201,7 +201,10 @@ const ExactGroup = () => {
             <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
               <div className="relative w-80 sm:w-96 lg:w-auto my-6 mx-auto max-w-2xl">
                 {/*content*/}
-                <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                <div
+                  className={`border-0 rounded-lg shadow-lg relative flex flex-col w-full ${
+                    theme === "dark" ? "bg-gray-900" : "bg-grey"
+                  } outline-none focus:outline-none`}>
                   {/*header*/}
                   <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
                     <h2 className="text-center font-bold text-xl text-gray-600">
@@ -216,10 +219,14 @@ const ExactGroup = () => {
                   {/*body*/}
                   <div className="relative">
                     <form
-                      className="flex flex-col justify-center items-center bg-white rounded shadow-lg p-3 sm:p-12"
+                      className={`flex flex-col justify-center items-center ${
+                        theme === "dark" ? "bg-gray-900" : "bg-grey"
+                      } rounded shadow-lg p-3 sm:p-12`}
                       onSubmit={addNewStudent}>
                       <label
-                        className="font-semibold text-xs mt-3"
+                        className={`${
+                          theme === "dark" ? "text-grey" : "text-dark"
+                        } font-semibold text-xs mt-3`}
                         htmlFor="passwordField">
                         Name
                       </label>
@@ -231,7 +238,9 @@ const ExactGroup = () => {
                         onChange={(e) => setName(e.target.value)}
                       />
                       <label
-                        className="font-semibold text-xs mt-3"
+                        className={`${
+                          theme === "dark" ? "text-grey" : "text-dark"
+                        } font-semibold text-xs mt-3`}
                         htmlFor="passwordField">
                         Surname
                       </label>
@@ -243,7 +252,9 @@ const ExactGroup = () => {
                         onChange={(e) => setSurname(e.target.value)}
                       />
                       <label
-                        className="font-semibold text-xs mt-3"
+                        className={`${
+                          theme === "dark" ? "text-grey" : "text-dark"
+                        } font-semibold text-xs mt-3`}
                         htmlFor="passwordField">
                         Email
                       </label>
@@ -363,11 +374,14 @@ const ExactGroup = () => {
           <h1 className="animate-text bg-gradient-to-r from-gray-700 via-gray-400 to-orange bg-clip-text text-transparent text-xl sm:text-2xl font-black text-center">
             {classroomProperties.class_name}
           </h1>
-          <h2 className={`text-lg font-bold ${theme === "dark" ? "text-white" : "text-black"} flex flex-row items-center`}>
+          <h2
+            className={`text-lg font-bold ${
+              theme === "dark" ? "text-white" : "text-black"
+            } flex flex-row items-center`}>
             Total coins: &nbsp;{" "}
             <span className="text-yellow-600 flex flex-row gap-1 items-center">
               {classroomProperties.coins}{" "}
-              <img src={coin} className="w-5 h-5" alt="coin" />
+              <img src={coin} className="w-5 h-5 animate-rotate-y animate-infinite" alt="coin" />
             </span>
           </h2>
           <div className="flex flex-row items-center gap-3">
