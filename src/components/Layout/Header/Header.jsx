@@ -56,7 +56,7 @@ export default function Header() {
   useEffect(() => {
     fetchData(token);
   }, []);
-  
+
   return (
     <header
       className={`${
@@ -110,9 +110,13 @@ export default function Header() {
                         role === "admin"
                           ? me
                           : user.name === "Sevinch"
-                          ? "https://img.freepik.com/premium-photo/cute-girl-3d-character-design-cartoon-girl-avatar_432516-5510.jpg?w=2000"
+                          ? "https://i.pinimg.com/564x/f7/0d/6c/f70d6c4271126184ce5cce40a53611a9.jpg"
                           : user.name === "Mubina"
-                          ? "https://img.freepik.com/premium-photo/cute-girl-3d-character-design-cartoon-girl-avatar_432516-5510.jpg?w=2000"
+                          ? "https://i.pinimg.com/564x/f7/0d/6c/f70d6c4271126184ce5cce40a53611a9.jpg"
+                          : user.name === "Javohir"
+                          ? "https://i.pinimg.com/474x/88/b3/e4/88b3e42479fb2d3440681af9ef9ab95b.jpg"
+                          : user.name === "Fayoziddin"
+                          ? "https://img.freepik.com/premium-photo/very-cute-kid-caracter-animation-pixar-style_950002-73964.jpg"
                           : "https://whatsondisneyplus.com/wp-content/uploads/2021/06/luca-avatar-WODP.png"
                       }
                       alt="avatar"

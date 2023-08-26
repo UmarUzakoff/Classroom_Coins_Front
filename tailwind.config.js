@@ -42,7 +42,8 @@ module.exports = withMT({
     },
     fontFamily: {
       assistant: ["Assistant"],
-      rem: ["'REM', sans-serif"]
+      rem: ["'REM', sans-serif"],
+      tilt: ["'Tilt Prism', cursive"]
     },
   },
   plugins: [
