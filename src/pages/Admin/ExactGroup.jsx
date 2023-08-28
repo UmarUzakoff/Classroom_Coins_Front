@@ -1,7 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { Card, Typography } from "@material-tailwind/react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import {
+  Card,
+  Typography,
+} from "@material-tailwind/react";
+import { useNavigate, useParams } from "react-router-dom";
 import { useClassroomData } from "../../context/classContext";
 import DelModal from "../../components/Modals/DelModal";
 import {
@@ -14,10 +17,12 @@ import coin from "../../images/coin.png";
 import gold_medal from "../../images/gold-medal.png";
 import silver_medal from "../../images/silver-medal.png";
 import bronze_medal from "../../images/bronze-medal.png";
-import { FaHome, FaTrash, FaTrashAlt } from "react-icons/fa";
+import { FaTrash, FaTrashAlt } from "react-icons/fa";
 import { ThemeApi } from "../../context/themeContext";
 import AddStudentModal from "../../components/Modals/AddStudent";
 import StudentProfileModal from "../../components/Modals/StudentProfile";
+import BackBtn from "../../components/BackBtn/BackBtn";
+import { PodiumBtn } from "./PodiumBtn";
 
 const ExactGroup = () => {
   const { theme } = useContext(ThemeApi);
@@ -165,7 +170,7 @@ const ExactGroup = () => {
       }
     };
     fetchUserinfoToDelete();
-    const fullName = userToDelete.name + ' ' + userToDelete.surname;
+    const fullName = userToDelete.name + " " + userToDelete.surname;
     return {
       id: userToDelete.id,
       username: fullName,
@@ -233,21 +238,11 @@ const ExactGroup = () => {
           />
         ) : null}
         <hr />
-        <div className="flex flex-row justify-between items-center gap-1">
-          <Link
-            to={"/dashboard"}
-            className="ml-5 mt-5 sm:px-3.5 sm:py-2.5 px-2 py-1 relative rounded-full group font-medium text-white inline-block">
-            <span className="absolute top-0 left-0 w-full h-full rounded-full opacity-50 filter blur-sm bg-gradient-to-br from-gray-300 to-gray-600"></span>
-            <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded-full opacity-50 from-gray-300 to-gray-600"></span>
-            <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded-full shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-gray-300 to-gray-600"></span>
-            <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded-full bg-gradient-to-br to-gray-600 from-gray-300"></span>
-            <span className="relative flex flex-row items-center gap-1">
-              <FaHome /> Dashboard
-            </span>
-          </Link>
+        <div className="flex flex-row justify-between items-center gap-1 mt-5">
+          <BackBtn />
           <button
             onClick={() => handleModalToggle(1)}
-            className="ml-5 mt-5 sm:px-3.5 sm:py-2.5 px-2 py-1 relative rounded-full group font-medium text-white inline-block">
+            className="ml-5 sm:px-3.5 sm:py-2.5 px-2 py-1 relative rounded-full group font-medium text-white inline-block">
             <span className="absolute top-0 left-0 w-full h-full rounded-full opacity-50 filter blur-sm bg-gradient-to-br from-gray-300 to-gray-600"></span>
             <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded-full opacity-50 from-gray-300 to-gray-600"></span>
             <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded-full shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-gray-300 to-gray-600"></span>
@@ -257,45 +252,52 @@ const ExactGroup = () => {
             </span>
           </button>
         </div>
-        <div className="my-7 flex flex-col md:flex-row justify-between items-center px-5">
-          <h1 className="animate-text bg-gradient-to-r from-gray-700 via-gray-400 to-orange bg-clip-text text-transparent text-xl sm:text-2xl font-black text-center">
-            {classroomProperties.class_name}
-          </h1>
-          <h2
-            className={`text-lg font-bold ${
-              theme === "dark" ? "text-white" : "text-black"
-            } flex flex-row items-center`}>
-            Total coins: &nbsp;{" "}
-            <span className="text-yellow-600 flex flex-row gap-1 items-center">
-              {classroomProperties.coins}{" "}
-              <img
-                src={coin}
-                className="w-5 h-5 animate-rotate-y animate-infinite"
-                alt="coin"
-              />
-            </span>
-          </h2>
-          <div className="flex flex-row items-center gap-3">
-            <button
-              onClick={() => handleModalToggle(4)}
-              className="ml-5 md:px-3.5 md:py-2.5 px-2 py-1 relative rounded-full group font-medium text-white inline-block">
-              <span className="absolute top-0 left-0 w-full h-full rounded-full opacity-50 filter blur-sm bg-gradient-to-br from-gray-300 to-gray-600"></span>
-              <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded-full opacity-50 from-gray-300 to-gray-600"></span>
-              <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded-full shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-gray-300 to-gray-600"></span>
-              <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded-full bg-gradient-to-br to-gray-600 from-gray-300"></span>
-              <span className="relative">Reset</span>
-            </button>
-            <button
-              onClick={() => handleModalToggle(3)}
-              className="md:px-3 md:py-2.5 px-2 py-1 relative rounded-full group font-medium text-white inline-block">
-              <span className="absolute top-0 left-0 w-full h-full rounded-full opacity-50 filter blur-sm bg-gradient-to-br from-red-300 to-red-600"></span>
-              <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded-full opacity-50 from-red-300 to-red-600"></span>
-              <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded-full shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-red-300 to-red-600"></span>
-              <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded-full bg-gradient-to-br to-red-300 from-red-600"></span>
-              <span className="relative flex flex-row items-center gap-1 text-sm sm:text-md">
-                <FaTrashAlt /> Delete Classroom
+        <div className="my-7 flex flex-col lg:flex-row justify-between items-center px-5">
+          <div className="flex flex-row justify-between lg:justify-start lg:gap-20 items-center w-full">
+            <h1 className="animate-text bg-gradient-to-r from-gray-700 via-gray-400 to-orange bg-clip-text text-transparent text-xl lg:text-2xl font-black text-center">
+              {classroomProperties.class_name}
+            </h1>
+            <h2
+              className={`text-lg font-bold ${
+                theme === "dark" ? "text-white" : "text-black"
+              } flex flex-row items-center`}>
+              Total coins: &nbsp;{" "}
+              <span className="text-yellow-600 flex flex-row gap-1 items-center">
+                {classroomProperties.coins}{" "}
+                <img
+                  src={coin}
+                  className="w-5 h-5 animate-rotate-y animate-infinite"
+                  alt="coin"
+                />
               </span>
-            </button>
+            </h2>
+          </div>
+          <div className="flex flex-row items-center justify-between">
+            <PodiumBtn classroomId={id} classname={classroomProperties.class_name}/>
+            <div className="flex flex-row items-center gap-5">
+              <button
+                onClick={() => handleModalToggle(4)}
+                className="ml-5 px-2 py-1 relative rounded-full group font-medium text-white inline-block">
+                <span className="absolute top-0 left-0 w-full h-full rounded-full opacity-50 filter blur-sm bg-gradient-to-br from-gray-400 to-gray-700"></span>
+                <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded-full opacity-50 from-gray-400 to-gray-700"></span>
+                <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded-full shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm to-gray-400 from-gray-700"></span>
+                <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded-full bg-gradient-to-br to-gray-400 from-gray-700"></span>
+                <span className="relative flex flex-row items-center gap-1 text-sm">
+                  Reset
+                </span>
+              </button>
+              <button
+                onClick={() => handleModalToggle(3)}
+                className="px-2 py-1 relative rounded-full group font-medium text-white inline-block">
+                <span className="absolute top-0 left-0 w-full h-full rounded-full opacity-50 filter blur-sm bg-gradient-to-br from-red-300 to-red-600"></span>
+                <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded-full opacity-50 from-red-300 to-red-600"></span>
+                <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded-full shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-red-300 to-red-600"></span>
+                <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded-full bg-gradient-to-br to-red-300 from-red-600"></span>
+                <span className="relative flex flex-row items-center gap-1 text-sm">
+                  <FaTrashAlt className="text-sm" /> Delete
+                </span>
+              </button>
+            </div>
           </div>
         </div>
         <Card className="w-full h-full overflow-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-300">

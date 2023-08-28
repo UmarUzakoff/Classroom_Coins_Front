@@ -12,6 +12,7 @@ import silver_medal from "../../images/silver-medal.png";
 import bronze_medal from "../../images/bronze-medal.png";
 import API from "../../utils/api";
 import { ThemeApi } from "../../context/themeContext";
+import { PodiumBtn } from "../Admin/PodiumBtn";
 
 const Home = () => {
   const { theme } = useContext(ThemeApi);
@@ -83,17 +84,17 @@ const Home = () => {
       }`}>
       <div className="container">
         <hr />
-        <div className="my-7 flex font-rem flex-row justify-between items-center px-5">
-          <h1 className="animate-text bg-gradient-to-r from-gray-700 via-gray-400 to-orange bg-clip-text text-transparent text-3xl sm:text-5xl font-black text-center">
+        <div className="my-5 flex font-rem flex-row flex-wrap sm:flex-nowrap justify-center gap-x-10 sm:justify-between items-center px-5">
+          <h1 className="animate-text bg-gradient-to-r from-gray-700 via-gray-400 to-orange bg-clip-text text-transparent text-3xl xl:text-5xl font-black text-center">
             {data.class_name}
           </h1>
           <h2
             className={`text-lg font-bold ${
               theme === "dark" ? "text-grey" : "text-dark"
-            } flex flex-row items-center`}>
-            Total coins: &nbsp;{" "}
+            } flex flex-row items-stretch`}>
+            Total&nbsp;coins:
             <span className="text-yellow-600 flex flex-row gap-1 items-center">
-              {data.coins}{" "}
+              &nbsp;{data.coins}{" "}
               <img
                 src={coin}
                 className="w-5 h-5 animate-rotate-y animate-infinite"
@@ -101,6 +102,7 @@ const Home = () => {
               />
             </span>
           </h2>
+          <PodiumBtn classroomId={data.id} classname={data.class_name}/>
         </div>
         <Card className="w-full h-full overflow-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-300">
           <table className="w-full min-w-max table-auto text-center ">

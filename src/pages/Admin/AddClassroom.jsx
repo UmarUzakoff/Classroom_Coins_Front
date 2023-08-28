@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
   getAccessTokenFromLocalStorage,
@@ -7,8 +7,8 @@ import {
 } from "../../utils/storage";
 import API from "../../utils/api";
 import toastify from "../../utils/toastify";
-import { FaHome } from "react-icons/fa";
 import { ThemeApi } from "../../context/themeContext";
+import BackBtn from "../../components/BackBtn/BackBtn";
 
 const AddClassroom = () => {
   const { theme } = useContext(ThemeApi);
@@ -52,18 +52,10 @@ const AddClassroom = () => {
   };
 
   return (
-    <>
-      <Link
-        to={`${role === "admin" ? "/dashboard" : "/"}`}
-        className="px-5 py-2.5 mt-8 mx-10 text-center relative rounded group text-white font-medium inline-block">
-        <span className="absolute top-0 left-0 w-full h-full rounded opacity-50 filter blur-sm bg-gradient-to-br from-black to-gray-200"></span>
-        <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded opacity-50 from-black to-gray-200"></span>
-        <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-black to-gray-200"></span>
-        <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded bg-gradient-to-br to-gray-500 from-black"></span>
-        <span className="relative flex flex-row items-center gap-1">
-          <FaHome /> {role === "admin" ? "Dashboard" : "Home"}
-        </span>
-      </Link>
+    <div className="container">
+      <div className="mx-10 mt-8">
+        <BackBtn />
+      </div>
       <section className="flex flex-col justify-center gap-10 md:gap-2 md:flex-row md:justify-around items-center font-rem my-7">
         <div>
           <h2 className="text-center font-bold text-xl text-gray-600">
@@ -100,7 +92,7 @@ const AddClassroom = () => {
           </form>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

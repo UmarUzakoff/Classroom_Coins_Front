@@ -30,7 +30,7 @@ const App = () => {
           <Route path="/dashboard/classroom/:id" element={<Classroom />} />
           <Route path="/settings" element={<SettingsPage />} />
           <Route path="/settings/addclassroom" element={<AddClass />} />
-          <Route path="/podium" element={<Podium />} />
+          <Route path="/podium/:classroomid/:month" element={<Podium />} />
           <Route path="/404" element={<PageNotFound />} />
           <Route path="*" element={<Navigate to="/404" />} />
         </Routes>

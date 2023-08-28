@@ -54,7 +54,11 @@ const Dashboard = () => {
             <Link
               to={`/dashboard/classroom/${id}`}
               key={id}
-              className={`my-1 rounded-xl w-full shadow-xl ${theme === "dark" ? "hover:bg-gray-700 active:bg-gray-800 bg-gray-900" : "hover:bg-gray-200 active:bg-gray-300"} transition duration-300 flex flex-row justify-between items-center px-5 py-2 cursor-pointer gap-5`}>
+              className={`my-1 rounded-xl w-full shadow-xl ${
+                theme === "dark"
+                  ? "hover:bg-gray-700 active:bg-gray-800 bg-gray-900"
+                  : "hover:bg-gray-200 active:bg-gray-300"
+              } transition duration-300 flex flex-row justify-between items-center px-5 py-2 cursor-pointer gap-5`}>
               <div className="flex flex-row items-center gap-3">
                 <span
                   className={`${theme === "dark" ? "text-grey" : "text-dark"}`}>

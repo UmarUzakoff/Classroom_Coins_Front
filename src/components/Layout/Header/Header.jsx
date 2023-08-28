@@ -112,7 +112,7 @@ export default function Header() {
                           : user.name === "Sevinch"
                           ? "https://i.pinimg.com/564x/f7/0d/6c/f70d6c4271126184ce5cce40a53611a9.jpg"
                           : user.name === "Mubina"
-                          ? "https://i.pinimg.com/564x/f7/0d/6c/f70d6c4271126184ce5cce40a53611a9.jpg"
+                          ? "https://i.pinimg.com/564x/d3/52/a1/d352a182a17bb3ee5dd0a6fdae462bf5.jpg"
                           : user.name === "Javohir"
                           ? "https://i.pinimg.com/474x/88/b3/e4/88b3e42479fb2d3440681af9ef9ab95b.jpg"
                           : user.name === "Fayoziddin"
