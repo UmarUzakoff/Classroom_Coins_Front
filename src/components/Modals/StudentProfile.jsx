@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { FaXing } from "react-icons/fa";
 import { ThemeApi } from "../../context/themeContext";
 import { getRoleFromStorage } from "../../utils/storage";
+import { Fade } from "react-reveal";
 
 const StudentProfileModal = ({
   handleModal,
@@ -38,55 +39,57 @@ const StudentProfileModal = ({
                 <FaXing />
               </button>
             </div>
-            {/*body*/}
-            <div className="relative p-6 flex flex-row gap-5 sm:gap-20 text-sm sm:text-xl">
-              <div className="flex flex-col text-start items-start gap-2 sm:gap-5 w-20 font-rem">
-                <h5 className="font-bold">Name: </h5>
-                <h5 className="font-bold">Surname: </h5>
-                <h5 className="font-bold">Email: </h5>
-                {method === "my" ? (
-                  <>
-                    <h5
-                      className={`font-bold ${
-                        role === "admin" ? "hidden" : ""
-                      }`}>
-                      ClassName:{" "}
-                    </h5>
-                    <h5
-                      className={`font-bold ${
-                        role === "admin" ? "hidden" : ""
-                      }`}>
-                      Coins:{" "}
-                    </h5>
-                  </>
-                ) : (
-                  <>
-                    <h5 className="font-bold">ClassName: </h5>
-                    <h5 className="font-bold">Coins: </h5>
-                  </>
-                )}
+            <Fade left cascade text>
+              {/*body*/}
+              <div className="relative p-6 flex flex-row gap-5 sm:gap-20 text-sm sm:text-xl">
+                <div className="flex flex-col text-start items-start gap-2 sm:gap-5 w-20 font-rem">
+                  <h5 className="font-bold">Name: </h5>
+                  <h5 className="font-bold">Surname: </h5>
+                  <h5 className="font-bold">Email: </h5>
+                  {method === "my" ? (
+                    <>
+                      <h5
+                        className={`font-bold ${
+                          role === "admin" ? "hidden" : ""
+                        }`}>
+                        ClassName:{" "}
+                      </h5>
+                      <h5
+                        className={`font-bold ${
+                          role === "admin" ? "hidden" : ""
+                        }`}>
+                        Coins:{" "}
+                      </h5>
+                    </>
+                  ) : (
+                    <>
+                      <h5 className="font-bold">ClassName: </h5>
+                      <h5 className="font-bold">Coins: </h5>
+                    </>
+                  )}
+                </div>
+                <div className="flex flex-col text-start items-start gap-2 sm:gap-5 font-rem">
+                  <span>{name}</span>
+                  <span>{surname}</span>
+                  <span>{email}</span>
+                  {method === "my" ? (
+                    <>
+                      <span className={`${role === "admin" ? "hidden" : ""}`}>
+                        {classname}
+                      </span>
+                      <span className={`${role === "admin" ? "hidden" : ""}`}>
+                        {coins}
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <span>{classname}</span>
+                      <span>{coins}</span>
+                    </>
+                  )}
+                </div>
               </div>
-              <div className="flex flex-col text-start items-start gap-2 sm:gap-5 font-rem">
-                <span>{name}</span>
-                <span>{surname}</span>
-                <span>{email}</span>
-                {method === "my" ? (
-                  <>
-                    <span className={`${role === "admin" ? "hidden" : ""}`}>
-                      {classname}
-                    </span>
-                    <span className={`${role === "admin" ? "hidden" : ""}`}>
-                      {coins}
-                    </span>
-                  </>
-                ) : (
-                  <>
-                    <span>{classname}</span>
-                    <span>{coins}</span>
-                  </>
-                )}
-              </div>
-            </div>
+            </Fade>
             {/*footer*/}
             <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
               <button

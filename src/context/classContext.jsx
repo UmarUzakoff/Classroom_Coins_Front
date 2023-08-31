@@ -7,6 +7,8 @@ const ClassroomDataContext = createContext();
 export const useClassroomData = () => useContext(ClassroomDataContext);
 
 const ClassroomDataProvider = ({ children }) => {
+  const [isLoading, setIsLoading] = useState(false);
+  
   const [data, setData] = useState([]);
   const [students, setStudents] = useState([]);
 
@@ -26,13 +28,14 @@ const ClassroomDataProvider = ({ children }) => {
         (a, b) => b.coins - a.coins
       );
       setStudents(sorterData);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <ClassroomDataContext.Provider value={[data,students, fetchData]}>
+    <ClassroomDataContext.Provider value={[data, students, fetchData, isLoading, setIsLoading]}>
       {children}
     </ClassroomDataContext.Provider>
   );
