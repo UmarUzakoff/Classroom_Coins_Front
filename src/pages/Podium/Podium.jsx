@@ -67,7 +67,7 @@ const Podium = () => {
   } else if (windowWidth > 1200) {
     podiumWidth = 200;
   } else {
-    podiumWidth = 200;
+    podiumWidth = 100;
   }
   const handleDownload = (url) => {
     const link = document.createElement("a");
