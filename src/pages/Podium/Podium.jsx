@@ -57,7 +57,7 @@ const Podium = () => {
 
   const windowWidth = window.innerWidth;
   const windowHeight = window.innerHeight;
-  let podiumWidth;
+  let podiumWidth = 200;
   if (windowWidth > 400 && windowWidth < 700) {
     podiumWidth = 100;
   } else if (windowWidth > 700 && windowWidth < 1000) {

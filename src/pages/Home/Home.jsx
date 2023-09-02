@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Card, Spinner, Typography } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 import {
   getAccessTokenFromLocalStorage,
-  getRoleFromStorage,
 } from "../../utils/storage";
 import coin from "../../images/coin.png";
 import gold_medal from "../../images/gold-medal.png";
