@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { Card, Spinner, Typography } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
@@ -21,14 +21,10 @@ const Home = () => {
   const navigate = useNavigate();
 
   const token = getAccessTokenFromLocalStorage();
-  const admin = getRoleFromStorage();
 
   useEffect(() => {
     if (!token) {
       return navigate("/auth/login");
-    }
-    if (admin === "admin") {
-      return navigate("/dashboard");
     }
   }, [navigate]);
 
@@ -56,11 +52,6 @@ const Home = () => {
     }
   };
 
-  useEffect(() => {
-    setIsLoading(true);
-    fetchData();
-  }, []);
-
   const [user, setUser] = useState([]);
 
   const userinfo = async (token) => {
@@ -78,8 +69,15 @@ const Home = () => {
   };
 
   useEffect(() => {
+    setIsLoading(true);
+    fetchData();
     userinfo(token);
   }, []);
+  
+  const element = document.getElementById(user.id);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
 
   const TABLE_HEAD = ["№", "Name", "Surname", "Coins"];
   return (
@@ -170,6 +168,7 @@ const Home = () => {
                   return (
                     <Flip left cascade text key={id}>
                       <tr
+                        id={id}
                         className={`
                     ${
                       theme === "dark"

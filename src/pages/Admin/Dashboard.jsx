@@ -17,15 +17,15 @@ const Dashboard = () => {
   const token = getAccessTokenFromLocalStorage();
   const admin = getRoleFromStorage();
 
-  useEffect(() => {
-    if (!token || admin !== "admin") {
-      return navigate("/auth/login");
-    }
-  }, [navigate]);
-
   const [data, setData] = useState([]);
 
   useEffect(() => {
+    if (!token && admin !== "admin") {
+      return navigate("/auth/login");
+    }
+    if (token && admin !== "admin") {
+      return navigate("/");
+    }
     const fetchData = async () => {
       try {
         const response = await axios.get(`${API}/classrooms`, {

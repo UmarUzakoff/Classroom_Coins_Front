@@ -24,7 +24,7 @@ const Login = () => {
       return navigate("/dashboard");
     }
     if (token && admin !== "admin") {
-      return navigate("/dashboard");
+      return navigate("/");
     }
   }, [navigate]);
 

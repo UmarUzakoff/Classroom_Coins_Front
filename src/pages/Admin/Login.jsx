@@ -20,7 +20,7 @@ const Login = () => {
     const token = getAccessTokenFromLocalStorage();
     const admin = getRoleFromStorage();
 
-    if (token && admin==="admin") {
+    if (token && admin === "admin") {
       return navigate("/dashboard");
     }
   }, [navigate]);
