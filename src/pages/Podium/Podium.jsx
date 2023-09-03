@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { WinnersPodium } from "winner-podium";
 import { ThemeApi } from "../../context/themeContext";
 import { useNavigate, useParams } from "react-router-dom";

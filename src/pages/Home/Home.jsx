@@ -2,9 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Card, Spinner, Typography } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
-import {
-  getAccessTokenFromLocalStorage,
-} from "../../utils/storage";
+import { getAccessTokenFromLocalStorage } from "../../utils/storage";
 import coin from "../../images/coin.png";
 import gold_medal from "../../images/gold-medal.png";
 import silver_medal from "../../images/silver-medal.png";
@@ -12,7 +10,7 @@ import bronze_medal from "../../images/bronze-medal.png";
 import API from "../../utils/api";
 import { ThemeApi } from "../../context/themeContext";
 import { PodiumBtn } from "../Admin/PodiumBtn";
-import { Flip } from "react-reveal";
+import { Fade, Flip } from "react-reveal";
 
 const Home = () => {
   const { theme } = useContext(ThemeApi);
@@ -72,10 +70,43 @@ const Home = () => {
     fetchData();
     userinfo(token);
   }, []);
-  
+
   const element = document.getElementById(user.id);
   if (element) {
     element.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
+  const studentsPlace =
+    students.findIndex((student) => student.name === user.name) + 1;
+
+  let motivationalText;
+  let motivationalEmoji;
+
+  if (studentsPlace === 1) {
+    motivationalText = "You are truly exceptional!";
+    motivationalEmoji = "👑";
+  } else if (studentsPlace === 2) {
+    motivationalText = "Keep it up, you're almost there!";
+    motivationalEmoji = "💪";
+  } else if (studentsPlace === 3) {
+    motivationalText = "Congratulations, you made it to the podium!";
+    motivationalEmoji = "🏆";
+  } else if (studentsPlace > 3 && studentsPlace < 6) {
+    motivationalText = "Well done, keep pushing yourself!";
+    motivationalEmoji = "👍🏼";
+  } else if (studentsPlace > 6 && studentsPlace < 10) {
+    motivationalText = "Every step counts towards success!";
+    motivationalEmoji = "💪";
+  } else if (studentsPlace > 10 && studentsPlace < 13) {
+    motivationalText = "Remember, progress is just as important as winning!";
+    motivationalEmoji = "🚀";
+  } else if (studentsPlace > 13) {
+    motivationalText =
+      "It's not about winning or losing, it's about taking part!";
+    motivationalEmoji = "🌟";
+  } else {
+    motivationalText = "Everyone has their own unique journey";
+    motivationalEmoji = "🌞";
   }
 
   const TABLE_HEAD = ["№", "Name", "Surname", "Coins"];
@@ -106,6 +137,12 @@ const Home = () => {
           </h2>
           <PodiumBtn classroomId={data.id} classname={data.class_name} />
         </div>
+        <Fade left cascade text>
+          <h1 className="mx-5 animate-typing overflow-hidden whitespace-nowrap my-3 pr-5 text-md lg:text-3xl font-bold italic font-rem">
+            {motivationalText}
+            {motivationalEmoji}
+          </h1>
+        </Fade>
         {isLoading ? (
           <div className="w-full h-60 sm:h-96 text-center flex justify-center items-center">
             <Spinner
