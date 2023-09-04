@@ -138,7 +138,7 @@ const Home = () => {
           <PodiumBtn classroomId={data.id} classname={data.class_name} />
         </div>
         <Fade left cascade text>
-          <h1 className="mx-5 animate-typing overflow-hidden whitespace-nowrap my-3 pr-5 text-md lg:text-3xl font-bold italic font-rem">
+          <h1 className="mx-5 animate-typing overflow-hidden sm:whitespace-nowrap my-3 pr-5 text-md lg:text-3xl font-bold italic font-rem">
             {motivationalText}
             {motivationalEmoji}
           </h1>
