@@ -39,6 +39,39 @@ const winnersData = [
       },
     ],
   },
+  // {
+  //   id: 2,
+  //   classroomName: "GW-15",
+  //   months: [
+  //     {
+  //       monthNum: 1,
+  //       // memories: [memories1, memories2, memories3],
+  //       topStudents: [
+  //         {
+  //           fullName: "Komoliddin Zayniddinov",
+  //           certificate: sevinch_certificate,
+  //           coins: 310,
+  //           rank: 1,
+  //           // avatar: "https://i.pinimg.com/564x/f7/0d/6c/f70d6c4271126184ce5cce40a53611a9.jpg"
+  //         },
+  //         {
+  //           fullName: "Shoxdiyor Shirinboyev",
+  //           certificate: javohir_certificate,
+  //           coins: 286,
+  //           rank: 2,
+  //           // avatar: "https://i.pinimg.com/474x/88/b3/e4/88b3e42479fb2d3440681af9ef9ab95b.jpg"
+  //         },
+  //         {
+  //           fullName: "MuhammadAmin Botirov",
+  //           certificate: fayoziddin_certificate,
+  //           coins: 197,
+  //           rank: 3,
+  //           // avatar: "https://img.freepik.com/premium-photo/very-cute-kid-caracter-animation-pixar-style_950002-73964.jpg"
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
 ];
 
 export default winnersData;

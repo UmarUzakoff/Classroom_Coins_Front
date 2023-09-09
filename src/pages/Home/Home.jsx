@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Card, Spinner, Typography } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
-import { getAccessTokenFromLocalStorage } from "../../utils/storage";
+import { getAccessTokenFromLocalStorage, getRoleFromStorage } from "../../utils/storage";
 import coin from "../../images/coin.png";
 import gold_medal from "../../images/gold-medal.png";
 import silver_medal from "../../images/silver-medal.png";
@@ -18,10 +18,14 @@ const Home = () => {
   const navigate = useNavigate();
 
   const token = getAccessTokenFromLocalStorage();
+  const role = getRoleFromStorage();
 
   useEffect(() => {
     if (!token) {
       return navigate("/auth/login");
+    }
+    if (role === "admin" && token) {
+      return navigate("/dashboard");
     }
   }, [navigate]);
 
