@@ -1,6 +1,7 @@
 import sevinch_certificate from "../../images/certificates/sevinch.png";
 import javohir_certificate from "../../images/certificates/javohir.png";
 import fayoziddin_certificate from "../../images/certificates/fayoziddin.png";
+import shoxsulton_certificate from "../../images/certificates/shoxsulton.png";
 import komoliddin_certificate from "../../images/certificates/komoliddin.png";
 import shoxdiyor_certificate from "../../images/certificates/shoxdiyor.png";
 import muhammadamin_certificate from "../../images/certificates/muhammadamin.png";
@@ -40,33 +41,33 @@ const winnersData = [
           },
         ],
       },
-      // {
-      //   monthNum: 2,
-      //   memories: [],
-      //   topStudents: [
-      //     {
-      //       fullName: "Sevinch Sayfutdinova",
-      //       certificate: sevinch_certificate,
-      //       coins: 269,
-      //       rank: 1,
-      //       avatar: "https://i.pinimg.com/564x/f7/0d/6c/f70d6c4271126184ce5cce40a53611a9.jpg"
-      //     },
-      //     {
-      //       fullName: "Javohir Murodov",
-      //       certificate: javohir_certificate,
-      //       coins: 225,
-      //       rank: 2,
-      //       avatar: "https://i.pinimg.com/474x/88/b3/e4/88b3e42479fb2d3440681af9ef9ab95b.jpg"
-      //     },
-      //     {
-      //       fullName: "Shoxsulton Isoqov",
-      //       certificate: fayoziddin_certificate,
-      //       coins: 192,
-      //       rank: 3,
-      //       avatar: "https://i.pinimg.com/564x/0e/87/6e/0e876e130d0844af9105f05398a28abc.jpg"
-      //     },
-      //   ],
-      // },
+      {
+        monthNum: 2,
+        memories: [],
+        topStudents: [
+          {
+            fullName: "Sevinch Sayfutdinova",
+            certificate: sevinch_certificate,
+            coins: 269,
+            rank: 1,
+            avatar: "https://i.pinimg.com/564x/f7/0d/6c/f70d6c4271126184ce5cce40a53611a9.jpg"
+          },
+          {
+            fullName: "Javohir Murodov",
+            certificate: javohir_certificate,
+            coins: 225,
+            rank: 2,
+            avatar: "https://i.pinimg.com/474x/88/b3/e4/88b3e42479fb2d3440681af9ef9ab95b.jpg"
+          },
+          {
+            fullName: "Shoxsulton Isoqov",
+            certificate: shoxsulton_certificate,
+            coins: 192,
+            rank: 3,
+            avatar: "https://i.pinimg.com/564x/0e/87/6e/0e876e130d0844af9105f05398a28abc.jpg"
+          },
+        ],
+      },
     ],
   },
   {
