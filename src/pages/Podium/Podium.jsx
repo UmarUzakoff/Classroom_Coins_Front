@@ -35,9 +35,15 @@ const Podium = () => {
 
   const memoriesFromThatMonth = winners.memories;
 
-  const goldStudent = winners.topStudents.find((students) => students.rank == 1);
-  const silverStudent = winners.topStudents.find((students) => students.rank == 2);
-  const bronzeStudent = winners.topStudents.find((students) => students.rank == 3);
+  const goldStudent = winners.topStudents.find(
+    (students) => students.rank == 1
+  );
+  const silverStudent = winners.topStudents.find(
+    (students) => students.rank == 2
+  );
+  const bronzeStudent = winners.topStudents.find(
+    (students) => students.rank == 3
+  );
 
   const [showModal, setShowModal] = useState(false);
 
@@ -258,7 +264,9 @@ const Podium = () => {
             },
           }}
         />
-        <MemoriesCarousel images={memoriesFromThatMonth}/>
+        {memoriesFromThatMonth.length ? (
+          <MemoriesCarousel images={memoriesFromThatMonth} />
+        ) : null}
       </div>
     </section>
   );
