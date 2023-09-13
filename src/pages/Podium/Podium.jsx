@@ -98,7 +98,7 @@ const Podium = () => {
         <Confetti
           numberOfPieces={150}
           width={windowWidth}
-          height={windowHeight * 1.5}
+          height={windowHeight}
           className="animate-fade- transition duration-500"
         />
       )}

@@ -2,7 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Card, Spinner, Typography } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
-import { getAccessTokenFromLocalStorage, getRoleFromStorage } from "../../utils/storage";
+import {
+  getAccessTokenFromLocalStorage,
+  getRoleFromStorage,
+} from "../../utils/storage";
 import coin from "../../images/coin.png";
 import gold_medal from "../../images/gold-medal.png";
 import silver_medal from "../../images/silver-medal.png";
@@ -102,11 +105,10 @@ const Home = () => {
     motivationalText = "Every step counts towards success!";
     motivationalEmoji = "💪";
   } else if (studentsPlace > 10 && studentsPlace < 13) {
-    motivationalText = "Remember, progress is just as important as winning!";
+    motivationalText = "Progress is just as important as winning!";
     motivationalEmoji = "🚀";
   } else if (studentsPlace > 13) {
-    motivationalText =
-      "It's not about winning or losing, it's about taking part!";
+    motivationalText = "It's not about winning or losing...";
     motivationalEmoji = "🌟";
   } else {
     motivationalText = "Everyone has their own unique journey";
@@ -142,7 +144,7 @@ const Home = () => {
           <PodiumBtn classroomId={data.id} classname={data.class_name} />
         </div>
         <Fade left cascade text>
-          <h1 className="mx-5 animate-typing overflow-hidden sm:whitespace-nowrap my-3 pr-5 text-md lg:text-3xl font-bold italic font-rem">
+          <h1 className="mx-5 animate-typing overflow-hidden whitespace-nowrap my-3 pr-5 text-md lg:text-3xl font-bold italic font-rem">
             {motivationalText}
             {motivationalEmoji}
           </h1>
