@@ -56,7 +56,7 @@ const AddClassroom = () => {
       <div className="mx-10 my-4">
         <BackBtn />
       </div>
-      <section className="flex flex-col justify-center gap-10 md:gap-2 md:flex-row md:justify-around items-center font-rem my-10">
+      <section className="mt-24 flex flex-col justify-center gap-10 md:gap-2 md:flex-row md:justify-around items-center font-rem my-10">
         <div>
           <h2 className="text-center font-bold text-xl text-gray-600">
             Add a new classroom
