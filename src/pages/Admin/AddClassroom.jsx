@@ -53,7 +53,7 @@ const AddClassroom = () => {
 
   return (
     <div className="container mb-24 sm:mb-14">
-      <div className="mx-10 my-4">
+      <div className="sm:mx-10 mx-5 my-4">
         <BackBtn />
       </div>
       <section className="mt-24 flex flex-col justify-center gap-10 md:gap-2 md:flex-row md:justify-around items-center font-rem my-10">
