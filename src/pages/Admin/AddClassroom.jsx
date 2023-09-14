@@ -52,11 +52,11 @@ const AddClassroom = () => {
   };
 
   return (
-    <div className="container">
-      <div className="mx-10 mt-8">
+    <div className="container mb-24 sm:mb-14">
+      <div className="mx-10 my-4">
         <BackBtn />
       </div>
-      <section className="flex flex-col justify-center gap-10 md:gap-2 md:flex-row md:justify-around items-center font-rem my-7">
+      <section className="flex flex-col justify-center gap-10 md:gap-2 md:flex-row md:justify-around items-center font-rem my-10">
         <div>
           <h2 className="text-center font-bold text-xl text-gray-600">
             Add a new classroom
@@ -64,7 +64,7 @@ const AddClassroom = () => {
           <form
             className={`${
               theme === "dark" ? "bg-gray-900" : "bg-grey"
-            } flex flex-col rounded shadow-lg p-12 mt-12`}
+            } flex flex-col rounded shadow-lg p-12 mt-5`}
             onSubmit={handleSubmit}>
             <label
               className={`${
