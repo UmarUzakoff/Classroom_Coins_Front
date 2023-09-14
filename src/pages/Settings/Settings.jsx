@@ -71,7 +71,9 @@ const Settings = () => {
         theme === "dark" ? "bg-dark" : "bg-grey"
       } pb-10 lg:pb-0 lg:h-screen`}>
       <div className="container pt-8">
+      <div className="ml-10">
         <BackBtn />
+      </div>
         <section className="flex flex-col justify-center gap-10 md:gap-2 md:flex-row md:justify-around items-center font-rem mt-20">
           <div>
             <h2 className="text-center font-bold text-xl text-gray-600">

@@ -46,10 +46,10 @@ const Dashboard = () => {
     <main
       className={`${
         theme === "dark" ? "bg-dark" : "bg-grey"
-      } font-rem px-3 h-[490px] sm:h-[447px]`}>
+      } font-rem px-3`}>
       <div className="container">
         <hr />
-        <div className="flex flex-col justify-center items-center gap-2 mt-10">
+        <div className="flex flex-col justify-center items-center gap-2 my-10">
           {data.map(({ id, class_name, coins }, index) => (
             <Link
               to={`/dashboard/classroom/${id}`}
