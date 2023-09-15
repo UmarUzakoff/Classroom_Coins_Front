@@ -307,7 +307,7 @@ const ExactGroup = () => {
           </div>
         </div>
         {isLoading ? (
-          <div className="w-full h-60 sm:h-80 text-center flex justify-center items-center">
+          <div className="w-full h-80 text-center flex justify-center items-center">
             <Spinner
               color="deep-orange"
               className="h-16 w-16 text-gray-900/50 flex items-center justify-center"
