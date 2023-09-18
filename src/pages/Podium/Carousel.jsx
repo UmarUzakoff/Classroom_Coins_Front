@@ -8,6 +8,7 @@ const MemoriesCarousel = ({ images }) => {
       loop
       transition={{ type: "tween", duration: 0.5 }}
       prevArrow={({ handlePrev }) => (
+        images.length > 1 ? 
         <IconButton
           variant="text"
           color="white"
@@ -28,8 +29,10 @@ const MemoriesCarousel = ({ images }) => {
             />
           </svg>
         </IconButton>
+        : null
       )}
       nextArrow={({ handleNext }) => (
+        images.length > 1 ? 
         <IconButton
           variant="text"
           color="white"
@@ -50,6 +53,7 @@ const MemoriesCarousel = ({ images }) => {
             />
           </svg>
         </IconButton>
+        : null
       )}>
       {images.map((image, index) => (
         <img

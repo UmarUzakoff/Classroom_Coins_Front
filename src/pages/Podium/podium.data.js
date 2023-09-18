@@ -8,6 +8,10 @@ import muhammadamin_certificate from "../../images/certificates/muhammadamin.png
 import memories1 from "../../images/memories/gw-13/month1/memories1.jpg";
 import memories2 from "../../images/memories/gw-13/month1/memories2.jpg";
 import memories3 from "../../images/memories/gw-13/month1/memories3.jpg";
+import lounge_zone from "../../images/memories/gw-13/month2/lounge_zone.jpg";
+import memories2_gw15 from "../../images/memories/gw-15/month1/memories2.jpg";
+import memories3_gw15 from "../../images/memories/gw-15/month1/memories3.jpg";
+import memories4_gw15 from "../../images/memories/gw-15/month1/memories4.jpg";
 
 const winnersData = [
   {
@@ -43,7 +47,7 @@ const winnersData = [
       },
       {
         monthNum: 2,
-        memories: [],
+        memories: [lounge_zone],
         topStudents: [
           {
             fullName: "Sevinch Sayfutdinova",
@@ -76,7 +80,7 @@ const winnersData = [
     months: [
       {
         monthNum: 1,
-        memories: [],
+        memories: [memories2_gw15, memories3_gw15, memories4_gw15],
         topStudents: [
           {
             fullName: "Komoliddin Zayniddinov",
