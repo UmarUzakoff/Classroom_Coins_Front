@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { Card, Spinner, Typography } from "@material-tailwind/react";
+import { Card, Typography } from "@material-tailwind/react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useClassroomData } from "../../context/classContext";
 import DelModal from "../../components/Modals/DelModal";
@@ -307,11 +307,10 @@ const ExactGroup = () => {
           </div>
         </div>
         {isLoading ? (
-          <div className="w-full h-80 text-center flex justify-center items-center">
-            <Spinner
-              color="deep-orange"
-              className="h-16 w-16 animate-rotate-y text-gray-900/50 flex items-center justify-center"
-            />
+          <div className="mt-20 flex justify-center items-center">
+            <div
+              className="w-12 h-12 rounded-full animate-spin absolute border-8 border-dashed
+       border-orange border-t-transparent"></div>
           </div>
         ) : (
           <Card className="w-full h-full overflow-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-300">

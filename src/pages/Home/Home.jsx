@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { Card, Spinner, Typography } from "@material-tailwind/react";
+import { Card, Typography } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 import {
   getAccessTokenFromLocalStorage,
@@ -69,6 +69,10 @@ const Home = () => {
       setUser(data);
     } catch (error) {
       console.log(error);
+      if (error.response.status === 401) {
+        localStorage.removeItem("access-token")
+        return navigate("/auth/login");
+      }
     }
   };
 
@@ -150,11 +154,10 @@ const Home = () => {
           </h1>
         </Fade>
         {isLoading ? (
-          <div className="w-full h-60 sm:h-96 text-center flex justify-center items-center">
-            <Spinner
-              color="deep-orange"
-              className="h-16 w-16 text-gray-900/50 flex items-center justify-center"
-            />
+          <div className="mt-20 flex justify-center items-center">
+            <div
+              className="w-12 h-12 rounded-full animate-spin absolute border-8 border-dashed
+         border-orange border-t-transparent"></div>
           </div>
         ) : (
           <Card className="w-full h-full text-center overflow-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-300">
