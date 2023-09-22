@@ -14,6 +14,7 @@ import API from "../../utils/api";
 import { ThemeApi } from "../../context/themeContext";
 import { PodiumBtn } from "../Admin/PodiumBtn";
 import { Fade, Flip } from "react-reveal";
+import { Loader } from "../../components/Loader/Loader";
 
 const Home = () => {
   const { theme } = useContext(ThemeApi);
@@ -32,8 +33,6 @@ const Home = () => {
     }
   }, [navigate]);
 
-  const [isLoading, setIsLoading] = useState(false);
-
   const [data, setData] = useState([]);
   const [students, setStudents] = useState([]);
 
@@ -50,7 +49,6 @@ const Home = () => {
         (a, b) => b.coins - a.coins
       );
       setStudents(sorterData);
-      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -70,17 +68,11 @@ const Home = () => {
     } catch (error) {
       console.log(error);
       if (error.response.status === 401) {
-        localStorage.removeItem("access-token")
+        localStorage.removeItem("access-token");
         return navigate("/auth/login");
       }
     }
   };
-
-  useEffect(() => {
-    setIsLoading(true);
-    fetchData();
-    userinfo(token);
-  }, []);
 
   const element = document.getElementById(user.id);
   if (element) {
@@ -92,32 +84,53 @@ const Home = () => {
 
   let motivationalText;
   let motivationalEmoji;
+  let enteringText;
+
+  console.log(studentsPlace);
 
   if (studentsPlace === 1) {
+    enteringText = "Time to dominate again!";
     motivationalText = "You are truly exceptional!";
     motivationalEmoji = "👑";
   } else if (studentsPlace === 2) {
+    enteringText = "Kung fu fury activated!";
     motivationalText = "Keep it up, you're almost there!";
     motivationalEmoji = "💪";
   } else if (studentsPlace === 3) {
+    enteringText = "Join the victory dance!";
     motivationalText = "Congratulations, you made it to the podium!";
     motivationalEmoji = "🏆";
   } else if (studentsPlace > 3 && studentsPlace < 6) {
+    enteringText = "Conquer every challenge!";
     motivationalText = "Well done, keep pushing yourself!";
     motivationalEmoji = "👍🏼";
   } else if (studentsPlace > 6 && studentsPlace < 10) {
+    enteringText = "Your legend continues...";
     motivationalText = "Every step counts towards success!";
     motivationalEmoji = "💪";
   } else if (studentsPlace > 10 && studentsPlace < 13) {
+    enteringText = "Unleash your power!";
     motivationalText = "Progress is just as important as winning!";
     motivationalEmoji = "🚀";
   } else if (studentsPlace > 13) {
+    enteringText = "Welcome back hero!";
     motivationalText = "It's not about winning or losing...";
     motivationalEmoji = "🌟";
   } else {
+    enteringText = "Compete and conquer!";
     motivationalText = "Everyone has their own unique journey";
     motivationalEmoji = "🌞";
   }
+
+  const [enteringAnimation, setEnteringAnimation] = useState(true);
+
+  useEffect(() => {
+    fetchData();
+    userinfo(token);
+    setTimeout(() => {
+      setEnteringAnimation(false);
+    }, 3500);
+  }, []);
 
   const TABLE_HEAD = ["№", "Name", "Surname", "Coins"];
   return (
@@ -125,41 +138,37 @@ const Home = () => {
       className={`${
         theme === "dark" ? "bg-dark text-grey" : "text-dark bg-grey"
       }`}>
-      <div className="container">
-        <hr />
-        <div className="my-5 flex font-rem flex-row flex-wrap sm:flex-nowrap justify-center gap-x-10 sm:justify-between items-center px-5">
-          <h1 className="animate-text bg-gradient-to-r from-gray-700 via-gray-400 to-orange bg-clip-text text-transparent text-3xl xl:text-5xl font-black text-center">
-            {data.class_name}
-          </h1>
-          <h2
-            className={`text-lg font-bold ${
-              theme === "dark" ? "text-grey" : "text-dark"
-            } flex flex-row items-stretch`}>
-            Total&nbsp;coins:
-            <span className="text-yellow-600 flex flex-row gap-1 items-center">
-              &nbsp;{data.coins}{" "}
-              <img
-                src={coin}
-                className="w-5 h-5 animate-rotate-y animate-infinite"
-                alt="coin"
-              />
-            </span>
-          </h2>
-          <PodiumBtn classroomId={data.id} classname={data.class_name} />
-        </div>
-        <Fade left cascade text>
-          <h1 className="mx-5 animate-typing overflow-hidden whitespace-nowrap my-3 pr-5 text-md lg:text-3xl font-bold italic font-rem">
-            {motivationalText}
-            {motivationalEmoji}
-          </h1>
-        </Fade>
-        {isLoading ? (
-          <div className="mt-20 flex justify-center items-center">
-            <div
-              className="w-12 h-12 rounded-full animate-spin absolute border-8 border-dashed
-         border-orange border-t-transparent"></div>
+      {enteringAnimation ? (
+        <Loader enteringText={enteringText} />
+      ) : (
+        <div className="container">
+          <hr />
+          <div className="my-5 flex font-rem flex-row flex-wrap sm:flex-nowrap justify-center gap-x-10 sm:justify-between items-center px-5">
+            <h1 className="animate-text bg-gradient-to-r from-gray-700 via-gray-400 to-orange bg-clip-text text-transparent text-3xl xl:text-5xl font-black text-center">
+              {data.class_name}
+            </h1>
+            <h2
+              className={`text-lg font-bold ${
+                theme === "dark" ? "text-grey" : "text-dark"
+              } flex flex-row items-stretch`}>
+              Total&nbsp;coins:
+              <span className="text-yellow-600 flex flex-row gap-1 items-center">
+                &nbsp;{data.coins}{" "}
+                <img
+                  src={coin}
+                  className="w-5 h-5 animate-rotate-y animate-infinite"
+                  alt="coin"
+                />
+              </span>
+            </h2>
+            <PodiumBtn classroomId={data.id} classname={data.class_name} />
           </div>
-        ) : (
+          <Fade left cascade text>
+            <h1 className="mx-5 animate-typing overflow-hidden whitespace-nowrap my-3 pr-5 text-md lg:text-3xl font-bold italic font-rem">
+              {motivationalText}
+              {motivationalEmoji}
+            </h1>
+          </Fade>
           <Card className="w-full h-full text-center overflow-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-300">
             <table className="w-full min-w-max table-auto text-center ">
               <thead>
@@ -269,8 +278,8 @@ const Home = () => {
               </tbody>
             </table>
           </Card>
-        )}
-      </div>
+        </div>
+      )}
     </main>
   );
 };
