@@ -5,6 +5,9 @@ import shoxsulton_certificate from "../../images/certificates/shoxsulton.png";
 import komoliddin_certificate from "../../images/certificates/komoliddin.png";
 import shoxdiyor_certificate from "../../images/certificates/shoxdiyor.png";
 import muhammadamin_certificate from "../../images/certificates/muhammadamin.png";
+import muhammadamin_gold from "../../images/certificates/muhammadamin_gold.png";
+import komoliddin_bronze from "../../images/certificates/komoliddin_bronze.png";
+import abdusolih_silver from "../../images/certificates/abdusolih_silver.png";
 import memories1 from "../../images/memories/gw-13/month1/memories1.jpg";
 import memories2 from "../../images/memories/gw-13/month1/memories2.jpg";
 import memories3 from "../../images/memories/gw-13/month1/memories3.jpg";
@@ -102,6 +105,33 @@ const winnersData = [
             coins: 197,
             rank: 3,
             avatar: "https://i.pinimg.com/564x/ef/91/b1/ef91b151821245ed97c4bcee71687a6f.jpg"
+          },
+        ],
+      },
+      {
+        monthNum: 2,
+        memories: [],
+        topStudents: [
+          {
+            fullName: "MuhammadAmin Botirov",
+            certificate: muhammadamin_gold,
+            coins: 311,
+            rank: 1,
+            avatar: "https://i.pinimg.com/564x/ef/91/b1/ef91b151821245ed97c4bcee71687a6f.jpg"
+          },
+          {
+            fullName: "Abdusolih Xalilov",
+            certificate: abdusolih_silver,
+            coins: 251,
+            rank: 2,
+            avatar: "https://i.pinimg.com/564x/e2/d3/a2/e2d3a2616bdad7166567458c319a2146.jpg"
+          },
+          {
+            fullName: "Komoliddin Zayniddinov",
+            certificate: komoliddin_bronze,
+            coins: 200,
+            rank: 3,
+            avatar: "https://i.pinimg.com/564x/f5/bc/31/f5bc31d68868b93ff33fe444babb3eef.jpg"
           },
         ],
       },

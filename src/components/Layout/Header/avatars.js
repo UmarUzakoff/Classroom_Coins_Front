@@ -39,6 +39,11 @@ const avatars = [
     avatar:
       "https://i.pinimg.com/564x/ef/91/b1/ef91b151821245ed97c4bcee71687a6f.jpg",
   },
+  {
+    name: "Abdusolih",
+    avatar:
+      "https://i.pinimg.com/564x/e2/d3/a2/e2d3a2616bdad7166567458c319a2146.jpg",
+  },
 ];
 
 export default avatars;
