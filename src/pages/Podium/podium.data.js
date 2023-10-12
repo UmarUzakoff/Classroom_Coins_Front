@@ -15,6 +15,8 @@ import lounge_zone from "../../images/memories/gw-13/month2/lounge_zone.jpg";
 import memories2_gw15 from "../../images/memories/gw-15/month1/memories2.jpg";
 import memories3_gw15 from "../../images/memories/gw-15/month1/memories3.jpg";
 import memories4_gw15 from "../../images/memories/gw-15/month1/memories4.jpg";
+import memories1_gw15_month2 from "../../images/memories/gw-15/month2/memories1.jpg";
+
 
 const winnersData = [
   {
@@ -110,7 +112,7 @@ const winnersData = [
       },
       {
         monthNum: 2,
-        memories: [],
+        memories: [memories1_gw15_month2],
         topStudents: [
           {
             fullName: "MuhammadAmin Botirov",
