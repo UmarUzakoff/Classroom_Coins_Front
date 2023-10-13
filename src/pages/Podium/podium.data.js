@@ -16,6 +16,8 @@ import memories2_gw15 from "../../images/memories/gw-15/month1/memories2.jpg";
 import memories3_gw15 from "../../images/memories/gw-15/month1/memories3.jpg";
 import memories4_gw15 from "../../images/memories/gw-15/month1/memories4.jpg";
 import memories1_gw15_month2 from "../../images/memories/gw-15/month2/memories1.jpg";
+import shoxsulton_2_certificate from "../../images/certificates/Shoxsulton_2.png"
+import alibek_certificate from "../../images/certificates/Alibek.png"
 
 
 const winnersData = [
@@ -74,6 +76,33 @@ const winnersData = [
             coins: 192,
             rank: 3,
             avatar: "https://i.pinimg.com/564x/0e/87/6e/0e876e130d0844af9105f05398a28abc.jpg"
+          },
+        ],
+      },
+      {
+        monthNum: 3,
+        memories: [],
+        topStudents: [
+          {
+            fullName: "Sevinch Sayfutdinova",
+            certificate: sevinch_certificate,
+            coins: 270,
+            rank: 1,
+            avatar: "https://i.pinimg.com/564x/f7/0d/6c/f70d6c4271126184ce5cce40a53611a9.jpg"
+          },
+          {
+            fullName: "Shoxsulton Isoqov",
+            certificate: shoxsulton_2_certificate,
+            coins: 185,
+            rank: 2,
+            avatar: "https://i.pinimg.com/564x/0e/87/6e/0e876e130d0844af9105f05398a28abc.jpg"
+          },
+          {
+            fullName: "Alibek Akromov",
+            certificate: alibek_certificate,
+            coins: 174,
+            rank: 3,
+            avatar: "https://whatsondisneyplus.com/wp-content/uploads/2021/06/luca-avatar-WODP.png"
           },
         ],
       },
