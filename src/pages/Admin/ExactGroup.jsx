@@ -21,6 +21,7 @@ import StudentProfileModal from "../../components/Modals/StudentProfile";
 import BackBtn from "../../components/BackBtn/BackBtn";
 import { PodiumBtn } from "./PodiumBtn";
 import { Flip, LightSpeed } from "react-reveal";
+import { Loader } from "../../components/Loader/Loader";
 
 const ExactGroup = () => {
   const { theme } = useContext(ThemeApi);
@@ -197,10 +198,36 @@ const ExactGroup = () => {
     }
   };
 
+  const [enteringAnimation, setEnteringAnimation] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setEnteringAnimation(false);
+    }, 3500);
+  }, []);
+
+  const GREETINGS = [
+    "Teach, inspire, repeat.",
+    "Grading made easy.",
+    "Elevate learning, empower teachers.",
+    "Assess with ease.",
+    "Growth starts here.",
+    "What's up, teacher buddy?",
+    "Greetings, grading guru!",
+    "What's up, teacher buddy?",
+    "Hey, assessment pro!"
+  ];
+
+  const randomGreetingIndex = Math.floor(Math.random() * 5) + 1;
+  const greeting = GREETINGS[randomGreetingIndex];
+
   const TABLE_HEAD = ["№", "Name", "Surname", "Coins", "Grading", "Delete"];
 
   return (
     <main className={`${theme === "dark" ? "bg-dark" : "bg-grey"} pb-7`}>
+      {enteringAnimation ? (
+        <Loader enteringText={greeting} />
+      ) : (
       <section className={`font-rem container px-2`}>
         {modals[0].isOpen ? (
           <AddStudentModal handleModal={handleModalToggle} />
@@ -480,6 +507,7 @@ const ExactGroup = () => {
           </Card>
         )}
       </section>
+      )}
     </main>
   );
 };
