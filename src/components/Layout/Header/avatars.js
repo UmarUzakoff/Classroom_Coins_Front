@@ -1,3 +1,4 @@
+import hijabi from "../../../images/hijabi.png";
 const avatars = [
   {
     name: "Sevinch",
@@ -43,6 +44,20 @@ const avatars = [
     name: "Abdusolih",
     avatar:
       "https://i.pinimg.com/564x/e2/d3/a2/e2d3a2616bdad7166567458c319a2146.jpg",
+  },
+  {
+    name: "Munisa",
+    avatar: hijabi,
+  },
+  {
+    name: "Ibrohim",
+    avatar:
+      "https://i.pinimg.com/736x/1e/ce/bc/1ecebc82a1a91451ab98c5b4d0299b2b.jpg",
+  },
+  {
+    name: "Bexruz",
+    avatar:
+      "https://i.pinimg.com/564x/aa/6b/62/aa6b62073ba34715bf3f46c4d6ea6a63.jpg",
   },
 ];
 

@@ -1,13 +1,13 @@
-import sevinch_certificate from "../../images/certificates/sevinch.png";
-import javohir_certificate from "../../images/certificates/javohir.png";
-import fayoziddin_certificate from "../../images/certificates/fayoziddin.png";
-import shoxsulton_certificate from "../../images/certificates/shoxsulton.png";
-import komoliddin_certificate from "../../images/certificates/komoliddin.png";
-import shoxdiyor_certificate from "../../images/certificates/shoxdiyor.png";
-import muhammadamin_certificate from "../../images/certificates/muhammadamin.png";
-import muhammadamin_gold from "../../images/certificates/muhammadamin_gold.png";
-import komoliddin_bronze from "../../images/certificates/komoliddin_bronze.png";
-import abdusolih_silver from "../../images/certificates/abdusolih_silver.png";
+import sevinch_certificate from "../../images/certificates/gw-13/sevinch.png";
+import javohir_certificate from "../../images/certificates/gw-13/javohir.png";
+import fayoziddin_certificate from "../../images/certificates/gw-13/fayoziddin.png";
+import shoxsulton_certificate from "../../images/certificates/gw-13/shoxsulton.png";
+import komoliddin_certificate from "../../images/certificates/gw-15/komoliddin.png";
+import shoxdiyor_certificate from "../../images/certificates/gw-15/shoxdiyor.png";
+import muhammadamin_certificate from "../../images/certificates/gw-15/muhammadamin.png";
+import muhammadamin_gold from "../../images/certificates/gw-15/muhammadamin_gold.png";
+import komoliddin_bronze from "../../images/certificates/gw-15/komoliddin_bronze.png";
+import abdusolih_silver from "../../images/certificates/gw-15/abdusolih_silver.png";
 import memories1 from "../../images/memories/gw-13/month1/memories1.jpg";
 import memories2 from "../../images/memories/gw-13/month1/memories2.jpg";
 import memories3 from "../../images/memories/gw-13/month1/memories3.jpg";
@@ -16,10 +16,13 @@ import memories2_gw15 from "../../images/memories/gw-15/month1/memories2.jpg";
 import memories3_gw15 from "../../images/memories/gw-15/month1/memories3.jpg";
 import memories4_gw15 from "../../images/memories/gw-15/month1/memories4.jpg";
 import memories1_gw15_month2 from "../../images/memories/gw-15/month2/memories1.jpg";
-import shoxsulton_2_certificate from "../../images/certificates/Shoxsulton_2.png";
-import alibek_certificate from "../../images/certificates/Alibek.png";
+import shoxsulton_2_certificate from "../../images/certificates/gw-13/Shoxsulton_2.png";
+import alibek_certificate from "../../images/certificates/gw-13/Alibek.png";
 import memory_hackathon from "../../images/memories/gw-13/month3/hackaton.jpg";
 import memory_3month_gw13 from "../../images/memories/gw-13/month3/memory.jpg";
+import ibrohim_certificate from "../../images/certificates/gw-23/Ibrohim.png";
+import munisa_certificate from "../../images/certificates/gw-23/Munisa.png";
+import bexruz_certificate from "../../images/certificates/gw-23/Bexruz.png";
 
 const winnersData = [
   {
@@ -179,6 +182,42 @@ const winnersData = [
             rank: 3,
             avatar:
               "https://i.pinimg.com/564x/f5/bc/31/f5bc31d68868b93ff33fe444babb3eef.jpg",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 16,
+    classroomName: "GW-23",
+    months: [
+      {
+        monthNum: 1,
+        memories: [],
+        topStudents: [
+          {
+            fullName: "Ibrohim Hamidov",
+            certificate: ibrohim_certificate,
+            coins: 255,
+            rank: 1,
+            avatar:
+              "https://i.pinimg.com/736x/1e/ce/bc/1ecebc82a1a91451ab98c5b4d0299b2b.jpg",
+          },
+          {
+            fullName: "Munisa Shoniyozova",
+            certificate: munisa_certificate,
+            coins: 211,
+            rank: 2,
+            avatar:
+              "https://cdn.gencraft.com/prod/user/e1572b3c-1a7b-46e1-8161-eb8bb2a3aca3/f6b3270d-b83d-4055-946a-eb2e0c61c203/images/image1_0.jpg?Expires=1698582385&Signature=FHQ6As7pzhnxtk8YvmyqKIZoVz-aZ3UoBTeIJyET~3mFUNplubuLcT~LoW~EtuQlyS6gc7K402LvFM3SXszyGs65zwN0hfL7DQNMG7mfM2Z8TdO7ESJmWv00xts66uexInNilzyA5qNg2Mhq4Etxp3w1V1ygyrH-bjBzQzOw7FwxNZq-xJb3ZjZ4KsqSNRinp~aPq9kQqSgpuW-N9Jvk0wCBRM6SLiNQ5no8ZjwjbCTZjkIgydL9icVK0Ead~H13uWzJKqcfuZHpdTMip5oH7XJB-fyipCwVg7LMWobK8X8G8TxLkSSZz0wHog9XoQKZKF8692phHO~Kjm18gY2~dg__&Key-Pair-Id=K3RDDB1TZ8BHT8",
+          },
+          {
+            fullName: "Bexruz Normurodov",
+            certificate: bexruz_certificate,
+            coins: 205,
+            rank: 3,
+            avatar:
+              "https://i.pinimg.com/564x/aa/6b/62/aa6b62073ba34715bf3f46c4d6ea6a63.jpg",
           },
         ],
       },
