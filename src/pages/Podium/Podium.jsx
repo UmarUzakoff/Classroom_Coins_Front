@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { WinnersPodium } from "winner-podium";
 import { ThemeApi } from "../../context/themeContext";
 import { useNavigate, useParams } from "react-router-dom";
-import { getAccessTokenFromLocalStorage } from "../../utils/storage";
-import { FaDownload, FaMedal } from "react-icons/fa";
+import { getAccessTokenFromLocalStorage, getRoleFromStorage } from "../../utils/storage";
+import { FaDownload, FaHome, FaMedal } from "react-icons/fa";
 import { Button, ButtonGroup } from "@material-tailwind/react";
 import BackBtn from "../../components/BackBtn/BackBtn";
 import CertificateModal from "../../components/Modals/Certificate";
@@ -15,6 +15,8 @@ import Confetti from "react-confetti";
 import MemoriesCarousel from "./Carousel";
 
 const Podium = () => {
+  const role = getRoleFromStorage();
+
   const { theme } = useContext(ThemeApi);
 
   const navigate = useNavigate();
@@ -110,7 +112,20 @@ const Podium = () => {
         />
       ) : null}
       <div className="container flex justify-center flex-col gap-10">
-        <BackBtn />
+        <div className="flex flex-row items-center sm:justify-start justify-between gap-5">
+          <BackBtn />
+          <div
+            onClick={() => navigate(-1)}
+            className={`${role === "admin" ? "" : "hidden"} cursor-pointer px-5 py-2.5 text-center relative rounded group text-white font-medium`}>
+            <span className="absolute top-0 left-0 w-full h-full rounded opacity-50 filter blur-sm bg-gradient-to-br from-black to-gray-200"></span>
+            <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded opacity-50 from-black to-gray-200"></span>
+            <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-black to-gray-200"></span>
+            <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded bg-gradient-to-br to-gray-500 from-black"></span>
+            <span className="relative flex flex-row items-center gap-1">
+              <FaHome /> Go back
+            </span>
+          </div>
+        </div>
         <WinnersPodium
           options={{
             container: {
@@ -169,14 +184,14 @@ const Podium = () => {
                 <div className="flex justify-center flex-col items-center gap-1">
                   <img
                     src={goldStudent.avatar}
-                    className="sm:h-24 sm:w-24 h-16 w-16 object-cover rounded-full"
+                    className="sm:h-24 sm:w-24 h-16 w-16 object-cover rounded-full border-double border-4 border-yellow-600 shadow-[0_20px_50px_rgba(255,_213,_0,_0.7)] animate-once animate-fade-down animate-delay-300"
                     alt="avatar"
                   />
                   <ButtonGroup
                     size="sm"
                     color={`${theme === "dark" ? "deep-orange" : "gray"}`}
                     variant="text"
-                    className={`rounded-xl border ${
+                    className={`rounded-xl border z-50 ${
                       theme === "dark" ? "border-gray-700" : "border-orange"
                     } `}>
                     <Button
@@ -201,14 +216,14 @@ const Podium = () => {
                 <div className="flex justify-center flex-col items-center gap-1">
                   <img
                     src={silverStudent.avatar}
-                    className="sm:h-24 sm:w-24 h-16 w-16 object-cover rounded-full"
+                    className="sm:h-24 sm:w-24 h-16 w-16 object-cover rounded-full border-double border-4 border-blue-600 shadow-[0_20px_50px_rgba(0,_208,_204,_0.7)] animate-once animate-fade-down animate-delay-500"
                     alt="avatar"
                   />
                   <ButtonGroup
                     size="sm"
                     color={`${theme === "dark" ? "deep-orange" : "gray"}`}
                     variant="text"
-                    className={`rounded-xl border ${
+                    className={`rounded-xl border z-50 ${
                       theme === "dark" ? "border-gray-700" : "border-orange"
                     } `}>
                     <Button
@@ -233,14 +248,14 @@ const Podium = () => {
                 <div className="flex justify-center flex-col items-center gap-1">
                   <img
                     src={bronzeStudent.avatar}
-                    className="sm:h-24 sm:w-24 h-16 w-16 object-cover rounded-full"
+                    className="sm:h-24 sm:w-24 h-16 w-16 object-cover rounded-full border-double border-4 border-yellow-900 shadow-[0_20px_50px_rgba(255,_132,_0,_0.7)] animate-once animate-fade-down animate-delay-700"
                     alt="avatar"
                   />
                   <ButtonGroup
                     size="sm"
                     color={`${theme === "dark" ? "deep-orange" : "gray"}`}
                     variant="text"
-                    className={`rounded-xl border ${
+                    className={`rounded-xl border z-50 ${
                       theme === "dark" ? "border-gray-700" : "border-orange"
                     } `}>
                     <Button

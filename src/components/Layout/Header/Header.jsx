@@ -58,8 +58,7 @@ export default function Header() {
     fetchData(token);
   }, []);
 
-  const findAvatar = avatars.find((a) => a.name === user.name);
-
+  const findAvatar = avatars.find((a) => a.name === user.name && a.surname === user.surname);
   const avatar = findAvatar
     ? findAvatar.avatar
     : "https://whatsondisneyplus.com/wp-content/uploads/2021/06/luca-avatar-WODP.png";

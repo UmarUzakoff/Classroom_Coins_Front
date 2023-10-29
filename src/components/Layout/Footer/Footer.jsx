@@ -27,22 +27,22 @@ const Footer = () => {
             <li>
               <a
                 href="https://t.me/coddycamp"
-                className="mr-4 hover:underline md:mr-6 ">
-                <FaTelegram className="w-7 h-7 animate-pulse transition duration-300 hover:text-orange hover:pt-1" />
+                className="mr-4 md:mr-6 ">
+                <FaTelegram className="w-7 h-7 animate-shadow animate-infinite transition duration-300 hover:text-orange " />
               </a>
             </li>
             <li>
               <a
                 href="https://www.youtube.com/watch?v=udlj9LmilfE"
-                className="mr-4 hover:underline md:mr-6">
-                <FaYoutube className="w-7 h-7 animate-pulse transition duration-300 hover:text-orange hover:pt-1" />
+                className="mr-4 md:mr-6">
+                <FaYoutube className="w-7 h-7 animate-shadow animate-infinite transition duration-300 hover:text-orange " />
               </a>
             </li>
             <li>
               <a
                 href="https://www.instagram.com/coddycamp_it_akademiya/"
-                className="mr-4 hover:underline md:mr-6 ">
-                <FaInstagram className="w-7 h-7 animate-pulse transition duration-300 hover:text-orange hover:pt-1" />
+                className="mr-4 md:mr-6">
+                <FaInstagram className="w-7 h-7 animate-shadow animate-infinite transition duration-300 hover:text-orange " />
               </a>
             </li>
           </ul>

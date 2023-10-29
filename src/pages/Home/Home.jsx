@@ -86,8 +86,6 @@ const Home = () => {
   let motivationalEmoji;
   let enteringText;
 
-  console.log(studentsPlace);
-
   if (studentsPlace === 1) {
     enteringText = "Time to dominate again!";
     motivationalText = "You are truly exceptional!";
@@ -144,7 +142,7 @@ const Home = () => {
         <div className="container">
           <hr />
           <div className="my-5 flex font-rem flex-row flex-wrap sm:flex-nowrap justify-center gap-x-10 sm:justify-between items-center px-5">
-            <h1 className="animate-text bg-gradient-to-r from-gray-700 via-gray-400 to-orange bg-clip-text text-transparent text-3xl xl:text-5xl font-black text-center">
+            <h1 className="animate-text bg-gradient-to-r from-gray-700 via-gray-400 to-orange bg-clip-text text-transparent text-2xl xl:text-5xl font-black text-center">
               {data.class_name}
             </h1>
             <h2
@@ -227,9 +225,9 @@ const Home = () => {
                     ${
                       theme === "dark"
                         ? `${
-                            user.name === name ? "bg-gray-700" : "bg-gray-900"
+                            user.name === name && user.surname === surname ? "bg-gray-700" : "bg-gray-900"
                           }`
-                        : `${user.name === name ? "bg-gray-400" : "bg-grey"}`
+                        : `${user.name === name && user.surname === surname ? "bg-gray-400" : "bg-grey"}`
                     } `}>
                         <td className={classes}>
                           <Typography
