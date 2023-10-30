@@ -23,6 +23,7 @@ import memory_3month_gw13 from "../../images/memories/gw-13/month3/memory.jpg";
 import ibrohim_certificate from "../../images/certificates/gw-23/Ibrohim.png";
 import munisa_certificate from "../../images/certificates/gw-23/Munisa.png";
 import bexruz_certificate from "../../images/certificates/gw-23/Bexruz.png";
+import hijabi from "../../images/hijabi.png"
 
 const winnersData = [
   {
@@ -208,8 +209,7 @@ const winnersData = [
             certificate: munisa_certificate,
             coins: 211,
             rank: 2,
-            avatar:
-              "https://cdn.gencraft.com/prod/user/e1572b3c-1a7b-46e1-8161-eb8bb2a3aca3/f6b3270d-b83d-4055-946a-eb2e0c61c203/images/image1_0.jpg?Expires=1698582385&Signature=FHQ6As7pzhnxtk8YvmyqKIZoVz-aZ3UoBTeIJyET~3mFUNplubuLcT~LoW~EtuQlyS6gc7K402LvFM3SXszyGs65zwN0hfL7DQNMG7mfM2Z8TdO7ESJmWv00xts66uexInNilzyA5qNg2Mhq4Etxp3w1V1ygyrH-bjBzQzOw7FwxNZq-xJb3ZjZ4KsqSNRinp~aPq9kQqSgpuW-N9Jvk0wCBRM6SLiNQ5no8ZjwjbCTZjkIgydL9icVK0Ead~H13uWzJKqcfuZHpdTMip5oH7XJB-fyipCwVg7LMWobK8X8G8TxLkSSZz0wHog9XoQKZKF8692phHO~Kjm18gY2~dg__&Key-Pair-Id=K3RDDB1TZ8BHT8",
+            avatar: hijabi,
           },
           {
             fullName: "Bexruz Normurodov",
