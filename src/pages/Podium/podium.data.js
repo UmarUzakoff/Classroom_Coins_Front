@@ -23,7 +23,10 @@ import memory_3month_gw13 from "../../images/memories/gw-13/month3/memory.jpg";
 import ibrohim_certificate from "../../images/certificates/gw-23/Ibrohim.png";
 import munisa_certificate from "../../images/certificates/gw-23/Munisa.png";
 import bexruz_certificate from "../../images/certificates/gw-23/Bexruz.png";
-import hijabi from "../../images/hijabi.png"
+import hijabi from "../../images/hijabi.png";
+import mem2 from "../../images/memories/gw-23/mem2.jpg";
+import mem from "../../images/memories/gw-23/memory.jpg";
+import mem3 from "../../images/memories/gw-23/mem3.jpg";
 
 const winnersData = [
   {
@@ -92,7 +95,7 @@ const winnersData = [
       },
       {
         monthNum: 3,
-        memories: [memory_hackathon, memory_3month_gw13],
+        memories: [memory_hackathon, memory_3month_gw13, mem2, mem3],
         topStudents: [
           {
             fullName: "Sevinch Sayfutdinova",
@@ -194,7 +197,7 @@ const winnersData = [
     months: [
       {
         monthNum: 1,
-        memories: [],
+        memories: [mem, mem2, mem3],
         topStudents: [
           {
             fullName: "Ibrohim Hamidov",
