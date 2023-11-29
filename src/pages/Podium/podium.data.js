@@ -4,18 +4,10 @@ import fayoziddin_certificate from "../../images/certificates/gw-13/fayoziddin.p
 import shoxsulton_certificate from "../../images/certificates/gw-13/shoxsulton.png";
 import komoliddin_certificate from "../../images/certificates/gw-15/komoliddin.png";
 import shoxdiyor_certificate from "../../images/certificates/gw-15/shoxdiyor.png";
-import muhammadamin_certificate from "../../images/certificates/gw-15/muhammadamin.png";
-import muhammadamin_gold from "../../images/certificates/gw-15/muhammadamin_gold.png";
-import komoliddin_bronze from "../../images/certificates/gw-15/komoliddin_bronze.png";
-import abdusolih_silver from "../../images/certificates/gw-15/abdusolih_silver.png";
 import memories1 from "../../images/memories/gw-13/month1/memories1.jpg";
 import memories2 from "../../images/memories/gw-13/month1/memories2.jpg";
 import memories3 from "../../images/memories/gw-13/month1/memories3.jpg";
 import lounge_zone from "../../images/memories/gw-13/month2/lounge_zone.jpg";
-import memories2_gw15 from "../../images/memories/gw-15/month1/memories2.jpg";
-import memories3_gw15 from "../../images/memories/gw-15/month1/memories3.jpg";
-import memories4_gw15 from "../../images/memories/gw-15/month1/memories4.jpg";
-import memories1_gw15_month2 from "../../images/memories/gw-15/month2/memories1.jpg";
 import shoxsulton_2_certificate from "../../images/certificates/gw-13/Shoxsulton_2.png";
 import alibek_certificate from "../../images/certificates/gw-13/Alibek.png";
 import memory_hackathon from "../../images/memories/gw-13/month3/hackaton.jpg";
@@ -123,69 +115,33 @@ const winnersData = [
           },
         ],
       },
-    ],
-  },
-  {
-    id: 2,
-    classroomName: "GW-15",
-    months: [
       {
-        monthNum: 1,
-        memories: [memories2_gw15, memories3_gw15, memories4_gw15],
+        monthNum: 3,
+        memories: [],
         topStudents: [
           {
-            fullName: "Komoliddin Zayniddinov",
-            certificate: komoliddin_certificate,
-            coins: 310,
+            fullName: "Sevinch Sayfutdinova",
+            certificate: sevinch_certificate,
+            coins: 261,
             rank: 1,
             avatar:
-              "https://i.pinimg.com/564x/f5/bc/31/f5bc31d68868b93ff33fe444babb3eef.jpg",
+              "https://i.pinimg.com/564x/f7/0d/6c/f70d6c4271126184ce5cce40a53611a9.jpg",
           },
           {
-            fullName: "Shoxdiyor Shirinboyev",
-            certificate: shoxdiyor_certificate,
-            coins: 286,
+            fullName: "Javohir Murodov",
+            certificate: javohir_certificate,
+            coins: 209,
             rank: 2,
             avatar:
-              "https://i.pinimg.com/564x/0b/b4/10/0bb410482ac53dbfd80d571023af8f60.jpg",
+              "https://i.pinimg.com/564x/0e/87/6e/0e876e130d0844af9105f05398a28abc.jpg",
           },
           {
-            fullName: "MuhammadAmin Botirov",
-            certificate: muhammadamin_certificate,
-            coins: 197,
+            fullName: "Fazliddin Abdusattorov",
+            certificate: alibek_certificate,
+            coins: 180,
             rank: 3,
             avatar:
-              "https://i.pinimg.com/564x/ef/91/b1/ef91b151821245ed97c4bcee71687a6f.jpg",
-          },
-        ],
-      },
-      {
-        monthNum: 2,
-        memories: [memories1_gw15_month2],
-        topStudents: [
-          {
-            fullName: "MuhammadAmin Botirov",
-            certificate: muhammadamin_gold,
-            coins: 311,
-            rank: 1,
-            avatar:
-              "https://i.pinimg.com/564x/ef/91/b1/ef91b151821245ed97c4bcee71687a6f.jpg",
-          },
-          {
-            fullName: "Abdusolih Xalilov",
-            certificate: abdusolih_silver,
-            coins: 251,
-            rank: 2,
-            avatar:
-              "https://i.pinimg.com/564x/e2/d3/a2/e2d3a2616bdad7166567458c319a2146.jpg",
-          },
-          {
-            fullName: "Komoliddin Zayniddinov",
-            certificate: komoliddin_bronze,
-            coins: 200,
-            rank: 3,
-            avatar:
-              "https://i.pinimg.com/564x/f5/bc/31/f5bc31d68868b93ff33fe444babb3eef.jpg",
+              "https://i.pinimg.com/564x/68/6b/64/686b64e06c20f61bb6c5d63c92abad92.jpg",
           },
         ],
       },
