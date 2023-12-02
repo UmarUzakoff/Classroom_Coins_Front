@@ -2,12 +2,14 @@ import sevinch_certificate from "../../images/certificates/gw-13/sevinch.png";
 import javohir_certificate from "../../images/certificates/gw-13/javohir.png";
 import fayoziddin_certificate from "../../images/certificates/gw-13/fayoziddin.png";
 import shoxsulton_certificate from "../../images/certificates/gw-13/shoxsulton.png";
+import fazliddin_certificate from "../../images/certificates/gw-13/fazliddin.png";
 import komoliddin_certificate from "../../images/certificates/gw-15/komoliddin.png";
 import shoxdiyor_certificate from "../../images/certificates/gw-15/shoxdiyor.png";
 import memories1 from "../../images/memories/gw-13/month1/memories1.jpg";
 import memories2 from "../../images/memories/gw-13/month1/memories2.jpg";
 import memories3 from "../../images/memories/gw-13/month1/memories3.jpg";
 import lounge_zone from "../../images/memories/gw-13/month2/lounge_zone.jpg";
+import evos from "../../images/memories/gw-13/month2/memories1.jpg";
 import shoxsulton_2_certificate from "../../images/certificates/gw-13/Shoxsulton_2.png";
 import alibek_certificate from "../../images/certificates/gw-13/Alibek.png";
 import memory_hackathon from "../../images/memories/gw-13/month3/hackaton.jpg";
@@ -57,7 +59,7 @@ const winnersData = [
       },
       {
         monthNum: 2,
-        memories: [lounge_zone],
+        memories: [lounge_zone, evos],
         topStudents: [
           {
             fullName: "Sevinch Sayfutdinova",
@@ -133,11 +135,11 @@ const winnersData = [
             coins: 209,
             rank: 2,
             avatar:
-              "https://i.pinimg.com/564x/0e/87/6e/0e876e130d0844af9105f05398a28abc.jpg",
+              "https://i.pinimg.com/474x/88/b3/e4/88b3e42479fb2d3440681af9ef9ab95b.jpg",
           },
           {
             fullName: "Fazliddin Abdusattorov",
-            certificate: alibek_certificate,
+            certificate: fazliddin_certificate,
             coins: 180,
             rank: 3,
             avatar:
