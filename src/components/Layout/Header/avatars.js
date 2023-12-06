@@ -1,4 +1,5 @@
 import hijabi from "../../../images/hijabi.png";
+import abdurahmon from "../../../images/abdurahmon.jpg";
 const avatars = [
   {
     name: "Sevinch",
@@ -70,6 +71,29 @@ const avatars = [
     surname: "Normurodov",
     avatar:
       "https://i.pinimg.com/564x/aa/6b/62/aa6b62073ba34715bf3f46c4d6ea6a63.jpg",
+  },
+  {
+    name: "Umar",
+    surname: "Ulug'bekov",
+    avatar:
+      "https://i.pinimg.com/564x/e4/c1/2e/e4c12ec408b3da07fa916c2726d29c6a.jpg",
+  },
+  {
+    name: "Fazliddin",
+    surname: "Abdusattorov",
+    avatar:
+      "https://i.pinimg.com/736x/11/38/f0/1138f0ce82a5e6d1c505aa423bc8f819.jpg",
+  },
+  {
+    name: "Diyor",
+    surname: "Kozimov",
+    avatar:
+      "https://i.pinimg.com/564x/68/6b/64/686b64e06c20f61bb6c5d63c92abad92.jpg",
+  },
+  {
+    name: "Abdurahmon",
+    surname: "Ziyodov",
+    avatar: abdurahmon,
   },
 ];
 

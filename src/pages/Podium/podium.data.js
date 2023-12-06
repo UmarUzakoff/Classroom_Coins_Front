@@ -18,9 +18,13 @@ import ibrohim_certificate from "../../images/certificates/gw-23/Ibrohim.png";
 import munisa_certificate from "../../images/certificates/gw-23/Munisa.png";
 import bexruz_certificate from "../../images/certificates/gw-23/Bexruz.png";
 import hijabi from "../../images/hijabi.png";
+import abdurahmon from "../../images/abdurahmon.jpg";
 import mem2 from "../../images/memories/gw-23/mem2.jpg";
 import mem from "../../images/memories/gw-23/memory.jpg";
 import mem3 from "../../images/memories/gw-23/mem3.jpg";
+import abdurahmon_certificate from "../../images/certificates/gw-30/Abdurahmon.png";
+import diyor_certificate from "../../images/certificates/gw-30/Diyor.png";
+import umar_certificate from "../../images/certificates/gw-30/Umar.png";
 
 const winnersData = [
   {
@@ -143,7 +147,7 @@ const winnersData = [
             coins: 180,
             rank: 3,
             avatar:
-              "https://i.pinimg.com/564x/68/6b/64/686b64e06c20f61bb6c5d63c92abad92.jpg",
+              "https://i.pinimg.com/736x/11/38/f0/1138f0ce82a5e6d1c505aa423bc8f819.jpg",
           },
         ],
       },
@@ -179,6 +183,41 @@ const winnersData = [
             rank: 3,
             avatar:
               "https://i.pinimg.com/564x/aa/6b/62/aa6b62073ba34715bf3f46c4d6ea6a63.jpg",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 18,
+    classroomName: "GW-30",
+    months: [
+      {
+        monthNum: 1,
+        memories: [],
+        topStudents: [
+          {
+            fullName: "Abdurahmon Ziyodov",
+            certificate: abdurahmon_certificate,
+            coins: 221,
+            rank: 1,
+            avatar: abdurahmon,
+          },
+          {
+            fullName: "Diyor Kozimov",
+            certificate: diyor_certificate,
+            coins: 217,
+            rank: 2,
+            avatar:
+              "https://i.pinimg.com/564x/68/6b/64/686b64e06c20f61bb6c5d63c92abad92.jpg",
+          },
+          {
+            fullName: "Umar Ulug'bekov",
+            certificate: umar_certificate,
+            coins: 213,
+            rank: 3,
+            avatar:
+              "https://i.pinimg.com/564x/e4/c1/2e/e4c12ec408b3da07fa916c2726d29c6a.jpg",
           },
         ],
       },
