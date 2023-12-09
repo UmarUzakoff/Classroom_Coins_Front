@@ -16,7 +16,9 @@ import memory_hackathon from "../../images/memories/gw-13/month3/hackaton.jpg";
 import memory_3month_gw13 from "../../images/memories/gw-13/month3/memory.jpg";
 import ibrohim_certificate from "../../images/certificates/gw-23/Ibrohim.png";
 import munisa_certificate from "../../images/certificates/gw-23/Munisa.png";
+import munisa_certificate3 from "../../images/certificates/gw-23/Munisa_3.png";
 import bexruz_certificate from "../../images/certificates/gw-23/Bexruz.png";
+import bexruz_certificate1 from "../../images/certificates/gw-23/Bexruz_1.png";
 import hijabi from "../../images/hijabi.png";
 import abdurahmon from "../../images/abdurahmon.jpg";
 import mem2 from "../../images/memories/gw-23/mem2.jpg";
@@ -25,6 +27,7 @@ import mem3 from "../../images/memories/gw-23/mem3.jpg";
 import abdurahmon_certificate from "../../images/certificates/gw-30/Abdurahmon.png";
 import diyor_certificate from "../../images/certificates/gw-30/Diyor.png";
 import umar_certificate from "../../images/certificates/gw-30/Umar.png";
+import samandar_certificate from "../../images/certificates/gw-23/Samandar.png";
 
 const winnersData = [
   {
@@ -183,6 +186,35 @@ const winnersData = [
             rank: 3,
             avatar:
               "https://i.pinimg.com/564x/aa/6b/62/aa6b62073ba34715bf3f46c4d6ea6a63.jpg",
+          },
+        ],
+      },
+      {
+        monthNum: 2,
+        memories: [],
+        topStudents: [
+          {
+            fullName: "Bexruz Normurodov",
+            certificate: bexruz_certificate1,
+            coins: 270,
+            rank: 1,
+            avatar:
+              "https://i.pinimg.com/564x/aa/6b/62/aa6b62073ba34715bf3f46c4d6ea6a63.jpg",
+          },
+          {
+            fullName: "Samandar Xamidov",
+            certificate: samandar_certificate,
+            coins: 232,
+            rank: 2,
+            avatar:
+              "https://i.pinimg.com/564x/30/22/52/302252001ede68563e4c1fc062533857.jpg",
+          },
+          {
+            fullName: "Munisa Shoniyozova",
+            certificate: munisa_certificate3,
+            coins: 220,
+            rank: 3,
+            avatar: hijabi,
           },
         ],
       },

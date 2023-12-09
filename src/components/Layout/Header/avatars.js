@@ -95,6 +95,12 @@ const avatars = [
     surname: "Ziyodov",
     avatar: abdurahmon,
   },
+  {
+    name: "Samandar",
+    surname: "Xamidov",
+    avatar:
+      "https://i.pinimg.com/564x/30/22/52/302252001ede68563e4c1fc062533857.jpg",
+  },
 ];
 
 export default avatars;
