@@ -28,6 +28,16 @@ import abdurahmon_certificate from "../../images/certificates/gw-30/Abdurahmon.p
 import diyor_certificate from "../../images/certificates/gw-30/Diyor.png";
 import umar_certificate from "../../images/certificates/gw-30/Umar.png";
 import samandar_certificate from "../../images/certificates/gw-23/Samandar.png";
+import otirish from "../../images/memories/o'tirish.jpg";
+import otirish_gw23_samandar from "../../images/memories/gw-23/2-oy/gw_23_samandar.jpg";
+import otirish_gw23_bexruz from "../../images/memories/gw-23/2-oy/gw_23_bexruz.jpg";
+import otirish_gw23_munisa from "../../images/memories/gw-23/2-oy/gw_23_munisa.jpg";
+import otirish_gw13_sevinch from "../../images/memories/gw-13/month4/gw_13_sevinch.jpg";
+import otirish_gw13_sevinch2 from "../../images/memories/gw-13/month4/gw_13_sevinch2.jpg";
+import otirish_gw13_javohir from "../../images/memories/gw-13/month4/gw_13_javohir.jpg";
+import otirish_gw30_diyor from "../../images/memories/gw-30/1-oy/gw_30_diyor.png";
+import otirish_gw30_firdavs from "../../images/memories/gw-30/1-oy/gw_30_firdavs.jpg";
+import otirish_gw30_umar from "../../images/memories/gw-30/1-oy/gw_30_umar.jpg";
 
 const winnersData = [
   {
@@ -126,7 +136,12 @@ const winnersData = [
       },
       {
         monthNum: 4,
-        memories: [],
+        memories: [
+          otirish,
+          otirish_gw13_sevinch,
+          otirish_gw13_sevinch2,
+          otirish_gw13_javohir,
+        ],
         topStudents: [
           {
             fullName: "Sevinch Sayfutdinova",
@@ -191,7 +206,12 @@ const winnersData = [
       },
       {
         monthNum: 2,
-        memories: [],
+        memories: [
+          otirish,
+          otirish_gw23_samandar,
+          otirish_gw23_munisa,
+          otirish_gw23_bexruz,
+        ],
         topStudents: [
           {
             fullName: "Bexruz Normurodov",
@@ -226,7 +246,12 @@ const winnersData = [
     months: [
       {
         monthNum: 1,
-        memories: [],
+        memories: [
+          otirish,
+          otirish_gw30_diyor,
+          otirish_gw30_firdavs,
+          otirish_gw30_umar,
+        ],
         topStudents: [
           {
             fullName: "Abdurahmon Ziyodov",
