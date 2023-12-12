@@ -38,6 +38,7 @@ import otirish_gw13_javohir from "../../images/memories/gw-13/month4/gw_13_javoh
 import otirish_gw30_diyor from "../../images/memories/gw-30/1-oy/gw_30_diyor.png";
 import otirish_gw30_firdavs from "../../images/memories/gw-30/1-oy/gw_30_firdavs.jpg";
 import otirish_gw30_umar from "../../images/memories/gw-30/1-oy/gw_30_umar.jpg";
+import otirish_gw30_abdurahmon from "../../images/memories/gw-30/1-oy/gw_30_abdurahmon.jpg";
 
 const winnersData = [
   {
@@ -251,6 +252,7 @@ const winnersData = [
           otirish_gw30_diyor,
           otirish_gw30_firdavs,
           otirish_gw30_umar,
+          otirish_gw30_abdurahmon,
         ],
         topStudents: [
           {
