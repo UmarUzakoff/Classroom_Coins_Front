@@ -29,6 +29,7 @@ import diyor_certificate from "../../images/certificates/gw-30/Diyor.png";
 import umar_certificate from "../../images/certificates/gw-30/Umar.png";
 import samandar_certificate from "../../images/certificates/gw-23/Samandar.png";
 import otirish from "../../images/memories/o'tirish.jpg";
+import ps from "../../images/memories/ps.jpg";
 import otirish_gw23_samandar from "../../images/memories/gw-23/2-oy/gw_23_samandar.jpg";
 import otirish_gw23_bexruz from "../../images/memories/gw-23/2-oy/gw_23_bexruz.jpg";
 import otirish_gw23_munisa from "../../images/memories/gw-23/2-oy/gw_23_munisa.jpg";
@@ -139,6 +140,7 @@ const winnersData = [
         monthNum: 4,
         memories: [
           otirish,
+          ps,
           otirish_gw13_sevinch,
           otirish_gw13_sevinch2,
           otirish_gw13_javohir,
@@ -209,6 +211,7 @@ const winnersData = [
         monthNum: 2,
         memories: [
           otirish,
+          ps,
           otirish_gw23_samandar,
           otirish_gw23_munisa,
           otirish_gw23_bexruz,
@@ -249,6 +252,7 @@ const winnersData = [
         monthNum: 1,
         memories: [
           otirish,
+          ps,
           otirish_gw30_diyor,
           otirish_gw30_firdavs,
           otirish_gw30_umar,
