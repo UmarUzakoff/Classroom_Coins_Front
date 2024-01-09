@@ -46,7 +46,7 @@ const Dashboard = () => {
     <main
       className={`${
         theme === "dark" ? "bg-dark" : "bg-grey"
-      } font-rem px-3 h-[70vh] sm:h-[65vh]`}>
+      } font-rem px-3`}>
       <div className="container">
         <hr />
         <div className="flex flex-col justify-center items-center gap-2 my-10">
