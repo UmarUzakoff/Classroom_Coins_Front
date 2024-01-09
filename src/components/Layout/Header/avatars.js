@@ -79,8 +79,8 @@ const avatars = [
       "https://i.pinimg.com/564x/e4/c1/2e/e4c12ec408b3da07fa916c2726d29c6a.jpg",
   },
   {
-    name: "Fazliddin",
-    surname: "Abdusattorov",
+    name: "Ibrohim",
+    surname: "Akmaljonov",
     avatar:
       "https://i.pinimg.com/736x/11/38/f0/1138f0ce82a5e6d1c505aa423bc8f819.jpg",
   },
@@ -100,6 +100,12 @@ const avatars = [
     surname: "Xamidov",
     avatar:
       "https://i.pinimg.com/564x/30/22/52/302252001ede68563e4c1fc062533857.jpg",
+  },
+  {
+    name: "Firdavs",
+    surname: "Xalikov",
+    avatar:
+      "https://i.pinimg.com/564x/4e/20/5b/4e205b3bce3f58bde44117493fdd79de.jpg",
   },
 ];
 
