@@ -22,6 +22,7 @@ import BackBtn from "../../components/BackBtn/BackBtn";
 import { PodiumBtn } from "./PodiumBtn";
 import { Flip, LightSpeed } from "react-reveal";
 import { Loader } from "../../components/Loader/Loader";
+import StudyStepper from "../Stepper/Stepper";
 
 const ExactGroup = () => {
   const { theme } = useContext(ThemeApi);
@@ -215,7 +216,7 @@ const ExactGroup = () => {
     "What's up, teacher buddy?",
     "Greetings, grading guru!",
     "What's up, teacher buddy?",
-    "Hey, assessment pro!"
+    "Hey, assessment pro!",
   ];
 
   const randomGreetingIndex = Math.floor(Math.random() * 5) + 1;
@@ -228,285 +229,286 @@ const ExactGroup = () => {
       {enteringAnimation ? (
         <Loader enteringText={greeting} />
       ) : (
-      <section className={`font-rem container px-2`}>
-        {modals[0].isOpen ? (
-          <AddStudentModal handleModal={handleModalToggle} />
-        ) : null}
-        {modals[1].isOpen ? (
-          <StudentProfileModal
-            handleModal={handleModalToggle}
-            name={user.name}
-            surname={user.surname}
-            email={user.email}
-            classname={className}
-            coins={user.coins}
-          />
-        ) : null}
-        {modals[2].isOpen ? (
-          <DelModal
-            deleteClick={deleteClassroom}
-            closeClick={() => handleModalToggle(3)}
-            name={classroomProperties.class_name}
-            method={"classroom"}
-          />
-        ) : null}
-        {modals[3].isOpen ? (
-          <DelModal
-            deleteClick={resetCoins}
-            closeClick={() => handleModalToggle(4)}
-            name={classroomProperties.class_name}
-            method={"reset"}
-          />
-        ) : null}
-        {modals[4].isOpen ? (
-          <DelModal
-            deleteClick={deleteStudent}
-            id={getIdToDeleteStudent().id}
-            closeClick={() => handleModalToggle(5)}
-            name={getIdToDeleteStudent().username}
-            method={"deleteStudent"}
-          />
-        ) : null}
-        <hr />
-        <div className="flex flex-row justify-between items-center gap-1 mt-5">
-          <BackBtn />
-          <button
-            onClick={() => handleModalToggle(1)}
-            className="ml-5 sm:px-3.5 sm:py-2.5 px-2 py-1 relative rounded-full group font-medium text-white inline-block">
-            <span className="absolute top-0 left-0 w-full h-full rounded-full opacity-50 filter blur-sm bg-gradient-to-br from-gray-300 to-gray-600"></span>
-            <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded-full opacity-50 from-gray-300 to-gray-600"></span>
-            <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded-full shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-gray-300 to-gray-600"></span>
-            <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded-full bg-gradient-to-br to-gray-600 from-gray-300"></span>
-            <span className="relative flex flex-row items-center gap-1">
-              Add new student
-            </span>
-          </button>
-        </div>
-        <div className="my-7 flex flex-col lg:flex-row justify-between items-center px-5">
-          <div className="flex flex-row justify-between lg:justify-start lg:gap-20 items-center w-full">
-            <h1 className="animate-text bg-gradient-to-r from-gray-700 via-gray-400 to-orange bg-clip-text text-transparent text-xl lg:text-2xl font-black text-center">
-              {classroomProperties.class_name}
-            </h1>
-            <h2
-              className={`text-lg font-bold ${
-                theme === "dark" ? "text-white" : "text-black"
-              } flex flex-row items-center`}>
-              Total coins: &nbsp;{" "}
-              <span className="text-yellow-600 flex flex-row gap-1 items-center">
-                {classroomProperties.coins}{" "}
-                <img
-                  src={coin}
-                  className="w-5 h-5 animate-rotate-y animate-infinite"
-                  alt="coin"
-                />
-              </span>
-            </h2>
-          </div>
-          <div className="flex flex-row items-center justify-between">
-            <PodiumBtn
-              classroomId={id}
-              classname={classroomProperties.class_name}
+        <section className={`font-rem container px-2`}>
+          {modals[0].isOpen ? (
+            <AddStudentModal handleModal={handleModalToggle} />
+          ) : null}
+          {modals[1].isOpen ? (
+            <StudentProfileModal
+              handleModal={handleModalToggle}
+              name={user.name}
+              surname={user.surname}
+              email={user.email}
+              classname={className}
+              coins={user.coins}
             />
-            <div className="flex flex-row items-center gap-5">
-              <button
-                onClick={() => handleModalToggle(4)}
-                className="ml-5 px-2 py-1 relative rounded-full group font-medium text-white inline-block">
-                <span className="absolute top-0 left-0 w-full h-full rounded-full opacity-50 filter blur-sm bg-gradient-to-br from-gray-400 to-gray-700"></span>
-                <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded-full opacity-50 from-gray-400 to-gray-700"></span>
-                <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded-full shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm to-gray-400 from-gray-700"></span>
-                <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded-full bg-gradient-to-br to-gray-400 from-gray-700"></span>
-                <span className="relative flex flex-row items-center gap-1 text-sm">
-                  Reset
+          ) : null}
+          {modals[2].isOpen ? (
+            <DelModal
+              deleteClick={deleteClassroom}
+              closeClick={() => handleModalToggle(3)}
+              name={classroomProperties.class_name}
+              method={"classroom"}
+            />
+          ) : null}
+          {modals[3].isOpen ? (
+            <DelModal
+              deleteClick={resetCoins}
+              closeClick={() => handleModalToggle(4)}
+              name={classroomProperties.class_name}
+              method={"reset"}
+            />
+          ) : null}
+          {modals[4].isOpen ? (
+            <DelModal
+              deleteClick={deleteStudent}
+              id={getIdToDeleteStudent().id}
+              closeClick={() => handleModalToggle(5)}
+              name={getIdToDeleteStudent().username}
+              method={"deleteStudent"}
+            />
+          ) : null}
+          <hr />
+          <div className="flex flex-row justify-between items-center gap-1 mt-5">
+            <BackBtn />
+            <button
+              onClick={() => handleModalToggle(1)}
+              className="sm:px-3.5 sm:py-2.5 px-2 py-1 relative rounded-full group font-medium text-white inline-block">
+              <span className="absolute top-0 left-0 w-full h-full rounded-full opacity-50 filter blur-sm bg-gradient-to-br from-gray-300 to-gray-600"></span>
+              <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded-full opacity-50 from-gray-300 to-gray-600"></span>
+              <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded-full shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-gray-300 to-gray-600"></span>
+              <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded-full bg-gradient-to-br to-gray-600 from-gray-300"></span>
+              <span className="relative flex flex-row items-center gap-1">
+                Add&nbsp;new&nbsp;student
+              </span>
+            </button>
+          </div>
+          <div className="my-7 flex flex-col lg:flex-row justify-between items-center px-5">
+            <div className="flex flex-row justify-between lg:justify-start lg:gap-20 items-center w-full">
+              <h1 className="animate-text bg-gradient-to-r from-gray-700 via-gray-400 to-orange bg-clip-text text-transparent text-xl lg:text-2xl font-black text-center">
+                {classroomProperties.class_name}
+              </h1>
+              <h2
+                className={`text-lg font-bold ${
+                  theme === "dark" ? "text-white" : "text-black"
+                } flex flex-row items-center`}>
+                Total coins: &nbsp;{" "}
+                <span className="text-yellow-600 flex flex-row gap-1 items-center">
+                  {classroomProperties.coins}{" "}
+                  <img
+                    src={coin}
+                    className="w-5 h-5 animate-rotate-y animate-infinite"
+                    alt="coin"
+                  />
                 </span>
-              </button>
-              <button
-                onClick={() => handleModalToggle(3)}
-                className="px-2 py-1 relative rounded-full group font-medium text-white inline-block">
-                <span className="absolute top-0 left-0 w-full h-full rounded-full opacity-50 filter blur-sm bg-gradient-to-br from-red-300 to-red-600"></span>
-                <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded-full opacity-50 from-red-300 to-red-600"></span>
-                <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded-full shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-red-300 to-red-600"></span>
-                <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded-full bg-gradient-to-br to-red-300 from-red-600"></span>
-                <span className="relative flex flex-row items-center gap-1 text-sm">
-                  <FaTrashAlt className="text-sm" /> Delete
-                </span>
-              </button>
+              </h2>
+            </div>
+            <div className="flex flex-row items-center justify-between">
+              <PodiumBtn
+                classroomId={id}
+                classname={classroomProperties.class_name}
+              />
+              <div className="flex flex-row items-center gap-5">
+                <button
+                  onClick={() => handleModalToggle(4)}
+                  className="ml-5 px-2 py-1 relative rounded-full group font-medium text-white inline-block">
+                  <span className="absolute top-0 left-0 w-full h-full rounded-full opacity-50 filter blur-sm bg-gradient-to-br from-gray-400 to-gray-700"></span>
+                  <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded-full opacity-50 from-gray-400 to-gray-700"></span>
+                  <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded-full shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm to-gray-400 from-gray-700"></span>
+                  <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded-full bg-gradient-to-br to-gray-400 from-gray-700"></span>
+                  <span className="relative flex flex-row items-center gap-1 text-sm">
+                    Reset
+                  </span>
+                </button>
+                <button
+                  onClick={() => handleModalToggle(3)}
+                  className="px-2 py-1 relative rounded-full group font-medium text-white inline-block">
+                  <span className="absolute top-0 left-0 w-full h-full rounded-full opacity-50 filter blur-sm bg-gradient-to-br from-red-300 to-red-600"></span>
+                  <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded-full opacity-50 from-red-300 to-red-600"></span>
+                  <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded-full shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-red-300 to-red-600"></span>
+                  <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded-full bg-gradient-to-br to-red-300 from-red-600"></span>
+                  <span className="relative flex flex-row items-center gap-1 text-sm">
+                    <FaTrashAlt className="text-sm" /> Delete
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        {isLoading ? (
-          <div className="mt-20 flex justify-center items-center">
-            <div
-              className="w-12 h-12 rounded-full animate-spin absolute border-8 border-dashed
+          {isLoading ? (
+            <div className="mt-20 flex justify-center items-center">
+              <div
+                className="w-12 h-12 rounded-full animate-spin absolute border-8 border-dashed
        border-orange border-t-transparent"></div>
-          </div>
-        ) : (
-          <Card className="w-full h-full overflow-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-300">
-            <table className="w-full min-w-max table-auto text-center">
-              <thead>
-                <tr>
-                  {TABLE_HEAD.map((head) => (
-                    <th
-                      key={head}
-                      className={`border-b border-blue-gray-100 ${
-                        theme === "dark"
-                          ? "bg-blue-gray-200"
-                          : "bg-blue-gray-50"
-                      }  p-4`}>
-                      <Typography
-                        variant="small"
-                        color="blue-gray"
-                        className="font-bold font-rem text-lg flex justify-center leading-none">
-                        {head === "Coins" ? (
-                          <img src={coin} className="w-7 h-7" alt="coin" />
-                        ) : head === "Delete" ? (
-                          <FaTrashAlt className="text-red-600" />
-                        ) : (
-                          head
-                        )}
-                      </Typography>
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {studentsOfTheClassroom.map(
-                  ({ id, name, surname, coins }, index) => {
-                    const isLast = index === studentsOfTheClassroom.length - 1;
-                    let order;
-                    if (index + 1 === 1) {
-                      order = (
-                        <img
-                          src={gold_medal}
-                          className="animate-wiggle-more animate-infinite animate-ease-out"
-                          alt="gold_medal"
-                        />
-                      );
-                    } else if (index + 1 === 2) {
-                      order = <img src={silver_medal} alt="silver_medal" />;
-                    } else if (index + 1 === 3) {
-                      order = <img src={bronze_medal} alt="bronze_medal" />;
-                    } else {
-                      order = index + 1;
-                    }
-                    const classes = isLast
-                      ? "p-4"
-                      : "p-4 border-b border-blue-gray-50";
+            </div>
+          ) : (
+            <Card className="w-full h-full overflow-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-300">
+              <table className="w-full min-w-max table-auto text-center">
+                <thead>
+                  <tr>
+                    {TABLE_HEAD.map((head) => (
+                      <th
+                        key={head}
+                        className={`border-b border-blue-gray-100 ${
+                          theme === "dark"
+                            ? "bg-blue-gray-200"
+                            : "bg-blue-gray-50"
+                        }  p-4`}>
+                        <Typography
+                          variant="small"
+                          color="blue-gray"
+                          className="font-bold font-rem text-lg flex justify-center leading-none">
+                          {head === "Coins" ? (
+                            <img src={coin} className="w-7 h-7" alt="coin" />
+                          ) : head === "Delete" ? (
+                            <FaTrashAlt className="text-red-600" />
+                          ) : (
+                            head
+                          )}
+                        </Typography>
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {studentsOfTheClassroom.map(
+                    ({ id, name, surname, coins }, index) => {
+                      const isLast =
+                        index === studentsOfTheClassroom.length - 1;
+                      let order;
+                      if (index + 1 === 1) {
+                        order = (
+                          <img
+                            src={gold_medal}
+                            className="animate-wiggle-more animate-infinite animate-ease-out"
+                            alt="gold_medal"
+                          />
+                        );
+                      } else if (index + 1 === 2) {
+                        order = <img src={silver_medal} alt="silver_medal" />;
+                      } else if (index + 1 === 3) {
+                        order = <img src={bronze_medal} alt="bronze_medal" />;
+                      } else {
+                        order = index + 1;
+                      }
+                      const classes = isLast
+                        ? "p-4"
+                        : "p-4 border-b border-blue-gray-50";
 
-                    return (
-                      <Flip left cascade text key={id}>
-                        <tr
-                          className={`${
-                            theme === "dark" ? "bg-gray-900" : "bg-grey"
-                          } `}>
-                          <td className={classes}>
-                            <Typography
-                              variant="small"
-                              color="blue-gray"
-                              className={`${
-                                theme === "dark" ? "text-white" : ""
-                              } font-normal transition duration-300 font-rem flex justify-center`}>
-                              {order}
-                            </Typography>
-                          </td>
-                          <td className={classes}>
-                            <Typography
-                              onClick={() => {
-                                fetchUserinfo(id);
-                                handleModalToggle(2);
-                              }}
-                              variant="small"
-                              color="blue-gray"
-                              className={`font-normal font-rem group transition duration-300 cursor-pointer ${
-                                theme === "dark" ? "text-white" : null
-                              }`}>
-                              {name}
-                              <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-orange"></span>
-                            </Typography>
-                          </td>
-                          <td className={classes}>
-                            <Typography
-                              variant="small"
-                              color="blue-gray"
-                              className={`font-normal font-rem transition duration-300 ${
-                                theme === "dark" ? "text-white" : null
-                              }`}>
-                              {surname}
-                            </Typography>
-                          </td>
-                          <td className={classes}>
-                            <Typography
-                              variant="small"
-                              color="blue-gray"
-                              className={`font-normal font-rem transition duration-300 ${
-                                theme === "dark" ? "text-white" : null
-                              }`}>
-                              {coins}
-                            </Typography>
-                          </td>
-                          <td className={classes}>
-                            <Typography
-                              as="a"
-                              href="#"
-                              variant="small"
-                              color="blue"
-                              className="font-medium font-rem flex flex-row items-center gap-3 justify-center">
-                              <button
-                                onClick={() =>
-                                  sendCoinsToBackend(id, 1, "plus")
-                                }
-                                className="px-3 py-2.5 relative rounded-full group font-medium text-white inline-block">
-                                <span className="absolute top-0 left-0 w-full h-full rounded-full opacity-50 filter blur-sm bg-gradient-to-br from-gray-300 to-orange"></span>
-                                <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded-full opacity-50 from-gray-300 to-orange"></span>
-                                <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded-full shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-gray-300 to-orange"></span>
-                                <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded-full bg-gradient-to-br to-gray-from-gray-300"></span>
-                                <span className="relative">+1</span>
-                              </button>
-                              <button
-                                onClick={() =>
-                                  sendCoinsToBackend(id, 5, "plus")
-                                }
-                                className="px-3 py-2.5 relative rounded-full group font-medium text-white inline-block">
-                                <span className="absolute top-0 left-0 w-full h-full rounded-full opacity-50 filter blur-sm bg-gradient-to-br from-gray-300 to-orange"></span>
-                                <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded-full opacity-50 from-gray-300 to-orange"></span>
-                                <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded-full shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-gray-300 to-orange"></span>
-                                <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded-full bg-gradient-to-br to-gray-from-gray-300"></span>
-                                <span className="relative">+5</span>
-                              </button>
-                              <button
-                                onClick={() =>
-                                  sendCoinsToBackend(id, 1, "minus")
-                                }
-                                className="ml-5 px-3.5 py-2.5 relative rounded-full group font-medium text-white inline-block">
-                                <span className="absolute top-0 left-0 w-full h-full rounded-full opacity-50 filter blur-sm bg-gradient-to-br from-red-300 to-red-600"></span>
-                                <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded-full opacity-50 from-red-300 to-red-600"></span>
-                                <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded-full shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-red-300 to-red-600"></span>
-                                <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded-full bg-gradient-to-br to-red-600 from-red-300"></span>
-                                <span className="relative">-1</span>
-                              </button>
-                            </Typography>
-                          </td>
-                          <td className={classes}>
-                            <Typography
-                              variant="small"
-                              color="blue-gray"
-                              className="font-normal font-rem flex justify-center"
-                              onClick={() => {
-                                getIdToDeleteStudent(id);
-                                handleModalToggle(5);
-                              }}>
-                              <FaTrash className="text-red-600 transition duration-300 hover:pt-[1px] hover:opacity-80 cursor-pointer" />
-                            </Typography>
-                          </td>
-                        </tr>
-                      </Flip>
-                    );
-                  }
-                )}
-              </tbody>
-            </table>
-          </Card>
-        )}
-      </section>
+                      return (
+                        <Flip left cascade text key={id}>
+                          <tr
+                            className={`${
+                              theme === "dark" ? "bg-gray-900" : "bg-grey"
+                            } `}>
+                            <td className={classes}>
+                              <Typography
+                                variant="small"
+                                color="blue-gray"
+                                className={`${
+                                  theme === "dark" ? "text-white" : ""
+                                } font-normal transition duration-300 font-rem flex justify-center`}>
+                                {order}
+                              </Typography>
+                            </td>
+                            <td className={classes}>
+                              <Typography
+                                onClick={() => {
+                                  fetchUserinfo(id);
+                                  handleModalToggle(2);
+                                }}
+                                variant="small"
+                                color="blue-gray"
+                                className={`font-normal font-rem group transition duration-300 cursor-pointer ${
+                                  theme === "dark" ? "text-white" : null
+                                }`}>
+                                {name}
+                                <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-orange"></span>
+                              </Typography>
+                            </td>
+                            <td className={classes}>
+                              <Typography
+                                variant="small"
+                                color="blue-gray"
+                                className={`font-normal font-rem transition duration-300 ${
+                                  theme === "dark" ? "text-white" : null
+                                }`}>
+                                {surname}
+                              </Typography>
+                            </td>
+                            <td className={classes}>
+                              <Typography
+                                variant="small"
+                                color="blue-gray"
+                                className={`font-normal font-rem transition duration-300 ${
+                                  theme === "dark" ? "text-white" : null
+                                }`}>
+                                {coins}
+                              </Typography>
+                            </td>
+                            <td className={classes}>
+                              <Typography
+                                as="a"
+                                href="#"
+                                variant="small"
+                                color="blue"
+                                className="font-medium font-rem flex flex-row items-center gap-3 justify-center">
+                                <button
+                                  onClick={() =>
+                                    sendCoinsToBackend(id, 1, "plus")
+                                  }
+                                  className="px-3 py-2.5 relative rounded-full group font-medium text-white inline-block">
+                                  <span className="absolute top-0 left-0 w-full h-full rounded-full opacity-50 filter blur-sm bg-gradient-to-br from-gray-300 to-orange"></span>
+                                  <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded-full opacity-50 from-gray-300 to-orange"></span>
+                                  <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded-full shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-gray-300 to-orange"></span>
+                                  <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded-full bg-gradient-to-br to-gray-from-gray-300"></span>
+                                  <span className="relative">+1</span>
+                                </button>
+                                <button
+                                  onClick={() =>
+                                    sendCoinsToBackend(id, 5, "plus")
+                                  }
+                                  className="px-3 py-2.5 relative rounded-full group font-medium text-white inline-block">
+                                  <span className="absolute top-0 left-0 w-full h-full rounded-full opacity-50 filter blur-sm bg-gradient-to-br from-gray-300 to-orange"></span>
+                                  <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded-full opacity-50 from-gray-300 to-orange"></span>
+                                  <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded-full shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-gray-300 to-orange"></span>
+                                  <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded-full bg-gradient-to-br to-gray-from-gray-300"></span>
+                                  <span className="relative">+5</span>
+                                </button>
+                                <button
+                                  onClick={() =>
+                                    sendCoinsToBackend(id, 1, "minus")
+                                  }
+                                  className="ml-5 px-3.5 py-2.5 relative rounded-full group font-medium text-white inline-block">
+                                  <span className="absolute top-0 left-0 w-full h-full rounded-full opacity-50 filter blur-sm bg-gradient-to-br from-red-300 to-red-600"></span>
+                                  <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded-full opacity-50 from-red-300 to-red-600"></span>
+                                  <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded-full shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-red-300 to-red-600"></span>
+                                  <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded-full bg-gradient-to-br to-red-600 from-red-300"></span>
+                                  <span className="relative">-1</span>
+                                </button>
+                              </Typography>
+                            </td>
+                            <td className={classes}>
+                              <Typography
+                                variant="small"
+                                color="blue-gray"
+                                className="font-normal font-rem flex justify-center"
+                                onClick={() => {
+                                  getIdToDeleteStudent(id);
+                                  handleModalToggle(5);
+                                }}>
+                                <FaTrash className="text-red-600 transition duration-300 hover:pt-[1px] hover:opacity-80 cursor-pointer" />
+                              </Typography>
+                            </td>
+                          </tr>
+                        </Flip>
+                      );
+                    }
+                  )}
+                </tbody>
+              </table>
+            </Card>
+          )}
+        </section>
       )}
     </main>
   );

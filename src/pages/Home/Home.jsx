@@ -15,6 +15,8 @@ import { ThemeApi } from "../../context/themeContext";
 import { PodiumBtn } from "../Admin/PodiumBtn";
 import { Fade, Flip } from "react-reveal";
 import { Loader } from "../../components/Loader/Loader";
+import StudyStepper from "../Stepper/Stepper";
+import winnersData from "../Podium/podium.data";
 
 const Home = () => {
   const { theme } = useContext(ThemeApi);
@@ -130,6 +132,17 @@ const Home = () => {
     }, 3500);
   }, []);
 
+  const step = winnersData
+    .map((classroom) => {
+      if (classroom.classroomName === data.class_name) {
+        return classroom.months;
+      }
+      return [];
+    })
+    .flat().length;
+
+  const gw13 = data.class_name === "GW-13";
+
   const TABLE_HEAD = ["№", "Name", "Surname", "Coins"];
   return (
     <main
@@ -141,7 +154,7 @@ const Home = () => {
       ) : (
         <div className="container">
           <hr />
-          <div className="my-5 flex font-rem flex-row flex-wrap sm:flex-nowrap justify-center gap-x-10 sm:justify-between items-center px-5">
+          <div className="mt-5 flex font-rem flex-row flex-wrap sm:flex-nowrap justify-center gap-x-10 sm:justify-between items-center px-5">
             <h1 className="animate-text bg-gradient-to-r from-gray-700 via-gray-400 to-orange bg-clip-text text-transparent text-2xl xl:text-5xl font-black text-center">
               {data.class_name}
             </h1>
@@ -161,6 +174,7 @@ const Home = () => {
             </h2>
             <PodiumBtn classroomId={data.id} classname={data.class_name} />
           </div>
+          <StudyStepper step={gw13 ? step : step - 1} />
           <Fade left cascade text>
             <h1 className="mx-5 animate-typing overflow-hidden whitespace-nowrap my-3 pr-5 text-md lg:text-3xl font-bold italic font-rem">
               {motivationalText}
@@ -225,9 +239,15 @@ const Home = () => {
                     ${
                       theme === "dark"
                         ? `${
-                            user.name === name && user.surname === surname ? "bg-gray-700" : "bg-gray-900"
+                            user.name === name && user.surname === surname
+                              ? "bg-gray-700"
+                              : "bg-gray-900"
                           }`
-                        : `${user.name === name && user.surname === surname ? "bg-gray-400" : "bg-grey"}`
+                        : `${
+                            user.name === name && user.surname === surname
+                              ? "bg-gray-400"
+                              : "bg-grey"
+                          }`
                     } `}>
                         <td className={classes}>
                           <Typography
