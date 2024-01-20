@@ -49,7 +49,7 @@ const Dashboard = () => {
       } font-rem px-3`}>
       <div className="container">
         <hr />
-        <div className="flex flex-col justify-center items-center gap-2 my-10">
+        <div className="flex h-[650px] flex-col justify-center items-center gap-2 my-10">
           {data.map(({ id, class_name, coins }, index) => (
             <Link
               to={`/dashboard/classroom/${id}`}

@@ -132,16 +132,20 @@ const Home = () => {
     }, 3500);
   }, []);
 
-  const step = winnersData
-    .map((classroom) => {
-      if (classroom.classroomName === data.class_name) {
-        return classroom.months;
-      }
-      return [];
-    })
-    .flat().length;
+  // STEPPER LOGIC
 
-  const gw13 = data.class_name === "GW-13";
+  const validValues = ["GW-13", "GW-23", "GW-30"];
+  const myClass = validValues.includes(data.class_name);
+
+  const stepMap = {
+    "GW-13": 4,
+    "GW-23": 2,
+    "GW-30": 1,
+  };
+
+  const step = stepMap[data.class_name] || 0;
+
+  ////
 
   const TABLE_HEAD = ["№", "Name", "Surname", "Coins"];
   return (
@@ -174,7 +178,7 @@ const Home = () => {
             </h2>
             <PodiumBtn classroomId={data.id} classname={data.class_name} />
           </div>
-          <StudyStepper step={gw13 ? step : step - 1} />
+          {myClass ? <StudyStepper step={step} /> : null}
           <Fade left cascade text>
             <h1 className="mx-5 animate-typing overflow-hidden whitespace-nowrap my-3 pr-5 text-md lg:text-3xl font-bold italic font-rem">
               {motivationalText}
