@@ -138,7 +138,7 @@ const Home = () => {
   const myClass = validValues.includes(data.class_name);
 
   const stepMap = {
-    "GW-13": 4,
+    "GW-13": 5,
     "GW-23": 2,
     "GW-30": 1,
   };

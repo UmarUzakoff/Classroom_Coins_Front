@@ -1,9 +1,9 @@
 import sevinch_certificate from "../../images/certificates/gw-13/sevinch.png";
+import mubina_certificate from "../../images/certificates/gw-13/mubina.png";
 import javohir_certificate from "../../images/certificates/gw-13/javohir.png";
 import fayoziddin_certificate from "../../images/certificates/gw-13/fayoziddin.png";
 import shoxsulton_certificate from "../../images/certificates/gw-13/shoxsulton.png";
 import fazliddin_certificate from "../../images/certificates/gw-13/fazliddin.png";
-import komoliddin_certificate from "../../images/certificates/gw-15/komoliddin.png";
 import shoxdiyor_certificate from "../../images/certificates/gw-15/shoxdiyor.png";
 import memories1 from "../../images/memories/gw-13/month1/memories1.jpg";
 import memories2 from "../../images/memories/gw-13/month1/memories2.jpg";
@@ -172,6 +172,36 @@ const winnersData = [
             rank: 3,
             avatar:
               "https://i.pinimg.com/736x/11/38/f0/1138f0ce82a5e6d1c505aa423bc8f819.jpg",
+          },
+        ],
+      },
+      {
+        monthNum: 5,
+        memories: [],
+        topStudents: [
+          {
+            fullName: "Sevinch Sayfutdinova",
+            certificate: sevinch_certificate,
+            coins: 255,
+            rank: 1,
+            avatar:
+              "https://i.pinimg.com/564x/f7/0d/6c/f70d6c4271126184ce5cce40a53611a9.jpg",
+          },
+          {
+            fullName: "Javohir Murodov",
+            certificate: javohir_certificate,
+            coins: 250,
+            rank: 2,
+            avatar:
+              "https://i.pinimg.com/474x/88/b3/e4/88b3e42479fb2d3440681af9ef9ab95b.jpg",
+          },
+          {
+            fullName: "Mubina Fathullayeva",
+            certificate: mubina_certificate,
+            coins: 200,
+            rank: 3,
+            avatar:
+              "https://i.pinimg.com/564x/d3/52/a1/d352a182a17bb3ee5dd0a6fdae462bf5.jpg",
           },
         ],
       },
