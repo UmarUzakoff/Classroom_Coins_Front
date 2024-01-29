@@ -95,14 +95,14 @@ const StudyStepper = ({ step }) => {
         </Step>
         <Step
           className={`sm:h-10 sm:w-10 w-8 h-8 ${
-            activeStep >= 5 ? "!bg-orange" : "gray"
+            activeStep >= 6 ? "!bg-orange" : "gray"
           }`}>
           <FaReact className="sm:h-5 sm:w-5 w-4 h-4" />
           <div className="absolute -bottom-[2rem] w-max text-center hidden sm:flex">
             <Typography
               className="font-rem"
               variant="h6"
-              color={activeStep >= 5 ? "amber" : "gray"}>
+              color={activeStep >= 6 ? "amber" : "gray"}>
               React
             </Typography>
           </div>
