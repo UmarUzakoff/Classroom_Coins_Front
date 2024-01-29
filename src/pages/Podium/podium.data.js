@@ -39,6 +39,8 @@ import otirish_gw23_munisa from "../../images/memories/gw-23/2-oy/gw_23_munisa.j
 import otirish_gw13_sevinch from "../../images/memories/gw-13/month4/gw_13_sevinch.jpg";
 import otirish_gw13_sevinch2 from "../../images/memories/gw-13/month4/gw_13_sevinch2.jpg";
 import otirish_gw13_javohir from "../../images/memories/gw-13/month4/gw_13_javohir.jpg";
+import alibek_memory from "../../images/memories/gw-13/month5/alibek.jpg";
+import hamidulloh_memory from "../../images/memories/gw-13/month5/hamidulloh.jpg";
 import otirish_gw30_diyor from "../../images/memories/gw-30/1-oy/gw_30_diyor.png";
 import otirish_gw30_firdavs from "../../images/memories/gw-30/1-oy/gw_30_firdavs.jpg";
 import otirish_gw30_umar from "../../images/memories/gw-30/1-oy/gw_30_umar.jpg";
@@ -177,7 +179,7 @@ const winnersData = [
       },
       {
         monthNum: 5,
-        memories: [],
+        memories: [alibek_memory, hamidulloh_memory],
         topStudents: [
           {
             fullName: "Sevinch Sayfutdinova",
