@@ -32,39 +32,16 @@ const avatars = [
       "https://i.pinimg.com/564x/d3/52/a1/d352a182a17bb3ee5dd0a6fdae462bf5.jpg",
   },
   {
-    name: "Komoliddin",
-    surname: "Zayniddinov",
-    avatar:
-      "https://i.pinimg.com/564x/f5/bc/31/f5bc31d68868b93ff33fe444babb3eef.jpg",
-  },
-  {
     name: "Shoxdiyor",
     surname: "Shirinboyev",
     avatar:
       "https://i.pinimg.com/564x/0b/b4/10/0bb410482ac53dbfd80d571023af8f60.jpg",
   },
   {
-    name: "MuhammadAmin",
-    surname: "Botirov",
-    avatar:
-      "https://i.pinimg.com/564x/ef/91/b1/ef91b151821245ed97c4bcee71687a6f.jpg",
-  },
-  {
     name: "Abdusolih",
     surname: "Xalilov",
     avatar:
       "https://i.pinimg.com/564x/e2/d3/a2/e2d3a2616bdad7166567458c319a2146.jpg",
-  },
-  {
-    name: "Munisa",
-    surname: "Shoniyozova",
-    avatar: hijabi,
-  },
-  {
-    name: "Ibrohim",
-    surname: "Hamidov",
-    avatar:
-      "https://i.pinimg.com/736x/1e/ce/bc/1ecebc82a1a91451ab98c5b4d0299b2b.jpg",
   },
   {
     name: "Bexruz",
