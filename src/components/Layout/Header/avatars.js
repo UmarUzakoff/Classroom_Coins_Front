@@ -1,5 +1,5 @@
-import hijabi from "../../../images/hijabi.png";
 import abdurahmon from "../../../images/abdurahmon.jpg";
+
 const avatars = [
   {
     name: "Sevinch",
@@ -83,6 +83,12 @@ const avatars = [
     surname: "Xalikov",
     avatar:
       "https://i.pinimg.com/564x/4e/20/5b/4e205b3bce3f58bde44117493fdd79de.jpg",
+  },
+  {
+    name: "Asomiddin",
+    surname: "Murodjonov",
+    avatar:
+      "https://i.pinimg.com/736x/75/4a/20/754a201d13aac3326461fdf506474b2c.jpg",
   },
 ];
 

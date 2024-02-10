@@ -19,9 +19,11 @@ import mem3 from "../../images/memories/gw-13/month3/mem3.jpg";
 import abdurahmon_certificate from "../../images/certificates/gw-30/Abdurahmon.png";
 import ibrohim_certificate_gw_30 from "../../images/certificates/gw-30/ibrohim.png";
 import firdavs_certificate2 from "../../images/certificates/gw-30/firdavs_2.png";
+import firdavs_certificate from "../../images/certificates/gw-30/Firdavs.png";
 import diyor_certificate from "../../images/certificates/gw-30/Diyor.png";
 import diyor_certificate3 from "../../images/certificates/gw-30/diyor_3.png";
 import umar_certificate from "../../images/certificates/gw-30/Umar.png";
+import asomiddin_certificate from "../../images/certificates/gw-30/Asomiddin.png";
 import otirish from "../../images/memories/o'tirish.jpg";
 import ps from "../../images/memories/ps.jpg";
 import otirish_gw30_samandar from "../../images/memories/gw-30/1-oy/gw_30_samandar.jpg";
@@ -268,6 +270,36 @@ const winnersData = [
             rank: 3,
             avatar:
               "https://i.pinimg.com/564x/68/6b/64/686b64e06c20f61bb6c5d63c92abad92.jpg",
+          },
+        ],
+      },
+      {
+        monthNum: 3,
+        memories: [],
+        topStudents: [
+          {
+            fullName: "Firdavs Xalikov",
+            certificate: firdavs_certificate,
+            coins: 250,
+            rank: 1,
+            avatar:
+              "https://i.pinimg.com/564x/4e/20/5b/4e205b3bce3f58bde44117493fdd79de.jpg",
+          },
+          {
+            fullName: "Diyor Kozimov",
+            certificate: diyor_certificate,
+            coins: 240,
+            rank: 2,
+            avatar:
+              "https://i.pinimg.com/564x/68/6b/64/686b64e06c20f61bb6c5d63c92abad92.jpg",
+          },
+          {
+            fullName: "Asomiddin Murodjonov",
+            certificate: asomiddin_certificate,
+            coins: 235,
+            rank: 3,
+            avatar:
+              "https://i.pinimg.com/736x/75/4a/20/754a201d13aac3326461fdf506474b2c.jpg",
           },
         ],
       },
