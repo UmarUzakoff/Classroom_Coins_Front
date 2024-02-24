@@ -12,6 +12,7 @@ import evos from "../../images/memories/gw-13/month2/memories1.jpg";
 import shoxsulton_2_certificate from "../../images/certificates/gw-13/Shoxsulton_2.png";
 import alibek_certificate from "../../images/certificates/gw-13/Alibek.png";
 import memory_hackathon from "../../images/memories/gw-13/month3/hackaton.jpg";
+import memory_hackathon2 from "../../images/memories/gw-13/month3/hackaton2.jpg";
 import memory_3month_gw13 from "../../images/memories/gw-13/month3/memory.jpg";
 import abdurahmon from "../../images/abdurahmon.jpg";
 import mem2 from "../../images/memories/gw-13/month3/mem2.jpg";
@@ -105,7 +106,7 @@ const winnersData = [
       },
       {
         monthNum: 3,
-        memories: [memory_hackathon, memory_3month_gw13, mem2, mem3],
+        memories: [memory_hackathon, memory_hackathon2, memory_3month_gw13, mem2, mem3],
         topStudents: [
           {
             fullName: "Sevinch Sayfutdinova",
