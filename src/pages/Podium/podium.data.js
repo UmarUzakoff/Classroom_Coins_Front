@@ -14,10 +14,8 @@ import alibek_certificate from "../../images/certificates/gw-13/Alibek.png";
 import memory_hackathon from "../../images/memories/gw-13/month3/hackaton.jpg";
 import memory_hackathon2 from "../../images/memories/gw-13/month3/hackaton2.jpg";
 import memory_3month_gw13 from "../../images/memories/gw-13/month3/memory.jpg";
-import abdurahmon from "../../images/abdurahmon.jpg";
 import mem2 from "../../images/memories/gw-13/month3/mem2.jpg";
 import mem3 from "../../images/memories/gw-13/month3/mem3.jpg";
-import abdurahmon_certificate from "../../images/certificates/gw-30/Abdurahmon.png";
 import ibrohim_certificate_gw_30 from "../../images/certificates/gw-30/ibrohim.png";
 import firdavs_certificate2 from "../../images/certificates/gw-30/firdavs_2.png";
 import firdavs_certificate from "../../images/certificates/gw-30/Firdavs.png";
@@ -25,6 +23,9 @@ import diyor_certificate from "../../images/certificates/gw-30/Diyor.png";
 import diyor_certificate3 from "../../images/certificates/gw-30/diyor_3.png";
 import umar_certificate from "../../images/certificates/gw-30/Umar.png";
 import asomiddin_certificate from "../../images/certificates/gw-30/Asomiddin.png";
+import aziza_certificate from "../../images/certificates/gw-30/aziza.png";
+import shahlo_certificate2 from "../../images/certificates/gw-30/shahlo_2.png";
+import abdumajid_certificate3 from "../../images/certificates/gw-30/abdumajid.png";
 import otirish from "../../images/memories/o'tirish.jpg";
 import ps from "../../images/memories/ps.jpg";
 import otirish_gw30_samandar from "../../images/memories/gw-30/1-oy/gw_30_samandar.jpg";
@@ -106,7 +107,13 @@ const winnersData = [
       },
       {
         monthNum: 3,
-        memories: [memory_hackathon, memory_hackathon2, memory_3month_gw13, mem2, mem3],
+        memories: [
+          memory_hackathon,
+          memory_hackathon2,
+          memory_3month_gw13,
+          mem2,
+          mem3,
+        ],
         topStudents: [
           {
             fullName: "Sevinch Sayfutdinova",
@@ -220,11 +227,12 @@ const winnersData = [
         ],
         topStudents: [
           {
-            fullName: "Abdurahmon Ziyodov",
-            certificate: abdurahmon_certificate,
+            fullName: "Firdavs Xalikov",
+            certificate: firdavs_certificate,
             coins: 221,
             rank: 1,
-            avatar: abdurahmon,
+            avatar:
+              "https://i.pinimg.com/564x/4e/20/5b/4e205b3bce3f58bde44117493fdd79de.jpg",
           },
           {
             fullName: "Diyor Kozimov",
@@ -301,6 +309,36 @@ const winnersData = [
             rank: 3,
             avatar:
               "https://i.pinimg.com/736x/75/4a/20/754a201d13aac3326461fdf506474b2c.jpg",
+          },
+        ],
+      },
+      {
+        monthNum: 4,
+        memories: [],
+        topStudents: [
+          {
+            fullName: "Aziza Ashimova",
+            certificate: aziza_certificate,
+            coins: 225,
+            rank: 1,
+            avatar:
+              "https://i.pinimg.com/736x/c2/85/c8/c285c8b26c89545c2114c41b06876355.jpg",
+          },
+          {
+            fullName: "Shahlo Dilshodbekova",
+            certificate: shahlo_certificate2,
+            coins: 205,
+            rank: 2,
+            avatar:
+              "https://i.pinimg.com/736x/37/e9/27/37e92704020017f28a52d7039c98592a.jpg",
+          },
+          {
+            fullName: "Abdumajid Xalilov",
+            certificate: abdumajid_certificate3,
+            coins: 180,
+            rank: 3,
+            avatar:
+              "https://i.pinimg.com/564x/e2/d3/a2/e2d3a2616bdad7166567458c319a2146.jpg",
           },
         ],
       },
