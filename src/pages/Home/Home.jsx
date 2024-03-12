@@ -139,8 +139,8 @@ const Home = () => {
 
   const stepMap = {
     "GW-13": 5,
-    "GW-23": 2,
-    "GW-30": 1,
+    "GW-30": 2,
+    "GW-39": 0
   };
 
   const step = stepMap[data.class_name] || 0;
