@@ -5,6 +5,7 @@ import {
   Classroom,
   Dashboard,
   HomePage,
+  HTMLComparisonTool,
   LoginPage,
   PageNotFound,
   Podium,
@@ -24,6 +25,7 @@ const App = () => {
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/plagiarism-checker" element={<HTMLComparisonTool />} />
           <Route path="/auth/login" element={<LoginPage />} />
           <Route path="/admin/auth/login" element={<AdminLogin />} />
           <Route path="/dashboard" element={<Dashboard />} />

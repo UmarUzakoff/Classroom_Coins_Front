@@ -23,7 +23,6 @@
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #000;
-  border-radius: 5px;
 }
 
 /* Handle on hover */

@@ -58,7 +58,9 @@ export default function Header() {
     fetchData(token);
   }, []);
 
-  const findAvatar = avatars.find((a) => a.name === user.name && a.surname === user.surname);
+  const findAvatar = avatars.find(
+    (a) => a.name === user.name && a.surname === user.surname
+  );
   const avatar = findAvatar
     ? findAvatar.avatar
     : "https://whatsondisneyplus.com/wp-content/uploads/2021/06/luca-avatar-WODP.png";
@@ -186,6 +188,27 @@ export default function Header() {
                             }`
                           )}>
                           Add Classroom
+                        </Link>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item
+                      className={`${role !== "admin" ? "hidden" : " "}`}>
+                      {({ active }) => (
+                        <Link
+                          to={"/plagiarism-checker"}
+                          className={classNames(
+                            active
+                              ? `${
+                                  theme === "dark"
+                                    ? "bg-gray-800"
+                                    : "bg-gray-200"
+                                }`
+                              : "",
+                            `block px-4 py-2 text-sm ${
+                              theme === "dark" ? "text-grey" : "text-gray-700"
+                            }`
+                          )}>
+                          HTML Comparison Tool
                         </Link>
                       )}
                     </Menu.Item>
